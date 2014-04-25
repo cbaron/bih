@@ -3,4 +3,6 @@ cache
 databases
 errors
 sessions
- 
+
+modules/sf.py
+modules/sf.pyc

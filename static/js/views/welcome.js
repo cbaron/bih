@@ -4,10 +4,10 @@ define(
       'underscore',
       'backbone',
       'models/user',
-      'templates/header'
+      'templates/welcome'
     ],
     
-    function( $, _, Backbone, user, headerHtml ) {
+    function( $, _, Backbone, user, welcomeHtml ) {
 
     var header = Backbone.View.extend( {
 
@@ -23,7 +23,7 @@ define(
         render: function() {
 
             this.slurpTemplate( {
-                template: headerHtml( user.attributes ),
+                template: welcomeHtml( user.attributes ),
                 insertion: { $el: this.$el, method: 'append' },
                 partsObj: this.templateData,
                 keepDataJs: true

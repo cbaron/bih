@@ -31,6 +31,8 @@ define(
             index: function() {
                 
                 require( [ 'views/header' ] );
+
+                require( [ 'views/userWelcome' ] );
             }
 
         } );
