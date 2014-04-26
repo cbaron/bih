@@ -4,7 +4,8 @@ define(
       'underscore',
       'backbone',
       'models/user',
-      'templates/header'
+      'templates/header',
+      'css!styles/header'
     ],
     
     function( $, _, Backbone, user, headerHtml ) {
@@ -24,7 +25,7 @@ define(
 
             this.slurpTemplate( {
                 template: headerHtml( user.attributes ),
-                insertion: { $el: this.$el, method: 'append' },
+                insertion: { $el: this.$el, method: 'prepend' },
                 partsObj: this.templateData,
                 keepDataJs: true
             } );

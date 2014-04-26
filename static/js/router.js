@@ -32,7 +32,7 @@ define(
                 
                 require( [ 'views/header' ] );
 
-                require( [ 'views/userWelcome' ] );
+                require( [ 'views/welcome' ] );
             }
 
         } );

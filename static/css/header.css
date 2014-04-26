@@ -1,0 +1,8 @@
+#header .header-row {
+  background-color: #2c50d8;
+  text-align: center;
+}
+#header .header-row .header-item {
+  display: inline-block;
+  vertical-align: top;
+}
