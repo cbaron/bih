@@ -120,8 +120,13 @@
 .welcome-container .birthday .form-control {
   width: 80%;
   display: inline-block;
+  border-radius: 0px;
 }
 .welcome-container .birthday .glyphicon-chevron-down {
   padding: 6px;
   background-color: #ec7400;
+  height: 34px;
+  border: 1px solid #ffc288;
+  color: #ffc288;
+  line-height: 1.4285;
 }
