@@ -1,9 +1,17 @@
 define(['handlebars.runtime'], function(Handlebars) {
-  Handlebars = Handlebars["default"];  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-return templates['header.hbs'] = template({"compiler":[5,">= 2.0.0"],"main":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", escapeExpression=this.escapeExpression;
-  return "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"header-row\">\n            <div class=\"header-item\">\n                <div class=\"header-box-overlay\">\n                    <div class=\"overlay-item\">BRING</div>\n                    <div class=\"overlay-item\">ISRAEL</div>\n                    <div class=\"overlay-item\">HOME</div>\n                </div>\n                <span class=\"overlay-sibling\">4-Week Challenge</span>\n            </div>\n            <span class=\"header-item\">100-Point Challenge</span>\n            <span class=\"header-item\">My Bus</span>\n            <span class=\"header-item\">Help</span>\n            <div class=\"header-item\">\n                <span class=\"glyphicon glyphicon-envelope\"></span>\n                <span>Hi "
-    + escapeExpression(((helper = helpers.firstName || (depth0 && depth0.firstName)),(typeof helper === functionType ? helper.call(depth0, {"name":"firstName","hash":{},"data":data}) : helper)))
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"header-row\">\n            <div class=\"header-item\">\n                <div class=\"header-box-overlay\">\n                    <div class=\"overlay-item\">BRING</div>\n                    <div class=\"overlay-item\">ISRAEL</div>\n                    <div class=\"overlay-item\">HOME</div>\n                </div>\n                <span class=\"overlay-sibling\">4-Week Challenge</span>\n            </div>\n            <span class=\"header-item\">100-Point Challenge</span>\n            <span class=\"header-item\">My Bus</span>\n            <span class=\"header-item\">Help</span>\n            <div class=\"header-item\">\n                <span class=\"glyphicon glyphicon-envelope\"></span>\n                <span>Hi ";
+  if (helper = helpers.firstName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.firstName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
     + "!</span>\n                <span data-js=\"dropdownButton\" class=\"glyphicon glyphicon-chevron-down\"></span>\n                <div data-js=\"menu\" class=\"menu\">\n                    <div>Settings</div>\n                    <div>Logout</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
-},"useData":true});
+  return buffer;
+  })
+
 });

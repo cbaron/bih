@@ -1,0 +1,8 @@
+body {
+  background-color: black;
+}
+body #content {
+  background-image: url("../images/background.jpg");
+  background-size: 100% 627px;
+  min-height: 627px;
+}

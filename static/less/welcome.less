@@ -1,12 +1,72 @@
-@import (reference) "bootstrap.less";
+@import (reference) "vendor/bootstrap.less";
 @import (reference) "bih.less";
 
 .welcome-container {
+
     background-image: url("../images/welcomeBackground.png");
 
     .welcome-header {
         margin-top: 50px;
         color: orange;
         text-align: center;
+        font-size: xx-large;
+    }
+    
+    .welcome-sub-header {
+        text-align: center;
+        font-size: large;
+        color: @gray;
+        margin: 30px 0px;
+    }
+
+    .upload-photo-btn-wrapper {
+        
+        .center-block();
+        background-color: white;
+        width: 173px;
+        height: 160px;
+
+        .upload-photo-btn {
+            background-image: url("../images/uploadPhotoButton.png");
+            background-repeat: no-repeat;
+            background-position: 5px 5px;
+            width: 153px;
+            height: 140px;
+            display: table;
+            text-align: center;
+            background-color: lightgray;
+            padding: 5px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+
+            div {
+                display: table-cell;
+                vertical-align: middle;
+                color: gray;
+                font-size: xx-large;
+            }
+        }
+    }
+
+    .birthday {
+
+        #day.form-control {
+            width: 50%;
+        }
+        
+        #year.form-control {
+            width: 60%;
+        }
+
+        .form-control {
+            width: 80%;
+            display: inline-block;
+        }
+        
+        .glyphicon-chevron-down {
+            padding: 6px;
+            background-color: @orange;
+        }
     }
 }

@@ -6,3 +6,7 @@ sessions
 
 modules/sf.py
 modules/sf.pyc
+
+#pour moi
+static/less/vendor
+config/grunt/node_modules

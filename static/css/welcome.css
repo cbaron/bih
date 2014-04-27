@@ -75,4 +75,53 @@
   margin-top: 50px;
   color: orange;
   text-align: center;
+  font-size: xx-large;
+}
+.welcome-container .welcome-sub-header {
+  text-align: center;
+  font-size: large;
+  color: #3f3f3f;
+  margin: 30px 0px;
+}
+.welcome-container .upload-photo-btn-wrapper {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  width: 173px;
+  height: 160px;
+}
+.welcome-container .upload-photo-btn-wrapper .upload-photo-btn {
+  background-image: url("../images/uploadPhotoButton.png");
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  width: 153px;
+  height: 140px;
+  display: table;
+  text-align: center;
+  background-color: lightgray;
+  padding: 5px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.welcome-container .upload-photo-btn-wrapper .upload-photo-btn div {
+  display: table-cell;
+  vertical-align: middle;
+  color: gray;
+  font-size: xx-large;
+}
+.welcome-container .birthday #day.form-control {
+  width: 50%;
+}
+.welcome-container .birthday #year.form-control {
+  width: 60%;
+}
+.welcome-container .birthday .form-control {
+  width: 80%;
+  display: inline-block;
+}
+.welcome-container .birthday .glyphicon-chevron-down {
+  padding: 6px;
+  background-color: #ec7400;
 }
