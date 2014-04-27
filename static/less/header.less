@@ -1,14 +1,76 @@
-@import "variables.less";
+@import (reference) "bootstrap.less";
+@import (reference) "bih.less";
 
 #header {
 
     .header-row {
         background-color: @blue;
         text-align: center;
+        color: white;
+        border-bottom: 1px solid @light-blue;
 
         .header-item {
             display: inline-block;
             vertical-align: top;
+            padding: @header-item-padding;
+            border-right: 1px solid @light-blue;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            .glyphicon-envelope {
+                color: black;
+                vertical-align: text-top;
+                padding-right: @glyph-padding;
+            }
+            
+            .glyphicon-chevron-down {
+                color: @aqua;
+                vertical-align: text-top;
+                padding-left: @glyph-padding;
+
+                &:hover {
+                    color: white;
+                    cursor: pointer;
+                }
+
+                &.active {
+                    color: white;
+                }
+            }
+
+            .menu {
+                position: absolute;
+                background-color: @dark-blue;
+                display: none;
+                margin-top: @header-item-padding;
+                margin-left: @header-item-padding + ( @glyph-padding * 2 );
+                z-index: 2;
+                padding: 6px 0px;
+
+                div {
+                    padding: 0px 15px;
+                }
+            }
+        }
+
+        .header-box-overlay {
+            position: absolute;
+            width: @header-overlay-width;
+            background-color: @orange;
+            margin-top: -@header-item-padding;
+            text-align: center;
+
+            .overlay-item {
+                .rotate(-15deg);
+                padding: 3px;
+                font-size: medium;
+            }
+        }
+
+        .overlay-sibling {
+            padding-left: @header-overlay-width + @header-item-padding;
         }
     }
 }

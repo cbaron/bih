@@ -4,7 +4,8 @@ define(
       'underscore',
       'backbone',
       'models/user',
-      'templates/welcome'
+      'templates/welcome',
+      'css!styles/welcome'
     ],
     
     function( $, _, Backbone, user, welcomeHtml ) {
@@ -37,5 +38,5 @@ define(
         }
     } );
 
-    return new header( { el: '#header' } );
+    return new header( { el: '#content' } );
 } );

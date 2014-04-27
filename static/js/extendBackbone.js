@@ -1,7 +1,5 @@
 define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
 
-    Backbone.View.prototype.templateData = { };
-
     Backbone.View.prototype.slurpTemplate = function( options ) {
        
        var parts = { },
@@ -45,5 +43,22 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
 
         return { parts: parts, $template: $template };
     };
+
+    Backbone.View.prototype.isMouseOnEl = function( event, el ) {
+
+        var elOffset = el.offset();
+        var elHeight = el.outerHeight( true );
+        var elWidth = el.outerWidth( true );
+
+        if( ( event.pageX < elOffset.left ) ||
+            ( event.pageX > ( elOffset.left + elWidth ) ) ||
+            ( event.pageY < elOffset.top ) ||
+            ( event.pageY > ( elOffset.top + elHeight ) ) ) {
+
+            return false;
+        }
+
+        return true;
+    }
 
 } );
