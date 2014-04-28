@@ -68,22 +68,14 @@
 .modal-footer:after {
   clear: both;
 }
-.welcome-container {
+.dashboard-container {
+  padding-top: 50px;
+}
+.dashboard-container .dashboard-id {
   background-image: url("../images/welcomeBackground.png");
+  padding-bottom: 30px;
 }
-.welcome-container .welcome-header {
-  margin-top: 50px;
-  color: orange;
-  text-align: center;
-  font-size: xx-large;
-}
-.welcome-container .welcome-sub-header {
-  text-align: center;
-  font-size: large;
-  color: #3f3f3f;
-  margin: 30px 0px;
-}
-.welcome-container .upload-photo-btn-wrapper {
+.dashboard-container .dashboard-id .upload-photo-btn-wrapper {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -91,7 +83,7 @@
   width: 173px;
   height: 160px;
 }
-.welcome-container .upload-photo-btn-wrapper .upload-photo-btn {
+.dashboard-container .dashboard-id .upload-photo-btn-wrapper .upload-photo-btn {
   background-image: url("../images/uploadPhotoButton.png");
   background-repeat: no-repeat;
   background-position: 5px 5px;
@@ -104,35 +96,4 @@
   position: relative;
   top: 10px;
   left: 10px;
-}
-.welcome-container .upload-photo-btn-wrapper .upload-photo-btn div {
-  display: table-cell;
-  vertical-align: middle;
-  color: gray;
-  font-size: xx-large;
-}
-.welcome-container .birthday #day.form-control {
-  width: 50%;
-}
-.welcome-container .birthday #year.form-control {
-  width: 60%;
-}
-.welcome-container .birthday .form-control {
-  width: 80%;
-  display: inline-block;
-  border-radius: 0px;
-}
-.welcome-container .birthday .glyphicon-chevron-down {
-  padding: 6px;
-  background-color: #ec7400;
-  height: 34px;
-  border: 1px solid #ffc288;
-  color: #ffc288;
-  line-height: 1.4285;
-}
-.welcome-container .submit-col {
-  margin-bottom: 20px;
-}
-.welcome-container .submit-col .btn {
-  float: right !important;
 }

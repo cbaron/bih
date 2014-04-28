@@ -7,8 +7,8 @@ define(
       'css!styles/app'
     ],
     
-    function( Router ) {
+    function( Router, ExtendBackbone ) {
 
-        Router.initialize();
+        ExtendBackbone.view( { router: Router } );
     }
 );

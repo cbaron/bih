@@ -61,4 +61,13 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
         return true;
     }
 
+    return {
+        view: function( extension ) {
+            _.each( extension, function( value, key ) {
+                var obj = { }; obj[ key ] = value;
+                _.extend( Backbone.View.prototype, obj );
+            } );
+        }
+    }
+
 } );

@@ -1,65 +1,68 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 welcome-container">
-            <div class="row welcome-header">Welcome, {{firstName}}!</div>
-            <div class="row welcome-sub-header">Join Bus (number) and win a trip back to Israel!</div>
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-3">
-                    <div data-js="uploadPhotoBtn" class="upload-photo-btn-wrapper">
-                        <div data-js="uploadPhotoBtn" class="upload-photo-btn">
-                            <div>Upload Photo</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 welcome-container">
+        <div class="row welcome-header">Welcome, {{firstName}}!</div>
+        <div class="row welcome-sub-header">Join Bus (number) and win a trip back to Israel!</div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <div data-js="uploadPhotoBtn" class="upload-photo-btn-wrapper">
+                    <div data-js="uploadPhotoBtn" class="upload-photo-btn">
+                        <div>Upload Photo</div>
+                    </div>
+                </div>
+                <div data-js="photo" class="photo"></div>
+            </div>
+            <div class="col-md-7">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="name" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="name" value="{{firstName}} {{lastName}}" readonly>
                         </div>
                     </div>
-                    <div data-js="photo" class="photo"></div>
-                </div>
-                <div class="col-md-7">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="name" class="col-md-2 control-label">Name</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="name" value="{{firstName}} {{lastName}}" readonly>
-                            </div>
+                    <div class="form-group birthday">
+                        <label for="birthday" class="col-md-2 control-label">Birthday</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="birthday" placeholder="Month">
+                            {{~#if true~}}
+                                <span data-js="monthDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                            {{~/if~}}
                         </div>
-                        <div class="form-group birthday">
-                            <label for="birthday" class="col-md-2 control-label">Birthday</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="birthday" placeholder="Month">
-                                {{~#if true~}}
-                                    <span data-js="monthDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                                {{~/if~}}
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="day" placeholder="Day">
-                                {{~#if true~}}
-                                    <span data-js="dayDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                                {{~/if~}}
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="year" placeholder="Year">
-                                {{~#if true~}}
-                                    <span data-js="yearDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                                {{~/if~}}
-                            </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="day" placeholder="Day">
+                            {{~#if true~}}
+                                <span data-js="dayDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                            {{~/if~}}
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="col-md-2 control-label">Email</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="email" value="{{emailAddress}}" readonly>
-                            </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="year" placeholder="Year">
+                            {{~#if true~}}
+                                <span data-js="yearDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                            {{~/if~}}
                         </div>
-                        <div class="form-group">
-                            <label for="phone" class="col-md-2 control-label">Phone</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="phone" value="{{phoneNumber}}" placeholder="(222) 555-5555">
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-2 control-label">Email</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="email" value="{{emailAddress}}" readonly>
                         </div>
-                    </form>
-                </div>
-                <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-md-2 control-label">Phone</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="phone" value="{{phoneNumber}}" placeholder="(222) 555-5555">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-11 submit-col">
+                <button data-js="submitButton" class="btn">Submit</div>
             </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
+    <div class="col-md-1"></div>
 </div>

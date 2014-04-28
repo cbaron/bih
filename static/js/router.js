@@ -12,42 +12,32 @@ define(
 
             routes: {
 
-                //'music': 'musicRoute',
-
+                'dashboard': 'dashboard',
                 'index': 'index',
-
                 '': 'index'
             },
 
-            /*
-            musicRoute: function() {
-
-                this.toggleHomeButtonView();
-                this.toggleMusicView( { load: true } );
-                this.loadDomainText();
-            },
-            */
-
             index: function() {
-                
                 require( [ 'views/header' ] );
-
                 require( [ 'views/welcome' ] );
+            },
+
+            dashboard: function() {
+                require( [ 'views/header' ] );
+                require( [ 'views/dashboard' ] );
+            },
+
+            initialize: function() {
+
+                $( function() {
+                    Backbone.history.start( { pushState: true, root: "/bih/" } );
+                } );
+
+                return this;
             }
 
         } );
 
-        var initialize = function() {
-
-            $( function() {
-        
-                var appRouter = new AppRouter();
-
-                Backbone.history.start( { pushState: true, root: "/bih/" } );
-            } );
-
-        };
-
-        return { initialize: initialize } 
+        return new AppRouter();
     }
 );

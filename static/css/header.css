@@ -118,6 +118,7 @@
   background-color: #ec7400;
   margin-top: -15px;
   text-align: center;
+  z-index: 2;
 }
 #header .header-row .header-box-overlay .overlay-item {
   -webkit-transform: rotate(-15deg);

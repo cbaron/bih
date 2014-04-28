@@ -3,20 +3,22 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'views/leaderboard',
       'models/user',
-      'templates/welcome',
-      'css!styles/welcome'
+      'collections/buses',
+      'templates/dashboard',
+      'css!styles/dashboard'
     ],
     
-    function( $, _, Backbone, user, welcomeHtml ) {
+    function( $, _, Backbone, leaderboard, user, buses, dashboardHtml ) {
 
-        var welcome = Backbone.View.extend( {
+        var dashboard = Backbone.View.extend( {
 
-            className: 'container',
+            className: 'container dashboard-container',
+
+            templateData: { },
 
             events: {
-
-                'click button[data-js="submitButton"]': 'submitClicked'
             },
 
             initialize: function() {
@@ -31,10 +33,16 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: welcomeHtml( user.attributes ),
+                    template: dashboardHtml( { user: user.attributes } ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
+                } );
+
+                this.leaderboard = new leaderboard( {
+                    el: this.templateData.leaderboardItems,
+                    user: user,
+                    buses: buses
                 } );
 
                 return this;
@@ -42,15 +50,9 @@ define(
 
             waitForUserData: function() {
                 this.listenToOnce( user, 'change', this.render );
-            },
-
-            submitClicked: function() {
-               
-                this.$el.hide();
-                this.router.navigate( 'dashboard' );
             }
 
         } );
 
-        return new welcome();
+        return new dashboard();
 } );
