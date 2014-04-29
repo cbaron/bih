@@ -10,13 +10,13 @@ def GET( sf ):
 
     records = sf.query(\
         ''.join( [ "Select ID, NAME, WEEK_1_POINT_TOTAL__C, WEEK_2_POINT_TOTAL__C, WEEK_3_POINT_TOTAL__C, WEEK_4_POINT_TOTAL__C, TOTAL_POINTS__C ",
-                   "FROM BIH_BUS__C" ] ) )['records']
+                   "FROM BIH_BUS__C ORDER BY TOTAL_POINTS__C DESC" ] ) )['records']
 
-    print records
     rv = [ ]
-    for row in records:
-        print row
+    #for row in records:
+    for idx, row in enumerate( records ):
         rv.append( dict( id = row['Id'],
+                         rank = idx + 1,
                          name = row['Name'],
                          weekTotals = [ row['Week_1_Point_Total__c'],
                                         row['Week_2_Point_Total__c'],

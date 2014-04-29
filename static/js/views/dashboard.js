@@ -41,6 +41,7 @@ define(
 
                 this.leaderboard = new leaderboard( {
                     el: this.templateData.leaderboardItems,
+                    mode: 'short',
                     user: user,
                     buses: buses
                 } );

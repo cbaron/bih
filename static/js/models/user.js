@@ -10,11 +10,13 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "emailAddress": undefined,
             "photoUrl": undefined,
             "birthday": undefined,
-            "phoneNumber": undefined
+            "phoneNumber": undefined,
+            "busId": undefined,
+            "busName": undefined
 
         },
 
-        urlRoot: '/bih/user/index'
+        urlRoot: '/user/index'
 
     } );
 

@@ -3,7 +3,9 @@
 
 .dashboard-container {
 
-    padding-top: 50px;
+    >.row {
+        padding-top: 50px;
+    }
 
     .dashboard-id {
 
@@ -34,10 +36,54 @@
         }
     }
 
-    .dashboard-leaderboard {
+    .dashboard-100-point {
 
-        .leaderboard-header {
+        .header {
+            color: @dashboard-text-color;
+            font-size: large;
+        }
 
+        .content {
+
+            height: 106px;
+            margin: 10px;
+            .clearfix();
+
+            .individual-point-display {
+                background-image: url("../images/starburst.png");
+                background-repeat: no-repeat;
+                width: 106px;
+                height: 100%;
+                display: table;
+                .pull-left();
+
+                >div {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: center;
+                    color: rgb( 14, 77, 118 );
+                    font-size: xx-large;
+                }
+            }
+
+            .out-of-display {
+                height: 100%;
+                color: @dashboard-text-color;
+                font-size: medium;
+                display: table;
+                margin-left: 20px;
+                .pull-left();
+
+                >div {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: center;
+                }
+            }
+        }
+        
+        .complete-challenge-btn {
+            padding: 5px 40px;
         }
     }
 }

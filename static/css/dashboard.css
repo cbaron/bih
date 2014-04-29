@@ -68,7 +68,7 @@
 .modal-footer:after {
   clear: both;
 }
-.dashboard-container {
+.dashboard-container > .row {
   padding-top: 50px;
 }
 .dashboard-container .dashboard-id {
@@ -96,4 +96,59 @@
   position: relative;
   top: 10px;
   left: 10px;
+}
+.dashboard-container .dashboard-100-point .header {
+  color: #15547c;
+  font-size: large;
+}
+.dashboard-container .dashboard-100-point .content {
+  height: 106px;
+  margin: 10px;
+}
+.dashboard-container .dashboard-100-point .content:before,
+.dashboard-container .dashboard-100-point .content:after {
+  content: " ";
+  display: table;
+}
+.dashboard-container .dashboard-100-point .content:after {
+  clear: both;
+}
+.dashboard-container .dashboard-100-point .content:before,
+.dashboard-container .dashboard-100-point .content:after {
+  content: " ";
+  display: table;
+}
+.dashboard-container .dashboard-100-point .content:after {
+  clear: both;
+}
+.dashboard-container .dashboard-100-point .content .individual-point-display {
+  background-image: url("../images/starburst.png");
+  background-repeat: no-repeat;
+  width: 106px;
+  height: 100%;
+  display: table;
+  float: left !important;
+}
+.dashboard-container .dashboard-100-point .content .individual-point-display > div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #0e4d76;
+  font-size: xx-large;
+}
+.dashboard-container .dashboard-100-point .content .out-of-display {
+  height: 100%;
+  color: #15547c;
+  font-size: medium;
+  display: table;
+  margin-left: 20px;
+  float: left !important;
+}
+.dashboard-container .dashboard-100-point .content .out-of-display > div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.dashboard-container .dashboard-100-point .complete-challenge-btn {
+  padding: 5px 40px;
 }

@@ -1,43 +1,57 @@
 @import (reference) "vendor/bootstrap.less";
 @import (reference) "bih.less";
 
-.dashboard-container {
+@row-bg: rgb( 44, 149, 216 );
 
-    padding-top: 50px;
+.dashboard-leaderboard {
 
-    .dashboard-id {
+    .leaderboard-header {
 
-        background-image: url("../images/welcomeBackground.png");
-        padding-bottom: 30px;
+    }
 
-        .upload-photo-btn-wrapper {
+    .bus-row {
+        .make-md-column(12);
+        margin: 5px 0px;
+        padding: 5px 15px;
+        background-color: @row-bg;
+
+        .bus-rank {
+            color: @dashboard-text-color;
+            font-size: medium;
+            font-weight: bold;
+        }
+        
+        .bus-name {
+            color: white;
+            font-size: medium;
+            font-weight: 300;
+            margin-left: 20px;
+        }
+
+        .point-container {
+
+            .pull-right();
+
+            .bus-points {
+                color: white;
+                font-size: medium;
+                font-weight: bold;
+            }
+
+            .points {
+                color: @dashboard-text-color;
+                font-weight: 300;
+            }
+        }
+
+        &.user-bus {
             
-            .center-block();
-            background-color: white;
-            width: 173px;
-            height: 160px;
+            background-color: @orange;
 
-            .upload-photo-btn {
-                background-image: url("../images/uploadPhotoButton.png");
-                background-repeat: no-repeat;
-                background-position: 5px 5px;
-                width: 153px;
-                height: 140px;
-                display: table;
-                text-align: center;
-                background-color: lightgray;
-                padding: 5px;
-                position: relative;
-                top: 10px;
-                left: 10px;
+            .bus-name {
+                font-weight: bold;
             }
         }
     }
 
-    .dashboard-leaderboard {
-
-        .leaderboard-header {
-
-        }
-    }
 }

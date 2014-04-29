@@ -30,7 +30,7 @@ define(
             initialize: function() {
 
                 $( function() {
-                    Backbone.history.start( { pushState: true, root: "/bih/" } );
+                    Backbone.history.start( { pushState: true } );
                 } );
 
                 return this;

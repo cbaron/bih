@@ -10,7 +10,7 @@ define(
 
         var buses = Backbone.Collection.extend( {
            
-            url: '/bih/bus',
+            url: '/bus',
 
             model: bus
         } );

@@ -47,7 +47,7 @@ define(
             submitClicked: function() {
                
                 this.$el.hide();
-                this.router.navigate( 'dashboard' );
+                this.router.navigate( 'dashboard', { trigger: true } );
             }
 
         } );

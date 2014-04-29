@@ -68,32 +68,47 @@
 .modal-footer:after {
   clear: both;
 }
-.dashboard-container {
-  padding-top: 50px;
-}
-.dashboard-container .dashboard-id {
-  background-image: url("../images/welcomeBackground.png");
-  padding-bottom: 30px;
-}
-.dashboard-container .dashboard-id .upload-photo-btn-wrapper {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-  width: 173px;
-  height: 160px;
-}
-.dashboard-container .dashboard-id .upload-photo-btn-wrapper .upload-photo-btn {
-  background-image: url("../images/uploadPhotoButton.png");
-  background-repeat: no-repeat;
-  background-position: 5px 5px;
-  width: 153px;
-  height: 140px;
-  display: table;
-  text-align: center;
-  background-color: lightgray;
-  padding: 5px;
+.dashboard-leaderboard .bus-row {
   position: relative;
-  top: 10px;
-  left: 10px;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 5px 0px;
+  padding: 5px 15px;
+  background-color: #2c95d8;
+}
+@media (min-width: 992px) {
+  .dashboard-leaderboard .bus-row {
+    float: left;
+    width: 100%;
+  }
+}
+.dashboard-leaderboard .bus-row .bus-rank {
+  color: #15547c;
+  font-size: medium;
+  font-weight: bold;
+}
+.dashboard-leaderboard .bus-row .bus-name {
+  color: white;
+  font-size: medium;
+  font-weight: 300;
+  margin-left: 20px;
+}
+.dashboard-leaderboard .bus-row .point-container {
+  float: right !important;
+}
+.dashboard-leaderboard .bus-row .point-container .bus-points {
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+.dashboard-leaderboard .bus-row .point-container .points {
+  color: #15547c;
+  font-weight: 300;
+}
+.dashboard-leaderboard .bus-row.user-bus {
+  background-color: #ec7400;
+}
+.dashboard-leaderboard .bus-row.user-bus .bus-name {
+  font-weight: bold;
 }
