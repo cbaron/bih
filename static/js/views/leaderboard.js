@@ -46,23 +46,28 @@ define(
                 } );
 
                 if( this.mode === 'short' ) { 
-
                     this.templateData[ this.user.get('busId') ].addClass('user-bus');
-
                     _.each( this.templateData, ( this.userBusRank < 5 ) ? this.showTopFour : this.showContext , this );
+                } else if ( this.mode === 'leader' ) {
+                    _.each( this.templateData, this.showOnlyLeader, this )
                 }
 
                 return this;
             },
 
-            showTopFour: function( el, id ) {
+            showOnlyLeader: function( el ) {
+                var el = $(el);
+                if( el.data('rank') > 1 ) { el.hide(); }
+            },
+
+            showTopFour: function( el ) {
                 var el = $(el);
                 if( el.data('rank') > 4 ) { el.hide(); }
             },
 
             //hasn't been tested
             //first place needs bottom border
-            showContext: function( el, id ) {
+            showContext: function( el ) {
                 var el = $(el),
                     busRank = el.data('rank');
 

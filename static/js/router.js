@@ -12,6 +12,7 @@ define(
 
             routes: {
 
+                'fourWeekChallenge': 'fourWeekChallenge',
                 'dashboard': 'dashboard',
                 'index': 'index',
                 '': 'index'
@@ -27,7 +28,15 @@ define(
                 require( [ 'views/dashboard' ] );
             },
 
+            fourWeekChallenge: function() {
+                require( [ 'views/header' ] );
+                this.contentContainer.empty();
+                require( [ 'views/fourWeekChallenge' ] );
+            },
+
             initialize: function() {
+
+                this.contentContainer = $('#content');
 
                 $( function() {
                     Backbone.history.start( { pushState: true } );

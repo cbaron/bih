@@ -1,12 +1,10 @@
-<div class="row">
-    {{#each buses}}
-        <div data-js="{{this.id}}" class="bus-row" data-rank="{{this.rank}}">
-            <span class="bus-rank">{{this.rank}}</span>
-            <span class="bus-name">Bus {{this.name}}</span>
-            <span class="point-container">
-                <span class="bus-points">{{this.totalPoints}}</span>
-                <span class="points">points</span>
-            </span>
-        </div>
-    {{/each}}
-</div>
+{{#each buses}}
+    <div data-js="{{this.id}}" class="bus-row" data-rank="{{this.rank}}">
+        <span class="bus-rank">{{this.rank}}</span>
+        <span class="bus-name">Bus {{this.name}}</span>
+        <span class="point-container">
+            <span class="bus-points">{{this.totalPoints}}</span>
+            <span class="points">points</span>
+        </span>
+    </div>
+{{/each}}

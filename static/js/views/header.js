@@ -17,6 +17,7 @@ define(
         events: {
             
            'click  *[data-js="dropdownButton"]': 'showDropdown'
+           'click  *[data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick'
         },
 
         initialize: function() {
@@ -68,7 +69,13 @@ define(
 
         handleClick: function(e) {
             if( ! this.isMouseOnEl( e, this.templateData.menu ) ) { this.hideDropdown(); }
-        }
+        },
+
+        handleFourWeekBtnClick: function() {
+            
+            this.router.navigate( 'fourWeekChallenge', { trigger: true } );
+
+        },
 
     } );
 
