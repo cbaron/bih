@@ -16,7 +16,7 @@ define(
 
         events: {
             
-           'click  *[data-js="dropdownButton"]': 'showDropdown'
+           'click  *[data-js="dropdownButton"]': 'showDropdown',
            'click  *[data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick'
         },
 
