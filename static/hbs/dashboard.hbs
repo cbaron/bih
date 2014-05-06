@@ -18,9 +18,7 @@
         </div>
     </div>
     
-    <div class="col-md-2"></div>
-
-    <div class="col-md-6 dashboard-leaderboard">
+    <div class="col-md-8 dashboard-leaderboard">
         <div class="leaderboard-header">4-Week Challenge Leaderboard</div>
         <div data-js="leaderboardItems"></div>
     </div>
@@ -43,5 +41,24 @@
             </div>
         </div>
         <div class="complete-challenge-btn btn">Complete a Challenge!</div>
+    </div>
+
+    <div class="dashboard-local-events">
+        <div class="local-event-header">Local Events</div>
+            <div data-js="localEventItems" class="local-event-items"">
+                {{#each events}}
+                    <div class="local-event-item">
+                        <div class="local-event-image">
+                            <!-- <img src="{{this.image}}"/> -->
+                            <img src="/static/images/uploadPhotoButton.png"/>
+                        </div>
+                        <div class="local-event-text">
+                            <div class="local-event-title">{{this.name}}</div>
+                            <div class="local-event-location">{{this.datetime}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>

@@ -3,10 +3,11 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'models/event'
+      'models/event',
+      'models/user',
     ],
     
-    function( $, _, Backbone, event ) {
+    function( $, _, Backbone, event, user ) {
 
         var events = Backbone.Collection.extend( {
            
@@ -16,8 +17,12 @@ define(
         } );
 
         var instance = new events();
-        instance.fetch();
-        return events;
+        instance.fetch( {
+            data: {
+                userId: user.id
+            }
+        } );
+        return instance;
     }
 );
 

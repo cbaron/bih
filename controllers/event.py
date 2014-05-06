@@ -8,29 +8,20 @@ def index():
 
 def GET( sf ):
 
-    '''
-    records = sf.query(\
-        ''.join( [ "Select ID, NAME, WEEK_1_POINT_TOTAL__C, WEEK_2_POINT_TOTAL__C, WEEK_3_POINT_TOTAL__C, WEEK_4_POINT_TOTAL__C, TOTAL_POINTS__C ",
-                   "FROM BIH_BUS__C ORDER BY TOTAL_POINTS__C DESC" ] ) )['records']
+    events = sf.query(\
+        ''.join( [ "Select ID, BIH_Opportunity_Name__c, Clicked__c, Date__c, ",
+                   "Description__c, Interested__c, Link__c, Not_Interested__c, ",
+                   "Score__c, Time__c, Type__c FROM BIH_Notification__c Where BIH_User__r.ID='",
+                   request.vars.userId, "' ORDER BY Score__c DESC" ] ) )['records']
+
 
     rv = [ ]
-    #for row in records:
-    for idx, row in enumerate( records ):
-        rv.append( dict( id = row['Id'],
-                         rank = idx + 1,
-                         name = row['Name'],
-                         weekTotals = [ row['Week_1_Point_Total__c'],
-                                        row['Week_2_Point_Total__c'],
-                                        row['Week_3_Point_Total__c'],
-                                        row['Week_4_Point_Total__c'] ],
-                         totalPoints = row['Total_Points__c'] ) )
-    '''
+    for event in events:
+        rv.append(\
+            dict( id = event['Id'],
+                  name = event['BIH_Opportunity_Name__c'],
+                  datetime = ' '.join( [ event['Date__c'], event['Time__c'] ] ) ) )
 
-    rv = [
-        dict( id=1, headline="Pizza Party at Showbiz!!!!1", location="Washington, DC" ),
-        dict( id=2, headline="Volunteer at the WIC soup kitchen.", location="Chicago, IL" ),
-        dict( id=3, headline="Movie Night! Even Dwarves Started Small.", location="Stutgart, Germany" )
-    ]
 
     return response.json( rv )
 

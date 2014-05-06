@@ -1,3 +1,4 @@
+@import (reference) "vendor/theme.less";
 @import (reference) "vendor/bootstrap.less";
 @import (reference) "bih.less";
 
@@ -84,6 +85,45 @@
         
         .complete-challenge-btn {
             padding: 5px 40px;
+        }
+    }
+
+    .dashboard-local-events {
+
+        .make-md-column(8);
+        padding: 20px;
+
+        .local-event-header {
+            font-size: x-large;
+            margin-bottom: 20px;
+        }
+
+        .local-event-item {
+            .make-row();
+
+            .local-event-image {
+                .make-md-column(2);
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            .local-event-text {
+                .make-md-column(10);
+                padding: 10px 0px;
+                border-bottom: 1px solid @gray;
+
+                .local-event-title {
+                    color: @orange;
+                    font-weight: bold;
+                    font-size: medium;
+                }
+
+                .local-event-location {
+                }
+            }
         }
     }
 }

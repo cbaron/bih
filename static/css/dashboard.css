@@ -49,7 +49,9 @@
 .panel-body:before,
 .panel-body:after,
 .modal-footer:before,
-.modal-footer:after {
+.modal-footer:after,
+.dashboard-container .dashboard-local-events .local-event-item:before,
+.dashboard-container .dashboard-local-events .local-event-item:after {
   content: " ";
   display: table;
 }
@@ -65,7 +67,8 @@
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
-.modal-footer:after {
+.modal-footer:after,
+.dashboard-container .dashboard-local-events .local-event-item:after {
   clear: both;
 }
 .dashboard-container > .row {
@@ -151,4 +154,60 @@
 }
 .dashboard-container .dashboard-100-point .complete-challenge-btn {
   padding: 5px 40px;
+}
+.dashboard-container .dashboard-local-events {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding: 20px;
+}
+@media (min-width: 992px) {
+  .dashboard-container .dashboard-local-events {
+    float: left;
+    width: 66.66666667%;
+  }
+}
+.dashboard-container .dashboard-local-events .local-event-header {
+  font-size: x-large;
+  margin-bottom: 20px;
+}
+.dashboard-container .dashboard-local-events .local-event-item {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-image {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .dashboard-container .dashboard-local-events .local-event-item .local-event-image {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-image img {
+  width: 40px;
+  height: 40px;
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-text {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #3f3f3f;
+}
+@media (min-width: 992px) {
+  .dashboard-container .dashboard-local-events .local-event-item .local-event-text {
+    float: left;
+    width: 83.33333333%;
+  }
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-text .local-event-title {
+  color: #ec7400;
+  font-weight: bold;
+  font-size: medium;
 }

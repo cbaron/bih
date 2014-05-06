@@ -4,8 +4,8 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
 
         defaults: {
             "id": undefined,
-            "headline": undefined,
-            "location": undefined
+            "name": undefined,
+            "datetime": undefined
         }
 
     } );

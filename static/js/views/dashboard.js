@@ -6,11 +6,12 @@ define(
       'views/leaderboard',
       'models/user',
       'collections/buses',
+      'collections/events',
       'templates/dashboard',
       'css!styles/dashboard'
     ],
     
-    function( $, _, Backbone, leaderboard, user, buses, dashboardHtml ) {
+    function( $, _, Backbone, leaderboard, user, buses, events, dashboardHtml ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -18,14 +19,16 @@ define(
 
             templateData: { },
 
+            deferredData: undefined,
+
             events: {
             },
 
             initialize: function() {
 
-                this[ ( user.has('firstName') )
+                this[ ( user.has('firstName') && events.length )
                     ? 'render'
-                    : 'waitForUserData' ]();
+                    : 'waitForData' ]();
 
                 return this;
             },
@@ -33,7 +36,7 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: dashboardHtml( { user: user.attributes } ),
+                    template: dashboardHtml( { user: user.attributes, events: events.toJSON() } ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
@@ -49,8 +52,26 @@ define(
                 return this;
             },
 
-            waitForUserData: function() {
-                this.listenToOnce( user, 'change', this.render );
+            waitForData: function() {
+
+                //TODO: be elegant
+                var self = this;
+
+                if( ! user.has('firstName' ) ) {
+                    this.deferredData = $.Deferred();
+                    this.deferredData.then( function() { self.waitForData() } );
+                    this.listenToOnce( user, 'change', this.deferredData.resolve );
+                    return;
+                }
+
+                if( ! events.length ) {
+                    this.deferredData = $.Deferred();
+                    this.deferredData.then( function() { self.waitForData() } );
+                    this.listenToOnce( events, 'sync', this.deferredData.resolve );
+                    return;
+                }
+
+                this.render();
             }
 
         } );
