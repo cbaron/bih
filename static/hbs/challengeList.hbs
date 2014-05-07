@@ -1,8 +1,15 @@
-{{#each challenges}}
-    <div data-js="{{this.id}}" class="challenge-row"">
-        <span class="number">{{this.id}}</div>
-        <span class="title">Bus {{this.title}}</div>
-        <span class="points">( {{this.pointValue}} pt)</span>
-        <span class="description">{{this.description}}</span>
-    </div>
-{{/each}}
+<div class="challenge-header">{{week}}</div>
+<div class="challenge-item-container">
+    {{#each challenges}}
+        <div data-js="{{this.id}}" class="challenge-row">
+            <div class="number">{{this.number}}</div>
+            <div class="challenge-detail-wrap">
+                <div class="challenge-detail">
+                    <span class="name">{{this.name}}</span>
+                    <span class="points">{{this.points}} pt</span>
+                    <span class="rules">{{this.rules}}</span>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

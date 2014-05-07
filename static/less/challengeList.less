@@ -3,9 +3,55 @@
 
 @row-bg: rgb( 44, 149, 216 );
 
-.dashboard-leaderboard {
+.challenge-container {
 
-    .leaderboard-header {
+    margin-top: 20px;
+
+    .challenge-header {
+
+        font-size: large;
+        background-color: @orange;
+        color: white;
+        padding: 5px 10px;
+    }
+    
+    .challenge-item-container {
+
+        .make-md-column(12);
+
+        .challenge-row {
+
+            .make-row();
+
+            .number {
+                background-color: darkgrey;
+                .make-md-column(1);
+            }
+
+            .challenge-detail-wrap {
+                .make-md-column(11);
+                background-color: white;
+
+                .challenge-detail {
+
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    &:hover {
+                        background-color: @gray;
+                    }
+
+                    .name {
+                    }
+                    .points {
+                        color: blue;
+                    }
+                    .rules {
+                    }
+                }
+            }
+        }
 
     }
 

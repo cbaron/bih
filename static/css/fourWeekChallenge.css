@@ -49,7 +49,11 @@
 .panel-body:before,
 .panel-body:after,
 .modal-footer:before,
-.modal-footer:after {
+.modal-footer:after,
+.four-week-container > .row .leaderboard-container:before,
+.four-week-container > .row .leaderboard-container:after,
+.four-week-container > .row .leaderboard-footer:before,
+.four-week-container > .row .leaderboard-footer:after {
   content: " ";
   display: table;
 }
@@ -65,9 +69,33 @@
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
-.modal-footer:after {
+.modal-footer:after,
+.four-week-container > .row .leaderboard-container:after,
+.four-week-container > .row .leaderboard-footer:after {
   clear: both;
 }
 .four-week-container > .row {
   padding-top: 50px;
+}
+.four-week-container > .row .header {
+  text-align: center;
+  color: #2c50d8;
+  font-size: xx-large;
+}
+.four-week-container > .row .leaderboard-container {
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: white;
+  padding: 10px;
+}
+.four-week-container > .row .leaderboard-container .leaderboard-sub-header {
+  text-align: right;
+}
+.four-week-container > .row .leaderboard-footer {
+  margin-left: -15px;
+  margin-right: -15px;
+  color: white;
+  background-color: black;
+  padding: 0px 10px;
+  text-align: center;
 }

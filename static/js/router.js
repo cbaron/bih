@@ -12,7 +12,7 @@ define(
 
             routes: {
 
-                'fourWeekChallenge': 'fourWeekChallenge',
+                'fourweekchallenge': 'fourWeekChallenge',
                 'dashboard': 'dashboard',
                 'index': 'index',
                 '': 'index'

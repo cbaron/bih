@@ -7,30 +7,28 @@ def index():
     return globals()[ request.env.request_method ]( sf )
 
 def GET( sf ):
-    
-    '''
-    records = sf.query(\
-        ''.join( [ "Select ID, NAME, WEEK_1_POINT_TOTAL__C, WEEK_2_POINT_TOTAL__C, WEEK_3_POINT_TOTAL__C, WEEK_4_POINT_TOTAL__C, TOTAL_POINTS__C ",
-                   "FROM BIH_BUS__C ORDER BY TOTAL_POINTS__C DESC" ] ) )['records']
+
+    busRecord = sf.query(\
+        ''.join( [ "Select Bus_Number__c, BIH_User__r.ID FROM Team_Member__c WHERE BIH_User__r.ID = '",
+                   request.vars.userId, "'" ] ) )['records'][0]
+
+    challengeRecords = sf.query(\
+        ''.join( [ "Select BIH_Bus__r.Name, BIH_Challenge__r.ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, ",
+                   "BIH_Challenge__r.Challenge_Type__c, BIH_Challenge__r.Active__c, BIH_Challenge__r.Double_points__c, ",
+                   "BIH_Challenge__r.End_Date__c, BIH_Challenge__r.Points_per_entry__c, BIH_Challenge__r.Post_Type__c, ",
+                   "BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c FROM Available_Challenge__c ",
+                   "WHERE BIH_Challenge__r.Active__c = TRUE AND BIH_Bus__r.Name = '",
+                   busRecord['Bus_Number__c'], "'" ] ) )['records']
 
     rv = [ ]
-    #for row in records:
-    for idx, row in enumerate( records ):
-        rv.append( dict( id = row['Id'],
-                         rank = idx + 1,
-                         name = row['Name'],
-                         weekTotals = [ row['Week_1_Point_Total__c'],
-                                        row['Week_2_Point_Total__c'],
-                                        row['Week_3_Point_Total__c'],
-                                        row['Week_4_Point_Total__c'] ],
-                         totalPoints = row['Total_Points__c'] ) )
-    '''
-
-    rv = [
-        dict( id=1, title="This is a title.", pointValue=1, description="First words of a description." ),
-        dict( id=2, title="Challenge Title.", pointValue=2, description="Again, First words of a description." ),
-        dict( id=3, title="This is another title.", pointValue=1, description="Again and again, first words of a description." )
-    ]
+    for idx, row in enumerate( challengeRecords ):
+        rv.append( dict( id = row['BIH_Challenge__r']['Id'],
+                         number = idx + 1,
+                         name = row['BIH_Challenge__r']['Name'],
+                         rules = row['BIH_Challenge__r']['Challenge_Rules__c'],
+                         week = row['BIH_Challenge__r']['Challenge_Type__c'],
+                         type = row['BIH_Challenge__r']['Post_Type__c'],
+                         points = row['BIH_Challenge__r']['Points_per_entry__c'] ) )
 
     return response.json( rv )
 

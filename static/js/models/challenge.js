@@ -5,9 +5,11 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
         defaults: {
             "id": undefined,
             "number": undefined,
-            "title": undefined,
-            "pointValue": undefined,
-            "description": undefined
+            "type": undefined,
+            "name": undefined,
+            "rules": undefined,
+            "week": undefined,
+            "points": undefined
         }
 
     } );

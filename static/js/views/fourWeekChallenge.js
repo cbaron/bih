@@ -4,14 +4,15 @@ define(
       'underscore',
       'backbone',
       'views/leaderboard',
+      'views/challengeList',
       'models/user',
       'collections/buses',
       'collections/challenges',
-      'templates/dashboard',
-      'css!styles/dashboard'
+      'templates/fourWeekChallenge',
+      'css!styles/fourWeekChallenge'
     ],
     
-    function( $, _, Backbone, leaderboard, user, buses, dashboardHtml ) {
+    function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -35,7 +36,7 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: dashboardHtml( { user: user.attributes } ),
+                    template: template( { user: user.attributes } ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
@@ -49,8 +50,7 @@ define(
                 } );
 
                 this.challenges = new challengeList( {
-                    el: this.templateData.challengeItems,
-                    user: user,
+                    el: this.templateData.challengeContainer,
                     challenges: challenges
                 } );
 

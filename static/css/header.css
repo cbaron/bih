@@ -80,6 +80,9 @@
   padding: 15px;
   border-right: 1px solid #a7bafc;
 }
+#header .header-row .header-item:hover {
+  cursor: pointer;
+}
 #header .header-row .header-item:last-child {
   border-right: none;
 }

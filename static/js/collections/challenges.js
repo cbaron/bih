@@ -3,10 +3,11 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'models/challenge'
+      'models/challenge',
+      'models/user'
     ],
     
-    function( $, _, Backbone, challenge ) {
+    function( $, _, Backbone, challenge, user ) {
 
         var challenges = Backbone.Collection.extend( {
            
@@ -16,7 +17,7 @@ define(
         } );
 
         var instance = new challenges();
-        instance.fetch();
+        instance.fetch( { data: { userId: user.id } } );
         return instance;
     }
 );

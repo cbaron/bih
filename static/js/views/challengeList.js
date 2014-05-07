@@ -7,7 +7,7 @@ define(
       'css!styles/challengeList'
     ],
     
-    function( $, _, Backbone, challengeListHtml ) {
+    function( $, _, Backbone, template ) {
 
         return Backbone.View.extend( {
 
@@ -19,13 +19,12 @@ define(
             initialize: function( options ) {
 
                 _.extend( this, {
-                    user: options.user,
                     challenges: options.challenges
                 } );
 
                 this[ ( this.challenges.length )
                     ? 'render'
-                    : 'waitForChallengeData' ]();
+                    : 'waitForData' ]();
 
                 return this;
             },
@@ -33,7 +32,10 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: challengeListHtml( { user: this.user, challenges: this.challenges.toJSON() } ),
+                    template: template( {
+                        week: this.challenges.at(0).attributes.week,
+                        challenges: this.challenges.toJSON()
+                    } ),
                     insertion: { $el: this.$el, method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: false
@@ -42,7 +44,7 @@ define(
                 return this;
             },
 
-            waitForChallengeData: function() {
+            waitForData: function() {
                 this.listenToOnce( this.challenges, 'sync', this.render );
             }
 
