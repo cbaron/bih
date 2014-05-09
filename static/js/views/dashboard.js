@@ -5,13 +5,12 @@ define(
       'backbone',
       'views/leaderboard',
       'models/user',
-      'collections/buses',
       'collections/events',
       'templates/dashboard',
       'css!styles/dashboard'
     ],
     
-    function( $, _, Backbone, leaderboard, user, buses, events, dashboardHtml ) {
+    function( $, _, Backbone, leaderboard, user, events, dashboardHtml ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -45,8 +44,7 @@ define(
                 this.leaderboard = new leaderboard( {
                     el: this.templateData.leaderboardItems,
                     mode: 'short',
-                    user: user,
-                    buses: buses
+                    user: user
                 } );
 
                 return this;

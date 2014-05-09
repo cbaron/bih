@@ -5,14 +5,13 @@ define(
       'backbone',
       'views/leaderboard',
       'views/challengeList',
+      'views/busMates',
       'models/user',
-      'collections/buses',
-      'collections/challenges',
       'templates/fourWeekChallenge',
       'css!styles/fourWeekChallenge'
     ],
     
-    function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
+    function( $, _, Backbone, leaderboard, challengeList, busMates, user, template ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -45,13 +44,15 @@ define(
                 this.leaderboard = new leaderboard( {
                     el: this.templateData.leaderboardItems,
                     mode: 'leader',
-                    user: user,
-                    buses: buses
+                    user: user
                 } );
 
                 this.challenges = new challengeList( {
-                    el: this.templateData.challengeContainer,
-                    challenges: challenges
+                    el: this.templateData.challengeContainer
+                } );
+                
+                this.busMates = new busMates( {
+                    el: this.templateData.busMatesItemContainer
                 } );
 
                 return this;

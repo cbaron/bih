@@ -6,7 +6,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"row\">\n    <div class=\"col-md-12\">\n        <div class=\"row header\">4 Week Challenge</div>\n        <div class=\"leaderboard-container\">\n            <div class=\"leaderboard-header\">4-Week Challenge Leaderboard</div>\n            <div class=\"leaderboard-sub-header\">Points</div>\n            <div data-js=\"leaderboardItems\"></div>\n        </div>\n        <div class=\"leaderboard-footer\">View Full Leaderboard</div>\n        <div data-js=\"challengeContainer\" class=\"row challenge-container\">\n        </div>\n    </div>\n</div>\n";
+  return "<div class=\"row\">\n    <div class=\"col-md-12\">\n        <div class=\"row header\">4 Week Challenge</div>\n        <div class=\"leaderboard-container\">\n            <div class=\"leaderboard-header\">4-Week Challenge Leaderboard</div>\n            <div class=\"leaderboard-sub-header\">Points</div>\n            <div data-js=\"leaderboardItems\"></div>\n        </div>\n        <div class=\"leaderboard-footer\">View Full Leaderboard</div>\n        <div data-js=\"challengeContainer\" class=\"row challenge-container\"></div>\n        <div class=\"challenge-footer\">View Past Challenges</div>\n        <div class=\"bus-mates-container\">\n            <div class=\"bus-mates-header\"></div>\n            <div data-js=\"busMatesItemContainer\" class=\"bus-mates-item-container\"></div>\n        </div>\n    </div>\n</div>\n";
   })
 
 });

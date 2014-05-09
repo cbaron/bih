@@ -3,12 +3,12 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'collections/challenges',
-      'templates/challengeList',
-      'css!styles/challengeList'
+      'collections/busMates',
+      'templates/busMates',
+      'css!styles/busMates'
     ],
     
-    function( $, _, Backbone, challenges, template ) {
+    function( $, _, Backbone, busMates, template ) {
 
         return Backbone.View.extend( {
 
@@ -19,7 +19,7 @@ define(
 
             initialize: function( options ) {
 
-                this[ ( challenges.length )
+                this[ ( busMates.length )
                     ? 'render'
                     : 'waitForData' ]();
 
@@ -30,8 +30,7 @@ define(
 
                 this.slurpTemplate( {
                     template: template( {
-                        week: challenges.at(0).attributes.week,
-                        challenges: challenges.toJSON()
+                        busMates: busMates.toJSON()
                     } ),
                     insertion: { $el: this.$el, method: 'append' },
                     partsObj: this.templateData,
@@ -42,7 +41,7 @@ define(
             },
 
             waitForData: function() {
-                this.listenToOnce( challenges, 'sync', this.render );
+                this.listenToOnce( busMates, 'sync', this.render );
             }
 
         } );

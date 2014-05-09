@@ -13,7 +13,6 @@ def GET( sf ):
                    "FROM BIH_BUS__C ORDER BY TOTAL_POINTS__C DESC" ] ) )['records']
 
     rv = [ ]
-    #for row in records:
     for idx, row in enumerate( records ):
         rv.append( dict( id = row['Id'],
                          rank = idx + 1,

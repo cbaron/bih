@@ -1,0 +1,32 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+@row-bg: rgb( 44, 149, 216 );
+
+.bus-mate-row {
+
+    .make-row();
+
+    .image {
+        float: left;
+        background-color: darkgray;
+        width: 30px;
+        height: 30px;
+    }
+
+    .bus-mate-detail {
+        background-color: 'orange';
+
+        &:hover {
+            background-color: 'beige';
+        }
+
+        .glyphicon-message {
+        }
+
+        name {
+        }
+
+    }
+
+}

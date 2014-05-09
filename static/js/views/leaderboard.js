@@ -3,11 +3,12 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'collections/buses',
       'templates/leaderboard',
       'css!styles/leaderboard'
     ],
     
-    function( $, _, Backbone, leaderboardHtml ) {
+    function( $, _, Backbone, buses, leaderboardHtml ) {
 
         return Backbone.View.extend( {
 
@@ -20,11 +21,10 @@ define(
 
                 _.extend( this, {
                     user: options.user,
-                    buses: options.buses,
                     mode: options.mode
                 } );
 
-                this[ ( this.buses.length )
+                this[ ( buses.length )
                     ? 'render'
                     : 'waitForBusData' ]();
 
@@ -34,12 +34,12 @@ define(
             render: function() {
 
                 this.userBusRank =
-                    this.buses.find( function( model ) {
+                    buses.find( function( model ) {
                         return model.id === this.user.get('busId')
                     }, this ).get('rank');
 
                 this.slurpTemplate( {
-                    template: leaderboardHtml( { user: this.user, buses: this.buses.toJSON() } ),
+                    template: leaderboardHtml( { user: this.user, buses: buses.toJSON() } ),
                     insertion: { $el: this.$el, method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: false
@@ -81,7 +81,7 @@ define(
             },
 
             waitForBusData: function() {
-                this.listenToOnce( this.buses, 'sync', this.render );
+                this.listenToOnce( buses, 'sync', this.render );
             }
 
         } );
