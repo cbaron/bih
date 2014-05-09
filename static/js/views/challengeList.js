@@ -3,25 +3,40 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'collections/challenges',
       'templates/challengeList',
       'css!styles/challengeList'
     ],
     
-    function( $, _, Backbone, challenges, template ) {
+    function( $, _, Backbone, template ) {
 
         return Backbone.View.extend( {
 
-            events: {
-            },
+            defaultCollection: 'challenges',
 
             templateData: { },
 
-            initialize: function( options ) {
+            delegate: function() {
+                console.log( this.templateData.challengeItemContainer );
 
-                this[ ( challenges.length )
-                    ? 'render'
-                    : 'waitForData' ]();
+                this.templateData.challengeItemContainer.on(
+                    'click', '*[data-js]', this.handleChallengeClick );
+            },
+
+            initialize: function( options ) {
+                var self = this;
+
+                require( [ [ 'collections/',
+                    ( options )
+                        ? ( options.type )
+                            ? options.type
+                            : this.defaultCollection
+                        : this.defaultCollection ].join("") ], function( challenges ) {
+
+                            self.challenges = challenges;
+                            self[ ( challenges.length )
+                                ? 'render'
+                                : 'waitForData' ]();
+                        } );
 
                 return this;
             },
@@ -30,19 +45,24 @@ define(
 
                 this.slurpTemplate( {
                     template: template( {
-                        week: challenges.at(0).attributes.week,
-                        challenges: challenges.toJSON()
+                        week: this.challenges.at(0).attributes.week,
+                        challenges: this.challenges.toJSON()
                     } ),
                     insertion: { $el: this.$el, method: 'append' },
                     partsObj: this.templateData,
-                    keepDataJs: false
+                    keepDataJs: true
                 } );
+
+                this.delegate();
 
                 return this;
             },
 
             waitForData: function() {
-                this.listenToOnce( challenges, 'sync', this.render );
+                this.listenToOnce( this.challenges, 'sync', this.render );
+            },
+
+            handleChallengeClick: function() {
             }
 
         } );

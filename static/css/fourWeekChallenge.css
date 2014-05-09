@@ -113,6 +113,10 @@
   padding: 0px 10px;
   text-align: center;
 }
+.four-week-container > .row .challenge-footer span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .four-week-container > .row .bus-mates-container {
   margin-left: -15px;
   margin-right: -15px;

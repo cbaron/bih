@@ -20,6 +20,8 @@ define(
             templateData: { },
 
             events: {
+
+                'click *[data-js="viewPastChallengeButton"]': 'handleViewPastChallengeClick'
             },
 
             initialize: function() {
@@ -46,7 +48,7 @@ define(
                     mode: 'leader',
                     user: user
                 } );
-
+                
                 this.challenges = new challengeList( {
                     el: this.templateData.challengeContainer
                 } );
@@ -60,6 +62,14 @@ define(
 
             waitForUserData: function() {
                 this.listenToOnce( user, 'change', this.render );
+            },
+
+            handleViewPastChallengeClick: function() {
+
+                this.pastChallenges = new challengeList( {
+                    el: this.templateData.pastChallengeContainer,
+                    type: 'pastChallenges',
+                } ).$el.fadeIn();
             }
 
         } );

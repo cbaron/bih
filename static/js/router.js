@@ -10,6 +10,8 @@ define(
       
         var AppRouter = Backbone.Router.extend( {
 
+            content: $("#content"),
+
             routes: {
 
                 'fourweekchallenge': 'fourWeekChallenge',
@@ -18,25 +20,36 @@ define(
                 '': 'index'
             },
 
+            hideContent: function() {
+                this.content.children().hide();
+            },
+
             index: function() {
+                this.hideContent();
                 require( [ 'views/header' ] );
-                require( [ 'views/welcome' ] );
+
+                require( [ 'views/welcome' ], function( welcome ) {
+                    if( welcome.$el.is(':hidden') ) { welcome.$el.fadeIn(); } } );
+
             },
 
             dashboard: function() {
+                this.hideContent();
                 require( [ 'views/header' ] );
-                require( [ 'views/dashboard' ] );
+                
+                require( [ 'views/dashboard' ], function( dashboard ) {
+                    if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
             },
 
             fourWeekChallenge: function() {
+                this.hideContent();
                 require( [ 'views/header' ] );
-                this.contentContainer.empty();
-                require( [ 'views/fourWeekChallenge' ] );
+
+                require( [ 'views/fourWeekChallenge' ], function( fourWeekChallenge ) {
+                    if( fourWeekChallenge.$el.is(':hidden') ) { fourWeekChallenge.$el.fadeIn(); } } );
             },
 
             initialize: function() {
-
-                this.contentContainer = $('#content');
 
                 $( function() {
                     Backbone.history.start( { pushState: true } );

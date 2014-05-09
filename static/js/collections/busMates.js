@@ -19,7 +19,7 @@ define(
                 this.fetch( { data: { busName: user.get('busName') } } );
             },
            
-            url: '/busMates',
+            url: '/busMate',
 
             model: busMate
         } );
