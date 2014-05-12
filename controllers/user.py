@@ -9,9 +9,11 @@ def index():
 def GET( sf, userId ):
 
     attributes = sf.query(\
-        ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, ",
+        ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, ",
                    "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                    "FROM BIH_USER__C WHERE ID = 'a1CL0000001ukpZMAQ'" ] ) )['records'][0]
+
+    print attributes
 
     return response.json(\
         dict( id = attributes['Id'],

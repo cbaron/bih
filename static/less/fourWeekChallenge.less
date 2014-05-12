@@ -27,4 +27,33 @@
         padding: 0px 10px;
         text-align: center;
     }
+
+    .challenge-footer {
+        .make-row();
+        color: white;
+        background-color: black;
+        padding: 0px 10px;
+        text-align: center;
+
+        span {
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .bus-mates-container {
+        .make-row();
+        background-color: white;
+
+        .bus-mates-header {
+            font-size: x-large;
+        }
+
+        .bus-mates-item-container {
+
+            .make-md-column(12);
+        }
+    }
 }

@@ -11,20 +11,32 @@ define(
 
         return Backbone.View.extend( {
 
-            events: {
-            },
+            defaultCollection: 'challenges',
 
             templateData: { },
 
+            delegate: function() {
+                console.log( this.templateData.challengeItemContainer );
+
+                this.templateData.challengeItemContainer.on(
+                    'click', '*[data-js]', this.handleChallengeClick );
+            },
+
             initialize: function( options ) {
+                var self = this;
 
-                _.extend( this, {
-                    challenges: options.challenges
-                } );
+                require( [ [ 'collections/',
+                    ( options )
+                        ? ( options.type )
+                            ? options.type
+                            : this.defaultCollection
+                        : this.defaultCollection ].join("") ], function( challenges ) {
 
-                this[ ( this.challenges.length )
-                    ? 'render'
-                    : 'waitForData' ]();
+                            self.challenges = challenges;
+                            self[ ( challenges.length )
+                                ? 'render'
+                                : 'waitForData' ]();
+                        } );
 
                 return this;
             },
@@ -38,14 +50,19 @@ define(
                     } ),
                     insertion: { $el: this.$el, method: 'append' },
                     partsObj: this.templateData,
-                    keepDataJs: false
+                    keepDataJs: true
                 } );
+
+                this.delegate();
 
                 return this;
             },
 
             waitForData: function() {
                 this.listenToOnce( this.challenges, 'sync', this.render );
+            },
+
+            handleChallengeClick: function() {
             }
 
         } );

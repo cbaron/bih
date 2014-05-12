@@ -20,7 +20,7 @@ define(
                 this.fetch( { data: { busName: user.get('busName') } } );
             },
            
-            url: '/challenge',
+            url: '/pastChallenge',
 
             model: challenge
         } ) )();
