@@ -1,0 +1,51 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.challenge-page {
+
+    .make-row();
+
+    .header {
+        .make-row();
+        text-align: center;
+        color: @blue;
+        font-size: xx-large;
+    }
+
+    .challenge-container {
+        .make-row();
+
+        .header {
+            .make-row();
+
+            .number {
+                float: left;
+                color: white;
+                background-color: black;
+                height: 30px;
+                width: 30px;
+            }
+            
+            .detail {
+                background-color: @orange;
+                color: white;
+
+                .title {
+                    font-size: large;
+                }
+                
+                .back {
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    .bus-mates-header {
+        color: white;
+        background-color: gray;
+    }
+
+}

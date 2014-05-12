@@ -72,9 +72,7 @@ define(
         },
 
         handleFourWeekBtnClick: function() {
-            
             this.router.navigate( 'fourweekchallenge', { trigger: true } );
-
         },
 
     } );

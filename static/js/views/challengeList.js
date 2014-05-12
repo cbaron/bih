@@ -16,10 +16,10 @@ define(
             templateData: { },
 
             delegate: function() {
-                console.log( this.templateData.challengeItemContainer );
+                var self = this;
 
                 this.templateData.challengeItemContainer.on(
-                    'click', '*[data-js]', this.handleChallengeClick );
+                    'click', '*[data-js]', function(e) { self.handleChallengeClick(e) } );
             },
 
             initialize: function( options ) {
@@ -62,7 +62,8 @@ define(
                 this.listenToOnce( this.challenges, 'sync', this.render );
             },
 
-            handleChallengeClick: function() {
+            handleChallengeClick: function(e) {
+                this.router.navigate( [ 'challenge', 'index', $(e.currentTarget).attr('data-js') ].join("/"), { trigger: true } );
             }
 
         } );

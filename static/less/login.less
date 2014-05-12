@@ -1,0 +1,68 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.login-container {
+
+    .header {
+        color: @orange;
+        font-weight: bold;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+
+    .input-container {
+        padding: 10px 0px;
+        margin-bottom: 5px;
+        background-color: @blue;
+
+        input {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            border: none;
+            padding: 4px 6px;
+            color: rgb( 187, 187, 187 );
+            outline: none;
+        }
+    }
+
+    .button {
+        color: white;
+        padding: 10px;
+        text-align: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .login-button {
+        background-color: rgb( 19, 133, 206 );
+    }
+
+    .guest-login-button {
+        background-color: @orange;
+    }
+
+    .or {
+        text-align: center;
+        padding: 10px;
+        color: #a7a7a7;
+
+        hr {
+            display: inline-block;
+            border-top: 1px solid #a7a7a7;
+            height: 1px;
+            width: 20px;
+            margin: 10px;
+        }
+
+        div {
+            height: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+    
+
+}
