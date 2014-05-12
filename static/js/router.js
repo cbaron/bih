@@ -51,9 +51,10 @@ define(
             },
 
             hundredPointChallenge: function() {
+                this.hideContent();
                 require( [ 'views/header' ] );
-                this.contentContainer.empty();
-                require( [ 'views/hundredPointChallenge' ] );
+                require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
+                    if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
             },
 
             initialize: function() {

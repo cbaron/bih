@@ -11,15 +11,15 @@ define(
         'models/user',
         'collections/buses',
         'collections/challenges',
-        'templates/fourWeekChallenge',
-        'css!styles/fourWeekChallenge'
+        'templates/hundredPointChallenge',
+        'css!styles/hundredPointChallenge'
     ],
 
     function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
 
         var dashboard = Backbone.View.extend( {
 
-            className: 'container four-week-container',
+            className: 'container hundred-point-container',
 
             templateData: { },
 
