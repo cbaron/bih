@@ -13,6 +13,7 @@ define(
             routes: {
 
                 'fourweekchallenge': 'fourWeekChallenge',
+                'hundredpointchallenge': 'hundredPointChallenge',
                 'dashboard': 'dashboard',
                 'index': 'index',
                 '': 'index'
@@ -32,6 +33,12 @@ define(
                 require( [ 'views/header' ] );
                 this.contentContainer.empty();
                 require( [ 'views/fourWeekChallenge' ] );
+            },
+
+            hundredPointChallenge: function() {
+                require( [ 'views/header' ] );
+                this.contentContainer.empty();
+                require( [ 'views/hundredPointChallenge' ] );
             },
 
             initialize: function() {
