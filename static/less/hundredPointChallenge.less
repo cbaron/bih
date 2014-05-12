@@ -1,0 +1,30 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.four-week-container  > .row {
+  padding-top: 50px;
+
+  .header {
+    text-align: center;
+    color: @blue;
+    font-size: xx-large;
+  }
+
+  .leaderboard-container {
+    .make-row();
+    background-color: white;
+    padding: 10px;
+
+    .leaderboard-sub-header {
+      text-align: right;
+    }
+  }
+
+  .leaderboard-footer {
+    .make-row();
+    color: white;
+    background-color: black;
+    padding: 0px 10px;
+    text-align: center;
+  }
+}
