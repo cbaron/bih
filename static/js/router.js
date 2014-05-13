@@ -75,8 +75,8 @@ define(
                     require( [ 'views/dashboard' ], function( dashboard ) {
                         if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
                 }
-                
-                if( this.isLoggedIn() ) { this.toDo(); }
+                this.toDo();
+                //if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             fourWeekChallenge: function() {
@@ -86,8 +86,8 @@ define(
                     require( [ 'views/fourWeekChallenge' ], function( fourWeekChallenge ) {
                         if( fourWeekChallenge.$el.is(':hidden') ) { fourWeekChallenge.$el.fadeIn(); } } );
                 }
-                
-                if( this.isLoggedIn() ) { this.toDo(); }
+                this.toDo();
+                //if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             challenge: function(id) {
@@ -96,16 +96,22 @@ define(
                     require( [ 'views/header' ] );
                     require( [ 'views/challenge' ], function( challenge ) { challenge.update(id); } );
                 }
-                if( this.isLoggedIn() ) { this.toDo(); }
+                this.toDo();
+                //if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             hundredPointChallenge: function() {
-                this.hideContent();
-                require( [ 'views/header' ] );
-                require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
-                    if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
-
-                if( this.isLoggedIn() ) { this.toDo(); }
+                this.toDo = function() {
+                    this.hideContent();
+                    require([ 'views/header' ]);
+                    require([ 'views/hundredPointChallenge' ], function (hundredPointChallenge) {
+                        if (hundredPointChallenge.$el.is(':hidden')) {
+                            hundredPointChallenge.$el.fadeIn();
+                        }
+                    });
+                }
+                this.toDo();
+                //if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             initialize: function() {
