@@ -78,7 +78,7 @@
   background-image: url("../images/welcomeBackground.png");
   padding-bottom: 30px;
 }
-.dashboard-container .dashboard-id .upload-photo-btn-wrapper {
+.dashboard-container .dashboard-id .profile-image-wrapper {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -86,7 +86,7 @@
   width: 173px;
   height: 160px;
 }
-.dashboard-container .dashboard-id .upload-photo-btn-wrapper .upload-photo-btn {
+.dashboard-container .dashboard-id .profile-image-wrapper .profile-image {
   background-image: url("../images/uploadPhotoButton.png");
   background-repeat: no-repeat;
   background-position: 5px 5px;
@@ -99,6 +99,9 @@
   position: relative;
   top: 10px;
   left: 10px;
+}
+.dashboard-container .dashboard-id .upload-photo-btn:hover {
+  cursor: pointer;
 }
 .dashboard-container .dashboard-100-point .header {
   color: #15547c;

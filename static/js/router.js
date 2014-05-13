@@ -67,7 +67,6 @@ define(
                     this.hideContent();
                     require( [ 'views/header' ] );
                     require( [ 'views/dashboard' ], function( dashboard ) {
-                        console.log(dashboard);
                         if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
                 }
 

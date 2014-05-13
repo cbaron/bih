@@ -3,6 +3,7 @@ cache
 databases
 errors
 sessions
+uploads
 
 __init__.pyc
 

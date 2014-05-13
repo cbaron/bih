@@ -21,6 +21,15 @@ require.config( {
 
         'handlebars.runtime': {
             exports: 'Handlebars'
+        },
+
+
+        'jquery.fileupload': {
+            deps: [ 'jquery', 'jquery.ui.widget' ]
+        },
+        
+        'jquery.ui.widget': {
+            deps: [ 'jquery' ]
         }
     },
 

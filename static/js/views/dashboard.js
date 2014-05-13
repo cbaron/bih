@@ -7,12 +7,14 @@ define(
       'models/user',
       'collections/events',
       'templates/dashboard',
-      'css!styles/dashboard'
+      'css!styles/dashboard',
+      'jquery.fileupload',
+      'jquery.ui.widget'
     ],
     
     function( $, _, Backbone, leaderboard, user, events, dashboardHtml ) {
 
-        var dashboard = Backbone.View.extend( {
+        return new ( Backbone.View.extend( {
 
             className: 'container dashboard-container',
 
@@ -21,6 +23,8 @@ define(
             deferredData: undefined,
 
             events: {
+
+                'click div[data-js="uploadPhotoBtn"]': 'handleUploadPhotoClick',
             },
 
             initialize: function() {
@@ -52,9 +56,17 @@ define(
 
             waitForData: function() {
                 this.listenToOnce( events, 'sync', this.render );
+            },
+
+            handleUploadPhotoClick: function() {
+                console.log($('#profileImageUpload').fileupload());
+                $('#profileImageUpload').fileupload( {
+                    dataType: 'json',
+                    done: function (e, data) {
+                        console.log( data );
+                    }
+                } );
             }
 
-        } );
-
-        return new dashboard( { el: '#content' } );
+        } ) )();
 } );

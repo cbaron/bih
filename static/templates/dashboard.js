@@ -18,7 +18,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"row\">\n\n    <div class=\"col-md-4 dashboard-id\">\n        <div class=\"row\">\n            <div class=\"col-md-6\">\n                 <div class=\"upload-photo-btn-wrapper\">\n                    <div class=\"upload-photo-btn\"></div>\n                </div>               \n                <div>\n                    <span class=\"glyphicon glyphicon-camera\"></span>\n                    <span>Upload</span>\n                </div>\n            </div>\n            <div class=\"col-md-6\">\n                <div>Hello, "
+  buffer += "<div class=\"row\">\n\n    <div class=\"col-md-4 dashboard-id\">\n        <div class=\"row\">\n            <div class=\"col-md-6\">\n                 <div class=\"profile-image-wrapper\">\n                    <div class=\"profile-image\"></div>\n                </div>               \n                <div data-js=\"uploadPhotoBtn\" class=\"upload-photo-btn\" >\n                    <span class=\"glyphicon glyphicon-camera\"></span>\n                    <span>Upload</span>\n                </div>\n                <input class=\"\" id=\"profileImageUpload\" type=\"file\" name=\"files[]\" data-url=\"/profileImage/post\">\n            </div>\n            <div class=\"col-md-6\">\n                <div>Hello, "
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.user)),stack1 == null || stack1 === false ? stack1 : stack1.firstName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "!</div>\n                <div>Bus #"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.bus)),stack1 == null || stack1 === false ? stack1 : stack1.number)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

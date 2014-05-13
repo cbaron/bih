@@ -80,5 +80,15 @@ use_janrain(auth, filename='private/janrain.key')
 ## >>> for row in rows: print row.id, row.myfield
 #########################################################################
 
+profileImage = db.define_table( 'profileImage',
+    Field('image', 'upload', autodelete=True),
+    Field('thumb', 'upload', autodelete=True),
+    Field('sizeFile', 'float'),
+    Field('userId', 'string'),)
+
+from smartthumb import SMARTHUMB
+box = ( 200, 200 )
+profileImage.thumb.compute = lambda row: SMARTHUMB(row.doc, box)
+
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
