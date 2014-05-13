@@ -14,9 +14,9 @@ define(
             content: $("#content"),
 
             routes: {
-
                 'challenge/index/:id':  'challenge',
                 'fourweekchallenge':    'fourWeekChallenge',
+                'hundredpointchallenge': 'hundredPointChallenge',
                 'register':             'register',
                 'dashboard':            'dashboard',
                 'index':                'dashboard',
@@ -91,6 +91,15 @@ define(
                     require( [ 'views/header' ] );
                     require( [ 'views/challenge' ], function( challenge ) { challenge.update(id); } );
                 }
+                if( this.isLoggedIn() ) { this.toDo(); }
+            },
+
+            hundredPointChallenge: function() {
+                this.hideContent();
+                require( [ 'views/header' ] );
+                require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
+                    if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
+
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
 

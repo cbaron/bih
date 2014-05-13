@@ -1,26 +1,29 @@
+/**
+ * Created by tonybaron on 5/8/14.
+ */
 define(
 
     [ 'jquery',
-      'underscore',
-      'backbone',
-      'views/leaderboard',
-      'views/challengeList',
-      'views/busMates',
-      'models/user',
-      'templates/fourWeekChallenge',
-      'css!styles/fourWeekChallenge'
+        'underscore',
+        'backbone',
+        'views/leaderboard',
+        'views/challengeList',
+        'models/user',
+        'collections/buses',
+        'collections/challenges',
+        'templates/hundredPointChallenge',
+        'css!styles/hundredPointChallenge'
     ],
-    
-    function( $, _, Backbone, leaderboard, challengeList, busMates, user, template ) {
+
+    function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
 
         var dashboard = Backbone.View.extend( {
 
-            className: 'container four-week-container',
+            className: 'container hundred-point-container',
 
             templateData: { },
 
             events: {
-                'click *[data-js="viewPastChallengeButton"]': 'handleViewPastChallengeClick'
             },
 
             initialize: function() {
@@ -45,15 +48,13 @@ define(
                 this.leaderboard = new leaderboard( {
                     el: this.templateData.leaderboardItems,
                     mode: 'leader',
-                    user: user
+                    user: user,
+                    buses: buses
                 } );
-                
+
                 this.challenges = new challengeList( {
-                    el: this.templateData.challengeContainer
-                } );
-                
-                this.busMates = new busMates( {
-                    el: this.templateData.busMatesItemContainer
+                    el: this.templateData.challengeContainer,
+                    challenges: challenges
                 } );
 
                 return this;
@@ -61,17 +62,9 @@ define(
 
             waitForUserData: function() {
                 this.listenToOnce( user, 'change', this.render );
-            },
-
-            handleViewPastChallengeClick: function() {
-
-                this.pastChallenges = new challengeList( {
-                    el: this.templateData.pastChallengeContainer,
-                    type: 'pastChallenges',
-                } ).$el.fadeIn();
             }
 
         } );
 
         return new dashboard();
-} );
+    } );
