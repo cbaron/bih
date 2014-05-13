@@ -50,8 +50,14 @@
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
-.hundred-point-container > .row .hundred-pt-challenge-container:before,
-.hundred-point-container > .row .hundred-pt-challenge-container:after {
+.challenge-page:before,
+.challenge-page:after,
+.challenge-page .header:before,
+.challenge-page .header:after,
+.challenge-page .challenge-container:before,
+.challenge-page .challenge-container:after,
+.challenge-page .challenge-container .header:before,
+.challenge-page .challenge-container .header:after {
   content: " ";
   display: table;
 }
@@ -68,25 +74,49 @@
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
-.hundred-point-container > .row .hundred-pt-challenge-container:after {
+.challenge-page:after,
+.challenge-page .header:after,
+.challenge-page .challenge-container:after,
+.challenge-page .challenge-container .header:after {
   clear: both;
 }
-.hundred-point-container > .row {
-  padding-top: 50px;
+.challenge-page {
+  margin-left: -15px;
+  margin-right: -15px;
 }
-.hundred-point-container > .row .header {
+.challenge-page .header {
+  margin-left: -15px;
+  margin-right: -15px;
   text-align: center;
   color: #2c50d8;
   font-size: xx-large;
 }
-.hundred-point-container > .row .hundred-pt-challenge-container {
+.challenge-page .challenge-container {
   margin-left: -15px;
   margin-right: -15px;
-  background-color: white;
-  padding: 10px;
 }
-.hundred-point-container > .row .hundred-pt-challenge-container .hundred-pt-challenge-sub-header {
-  text-align: left;
-  font-size: x-large;
-  padding-bottom: 10px;
+.challenge-page .challenge-container .header {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.challenge-page .challenge-container .header .number {
+  float: left;
+  color: white;
+  background-color: black;
+  height: 30px;
+  width: 30px;
+}
+.challenge-page .challenge-container .header .detail {
+  background-color: #ec7400;
+  color: white;
+}
+.challenge-page .challenge-container .header .detail .title {
+  font-size: large;
+}
+.challenge-page .challenge-container .header .detail .back:hover {
+  text-decoration: underline;
+}
+.challenge-page .bus-mates-header {
+  color: white;
+  background-color: gray;
 }

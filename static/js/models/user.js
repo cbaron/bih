@@ -2,6 +2,11 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
     
     var userModel = Backbone.Model.extend( {
 
+        initialize: function() {
+            this.fetch();
+            return this;
+        },
+
         defaults: {
 
             "id": undefined,
@@ -12,11 +17,11 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "birthday": undefined,
             "phoneNumber": undefined,
             "busId": undefined,
-            "busName": undefined
+            "busName": undefined,
 
         },
 
-        urlRoot: '/user/index'
+        urlRoot: '/user'
 
     } );
 

@@ -3,29 +3,63 @@ define(
     [
         'jquery',
         'underscore',
-        'backbone'
+        'backbone',
+        'models/session'
     ],
 
-    function( $, _, Backbone ) {
+    function( $, _, Backbone, session ) {
       
         var AppRouter = Backbone.Router.extend( {
 
             content: $("#content"),
 
             routes: {
-
-                'fourweekchallenge': 'fourWeekChallenge',
+                'challenge/index/:id':  'challenge',
+                'fourweekchallenge':    'fourWeekChallenge',
                 'hundredpointchallenge': 'hundredPointChallenge',
-                'dashboard': 'dashboard',
-                'index': 'index',
-                '': 'index'
+                'register':             'register',
+                'dashboard':            'dashboard',
+                'index':                'dashboard',
+                '':                     'dashboard'
+            },
+
+            isLoggedIn: function() {
+                var self = this;
+
+                if( session.get('isLoggedIn') ) { return true; }
+                else {
+
+                    require( [ 'models/user'], function( user ) {
+                        self.listenToOnce( session, 'changed', this.go );
+                        self.listenToOnce( user, 'sync', function() {
+                            if( user.has('id') ) { session.set( 'isLoggedIn', true ); }
+                            else { this.showLoginDialogue(); }
+                        } );
+                    } );
+
+                    return false;
+                }
+            },
+
+            go: function() {
+                if( session.get('isLoggedIn') ) { this.toDo(); }
+            },
+
+            showLoginDialogue: function() {
+                require( [ 'views/modal', 'views/login' ], function( modal, login ) {
+                    modal.addContent( {
+                        width: $(window).outerWidth(true) / 4,
+                        content: login.$el
+                    } );
+                } );
             },
 
             hideContent: function() {
                 this.content.children().hide();
+                return this;
             },
 
-            index: function() {
+            register: function() {
                 this.hideContent();
                 require( [ 'views/header' ] );
 
@@ -35,19 +69,34 @@ define(
             },
 
             dashboard: function() {
-                this.hideContent();
-                require( [ 'views/header' ] );
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/dashboard' ], function( dashboard ) {
+                        if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
+                }
                 
-                require( [ 'views/dashboard' ], function( dashboard ) {
-                    if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
+                if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             fourWeekChallenge: function() {
-                this.hideContent();
-                require( [ 'views/header' ] );
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/fourWeekChallenge' ], function( fourWeekChallenge ) {
+                        if( fourWeekChallenge.$el.is(':hidden') ) { fourWeekChallenge.$el.fadeIn(); } } );
+                }
+                
+                if( this.isLoggedIn() ) { this.toDo(); }
+            },
 
-                require( [ 'views/fourWeekChallenge' ], function( fourWeekChallenge ) {
-                    if( fourWeekChallenge.$el.is(':hidden') ) { fourWeekChallenge.$el.fadeIn(); } } );
+            challenge: function(id) {
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/challenge' ], function( challenge ) { challenge.update(id); } );
+                }
+                if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             hundredPointChallenge: function() {

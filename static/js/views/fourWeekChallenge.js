@@ -20,7 +20,6 @@ define(
             templateData: { },
 
             events: {
-
                 'click *[data-js="viewPastChallengeButton"]': 'handleViewPastChallengeClick'
             },
 

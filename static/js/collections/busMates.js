@@ -12,7 +12,9 @@ define(
         var busMates = Backbone.Collection.extend( {
 
             initialize: function() {
-                this.listenToOnce( user, 'change', this.getData );
+
+                if( user.has('busName') ) { this.getData(); }
+                else { this.listenToOnce( user, 'change', this.getData ); }
             },
 
             getData: function() {
