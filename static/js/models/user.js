@@ -1,6 +1,6 @@
 define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
     
-    var userModel = Backbone.Model.extend( {
+    return new ( Backbone.Model.extend( {
 
         initialize: function() {
             this.fetch();
@@ -18,12 +18,11 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "phoneNumber": undefined,
             "busId": undefined,
             "busName": undefined,
+            "isLoggedIn": false,
 
         },
 
         urlRoot: '/user'
 
-    } );
-
-    return new userModel();
+    } ) )();
 } );

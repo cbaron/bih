@@ -4,10 +4,10 @@ define(
         'jquery',
         'underscore',
         'backbone',
-        'models/session'
+        'models/user'
     ],
 
-    function( $, _, Backbone, session ) {
+    function( $, _, Backbone, user ) {
       
         var AppRouter = Backbone.Router.extend( {
 
@@ -26,27 +26,21 @@ define(
             isLoggedIn: function() {
                 var self = this;
 
-                if( session.get('isLoggedIn') ) { return true; }
+                if( user.get('isLoggedIn') ) { return true; }
                 else {
 
-                    require( [ 'models/user'], function( user ) {
-                        self.listenToOnce( session, 'changed', this.go );
-                        self.listenToOnce( user, 'sync', function() {
-                            if( user.has('id') ) { session.set( 'isLoggedIn', true ); }
-                            else { this.showLoginDialogue(); }
-                        } );
+                    this.listenToOnce( user, 'sync', function() {
+                        if( user.get('isLoggedIn') ) { self.toDo(); }
+                        else { this.showLoginDialogue(); }
                     } );
 
                     return false;
                 }
             },
 
-            go: function() {
-                if( session.get('isLoggedIn') ) { this.toDo(); }
-            },
-
             showLoginDialogue: function() {
                 require( [ 'views/modal', 'views/login' ], function( modal, login ) {
+                    modal.listenToOnce( login, 'success', modal.closeDialogue );
                     modal.addContent( {
                         width: $(window).outerWidth(true) / 4,
                         content: login.$el
@@ -73,9 +67,10 @@ define(
                     this.hideContent();
                     require( [ 'views/header' ] );
                     require( [ 'views/dashboard' ], function( dashboard ) {
+                        console.log(dashboard);
                         if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
                 }
-                
+
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
 

@@ -25,7 +25,7 @@ define(
 
             initialize: function() {
 
-                this[ ( user.has('firstName') && events.length )
+                this[ ( events.length )
                     ? 'render'
                     : 'waitForData' ]();
 
@@ -51,28 +51,10 @@ define(
             },
 
             waitForData: function() {
-
-                //TODO: be elegant
-                var self = this;
-
-                if( ! user.has('firstName' ) ) {
-                    this.deferredData = $.Deferred();
-                    this.deferredData.then( function() { self.waitForData() } );
-                    this.listenToOnce( user, 'change', this.deferredData.resolve );
-                    return;
-                }
-
-                if( ! events.length ) {
-                    this.deferredData = $.Deferred();
-                    this.deferredData.then( function() { self.waitForData() } );
-                    this.listenToOnce( events, 'sync', this.deferredData.resolve );
-                    return;
-                }
-
-                this.render();
+                this.listenToOnce( events, 'sync', this.render );
             }
 
         } );
 
-        return new dashboard();
+        return new dashboard( { el: '#content' } );
 } );

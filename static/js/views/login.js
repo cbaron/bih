@@ -3,18 +3,20 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'models/session',
+      'models/user',
       'templates/login',
       'css!styles/login'
     ],
     
-    function( $, _, Backbone, session, template ) {
+    function( $, _, Backbone, user, template ) {
 
     return new ( Backbone.View.extend( {
 
+            templateData: {},
+
             events: {
 
-                'click button[data-js="login"]': 'loginClicked'
+                'click div[data-js="loginButton"]': 'loginClicked'
             },
 
             initialize: function() {
@@ -35,15 +37,24 @@ define(
             },
 
             loginClicked: function() {
-                $.ajax( {
-                    url: '/login',
-                    type: "POST",
-                    data: { e: this.templateData.email,
-                            p: this.templateData.pass },
-                    success: function( response ) {
-                        session.set( 'isLoggedIn', response.isLoggedIn );
+                user.fetch( {
+                    data: {
+                        e: this.templateData.email.val(),
+                        p: this.templateData.pass.val(),
+                        special: 'hue'
                     }
-                 } );
+                } );
+
+                this.listenToOnce( user, 'sync', this.handleResponse );
+            },
+
+            handleResponse: function() {
+                if( user.get('isLoggedIn') ) {
+                    this.router.toDo();
+                    this.trigger('success').$el.fadeOut();
+                } else {
+                    console.log('error logging in');
+                }
             }
 
         } ) )();

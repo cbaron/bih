@@ -58,7 +58,7 @@ define(
                 
             },
 
-            handleClick: function( e ) {
+            handleClick: function( e ) { return;
 
                 var contentOffset = this.templateData.content.offset();
                 var contentHeight = this.templateData.content.outerHeight( true );
@@ -69,7 +69,6 @@ define(
                     ( e.pageY < contentOffset.top ) ||
                     ( e.pageY > ( contentOffset.top + contentHeight ) ) ) {
 
-                    return;
                     this.closeDialogue();
                 }
             },
