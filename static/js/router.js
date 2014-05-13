@@ -104,6 +104,8 @@ define(
                 require( [ 'views/header' ] );
                 require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
                     if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
+
+                if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             initialize: function() {
