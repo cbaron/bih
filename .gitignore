@@ -4,12 +4,9 @@ databases
 errors
 sessions
 uploads
+*.pyc
 
-__init__.pyc
-
-modules/__init__.pyc
 modules/sf.py
-modules/sf.pyc
 
 #pour moi
 static/less/vendor
