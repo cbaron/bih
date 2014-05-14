@@ -75,8 +75,8 @@
   padding-top: 50px;
 }
 .dashboard-container .dashboard-id {
-  background-image: url("../images/welcomeBackground.png");
-  padding-bottom: 30px;
+  background-color: rgba(237, 170, 85, 0.5);
+  padding: 10px 10px 30px 10px;
 }
 .dashboard-container .dashboard-id .profile-image-wrapper {
   display: block;
@@ -100,8 +100,43 @@
   top: 10px;
   left: 10px;
 }
+.dashboard-container .dashboard-id .file-upload {
+  display: none;
+}
+.dashboard-container .dashboard-id .upload-photo-btn {
+  font-size: medium;
+  margin-top: 5px;
+}
 .dashboard-container .dashboard-id .upload-photo-btn:hover {
   cursor: pointer;
+}
+.dashboard-container .dashboard-id .name {
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 10px;
+}
+.dashboard-container .dashboard-id .bus-name {
+  text-transform: uppercase;
+  font-size: medium;
+}
+.dashboard-container .dashboard-leaderboard {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right !important;
+  background-color: rgba(225, 225, 225, 0.5);
+  padding: 20px;
+}
+@media (min-width: 992px) {
+  .dashboard-container .dashboard-leaderboard {
+    float: left;
+    width: 58.33333333%;
+  }
+}
+.dashboard-container .dashboard-leaderboard .leaderboard-header {
+  font-size: x-large;
+  margin-bottom: 10px;
 }
 .dashboard-container .dashboard-100-point .header {
   color: #15547c;

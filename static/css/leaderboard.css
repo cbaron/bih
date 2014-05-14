@@ -68,47 +68,59 @@
 .modal-footer:after {
   clear: both;
 }
-.leaderboard-container .bus-row {
+.leaderboard-item-container .bus-row {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   margin: 5px 0px;
-  padding: 5px 15px;
-  background-color: #2c95d8;
+  font-size: medium;
 }
 @media (min-width: 992px) {
-  .leaderboard-container .bus-row {
+  .leaderboard-item-container .bus-row {
     float: left;
     width: 100%;
   }
 }
-.leaderboard-container .bus-row .bus-rank {
-  color: #15547c;
-  font-size: medium;
+.leaderboard-item-container .bus-row .bus-row-left {
+  float: left !important;
+  width: 3%;
+}
+.leaderboard-item-container .bus-row .bus-row-left .bus-rank {
   font-weight: bold;
+  vertical-align: sub;
 }
-.leaderboard-container .bus-row .bus-name {
-  color: white;
-  font-size: medium;
-  font-weight: 300;
-  margin-left: 20px;
+.leaderboard-item-container .bus-row .bus-row-right {
+  float: left !important;
+  background-color: #2c95d8;
+  width: 97%;
+  padding: 5px;
 }
-.leaderboard-container .bus-row .point-container {
-  float: right !important;
-}
-.leaderboard-container .bus-row .point-container .bus-points {
-  color: white;
-  font-size: medium;
-  font-weight: bold;
-}
-.leaderboard-container .bus-row .point-container .points {
-  color: #15547c;
-  font-weight: 300;
-}
-.leaderboard-container .bus-row.user-bus {
+.leaderboard-item-container .bus-row .bus-row-right.user-bus {
   background-color: #ec7400;
 }
-.leaderboard-container .bus-row.user-bus .bus-name {
+.leaderboard-item-container .bus-row .bus-row-right.user-bus .bus-name {
   font-weight: bold;
+}
+.leaderboard-item-container .bus-row .bus-name {
+  color: white;
+  font-weight: 300;
+  margin-left: 10px;
+}
+.leaderboard-item-container .bus-row .point-container {
+  float: right !important;
+}
+.leaderboard-item-container .bus-row .point-container .bus-points {
+  color: white;
+  font-size: small;
+  font-weight: bold;
+}
+.leaderboard-item-container .bus-row .point-container .points {
+  color: #15547c;
+  font-weight: 300;
+}
+.leaderboard-item-container.short-mode .bus-row:first-child {
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }

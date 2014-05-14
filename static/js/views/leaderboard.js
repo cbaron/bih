@@ -45,9 +45,12 @@ define(
                     keepDataJs: false
                 } );
 
+                this.$el.addClass( this.mode + '-mode' );
+
                 if( this.mode === 'short' ) { 
-                    this.templateData[ this.user.get('busId') ].addClass('user-bus');
+                    this.templateData[ this.user.get('busId') ].find('.bus-row-right').addClass('user-bus');
                     _.each( this.templateData, ( this.userBusRank < 5 ) ? this.showTopFour : this.showContext , this );
+
                 } else if ( this.mode === 'leader' ) {
                     _.each( this.templateData, this.showOnlyLeader, this )
                 }

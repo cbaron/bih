@@ -10,8 +10,8 @@
 
     .dashboard-id {
 
-        background-image: url("../images/welcomeBackground.png");
-        padding-bottom: 30px;
+        background-color: rgba( 237, 170, 85, 0.5 );
+        padding: 10px 10px 30px 10px;
 
         .profile-image-wrapper {
             
@@ -36,10 +36,41 @@
             }
         }
 
+        
+        .file-upload {
+            display: none;
+        }
+
         .upload-photo-btn {
+            font-size: medium;
+            margin-top: 5px;
+
             &:hover {
                 cursor: pointer;
             }
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: medium;
+            margin-bottom: 10px;
+        }
+
+        .bus-name {
+            text-transform: uppercase;
+            font-size: medium;
+        }
+    }
+
+    .dashboard-leaderboard {
+        .make-md-column(7);
+        .pull-right();
+        background-color: rgba( 225, 225, 225, 0.5 );
+        padding: 20px;
+
+        .leaderboard-header {
+            font-size: x-large;
+            margin-bottom: 10px;
         }
     }
 

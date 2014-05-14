@@ -3,29 +3,41 @@
 
 @row-bg: rgb( 44, 149, 216 );
 
-.leaderboard-container {
-
-    .leaderboard-header {
-
-    }
+.leaderboard-item-container {
 
     .bus-row {
         .make-md-column(12);
         margin: 5px 0px;
-        padding: 5px 15px;
-        background-color: @row-bg;
+        font-size: medium;
 
-        .bus-rank {
-            color: @dashboard-text-color;
-            font-size: medium;
-            font-weight: bold;
+        .bus-row-left {
+            .pull-left();
+            width: 3%;
+            .bus-rank {
+                font-weight: bold;
+                vertical-align: sub;
+            }
+        }
+
+        .bus-row-right {
+            .pull-left();
+            background-color: @row-bg;
+            width: 97%;
+            padding: 5px;
+
+            &.user-bus {
+                background-color: @orange;
+
+                .bus-name {
+                    font-weight: bold;
+                }
+            }
         }
         
         .bus-name {
             color: white;
-            font-size: medium;
             font-weight: 300;
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         .point-container {
@@ -34,7 +46,7 @@
 
             .bus-points {
                 color: white;
-                font-size: medium;
+                font-size: small;
                 font-weight: bold;
             }
 
@@ -43,15 +55,16 @@
                 font-weight: 300;
             }
         }
+    }
 
-        &.user-bus {
-            
-            background-color: @orange;
+    &.short-mode {
 
-            .bus-name {
-                font-weight: bold;
-            }
+        .bus-row:first-child {
+            border-bottom: 1px solid grey;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
         }
+
     }
 
 }

@@ -33,10 +33,12 @@ define(
                     ? 'render'
                     : 'waitForData' ]();
 
+                this.listenTo( user, 'change:profileThumbnailUrl', this.updateThumbnail );
                 return this;
             },
 
             render: function() {
+                var self = this;
 
                 this.slurpTemplate( {
                     template: dashboardHtml( { user: user.attributes, events: events.toJSON() } ),
@@ -51,7 +53,33 @@ define(
                     user: user
                 } );
 
+                this.initializeUploader();
+
+                if( user.has("profileThumbnailUrl") ) { this.updateThumbnail(); }
+                    
                 return this;
+            },
+
+            updateThumbnail: function() {
+
+                this.templateData.profileImage.css( {
+                    'background-image': 'none',
+                    'background-color': 'transparent',
+                } );
+
+                this.templateData.profileImageWrapper.css( {
+                    'background-image': 'url(' + user.get("profileThumbnailUrl") + ')' } );
+            },
+
+            initializeUploader: function() {
+                var self = this; 
+                this.templateData.profileImageUpload.fileupload( {
+                    dataType: 'json',
+                    done: function (e, data) {
+                        user.set( "profileThumbnailUrl", data.result.files[0]['url'] );
+                        self.initializeUploader();
+                    }
+                } );
             },
 
             waitForData: function() {
@@ -59,13 +87,7 @@ define(
             },
 
             handleUploadPhotoClick: function() {
-                console.log($('#profileImageUpload').fileupload());
-                $('#profileImageUpload').fileupload( {
-                    dataType: 'json',
-                    done: function (e, data) {
-                        console.log( data );
-                    }
-                } );
+                this.templateData.profileImageUpload.click();
             }
 
         } ) )();

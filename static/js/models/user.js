@@ -18,6 +18,7 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "phoneNumber": undefined,
             "busId": undefined,
             "busName": undefined,
+            "profileImageUrl": undefined,
             "isLoggedIn": false,
 
         },

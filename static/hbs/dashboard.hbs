@@ -3,25 +3,25 @@
     <div class="col-md-4 dashboard-id">
         <div class="row">
             <div class="col-md-6">
-                 <div class="profile-image-wrapper">
-                    <div class="profile-image"></div>
+                 <div data-js="profileImageWrapper" class="profile-image-wrapper">
+                    <div data-js="profileImage" class="profile-image"></div>
                 </div>               
                 <div data-js="uploadPhotoBtn" class="upload-photo-btn" >
                     <span class="glyphicon glyphicon-camera"></span>
                     <span>Upload</span>
                 </div>
-                <input class="" id="profileImageUpload" type="file" name="files[]" data-url="/profileImage/post">
+                <input data-js="profileImageUpload" class="file-upload" id="profileImageUpload" type="file" name="files[]" data-url="/profileImage/post">
             </div>
             <div class="col-md-6">
-                <div>Hello, {{user.firstName}}!</div>
-                <div>Bus #{{bus.number}}</div>
+                <div class="name">Hello, {{user.firstName}}!</div>
+                <div class="bus-name">Bus #{{user.busName}}</div>
             </div>
         </div>
     </div>
     
-    <div class="col-md-8 leaderboard-container">
+    <div class="dashboard-leaderboard">
         <div class="leaderboard-header">4-Week Challenge Leaderboard</div>
-        <div data-js="leaderboardItems"></div>
+        <div class="leaderboard-item-container" data-js="leaderboardItems"></div>
     </div>
 
 </div>

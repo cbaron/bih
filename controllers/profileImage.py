@@ -17,6 +17,8 @@ def post():
     # Store file
     id = db.profileImage.insert( image = db.profileImage.image.store( fileObj.file, fileObj.filename) )
 
+    db( db.profileImage.userId == session.userId ).delete()
+
     # Compute size of the file and update the record
     record = db.profileImage[id]
     path_list = []
@@ -25,18 +27,21 @@ def post():
     path_list.append(record['image'])
     size =  shutil.os.path.getsize(shutil.os.path.join(*path_list))
     image = db( db.profileImage.id == id ).select()[0]
-    db.profileImage[id] = dict(sizeFile=size)
-    db.profileImage[id] = dict( userId = session.userId )
 
-    response = dict(\
+    db.profileImage[id] = dict(
+        sizeFile=size,
+        userId = session.userId )
+
+    res = dict(\
         files=[ { "name": str(fileObj.filename),
                   "size": size,
-                  "url": URL( f='download', args=[image['image']]),
-                  "thumbnail_url": URL(f='download', args=[image['thumb']]),
+                  "url": URL( c='default', f='download', args=[image['image']]),
+                  "thumbnail_url": URL( c='default', f='download', args=[image['thumb']]),
                   "delete_url": URL(f='delete_file', args=[image['image']]),
                   "delete_type": "DELETE" } ] )
 
-    return gluon.contrib.simplejson.dumps(response, separators=(',',':'))
+    #return gluon.contrib.simplejson.dumps(response, separators=(',',':'))
+    return response.json( res )
 
 def delete_file():
 

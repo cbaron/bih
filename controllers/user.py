@@ -30,6 +30,12 @@ def GET( sf, session ):
                        "FROM BIH_USER__C WHERE ID = '", session.userId, "'" ] ) )['records'][0] )
 
 def getCleanUser( record ):
+
+    profileImage = db( db.profileImage.userId == record['Id'] ).select()
+
+    profileThumbnailUrl = URL( c='default', f='download', args=[profileImage[0]['image']] ) \
+        if len( profileImage ) else None
+
     return response.json(\
         dict( id = record['Id'],
               firstName = record['First_Name__c'],
@@ -37,4 +43,5 @@ def getCleanUser( record ):
               emailAddress = record['Email__c'],
               busId = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Id'],
               busName = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Name'],
+              profileThumbnailUrl = profileThumbnailUrl,
               isLoggedIn = True ) )

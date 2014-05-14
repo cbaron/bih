@@ -12,13 +12,13 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" class=\"bus-row\" data-rank=\""
     + escapeExpression(((stack1 = (depth0 && depth0.rank)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n        <span class=\"bus-rank\">"
+    + "\">\n        <div class=\"bus-row-left\">\n            <span class=\"bus-rank\">"
     + escapeExpression(((stack1 = (depth0 && depth0.rank)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</span>\n        <span class=\"bus-name\">Bus "
+    + "</span>\n        </div>\n        <div class=\"bus-row-right\">\n            <span class=\"bus-name\">Bus "
     + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</span>\n        <span class=\"point-container\">\n            <span class=\"bus-points\">"
+    + "</span>\n            <span class=\"point-container\">\n                <span class=\"bus-points\">"
     + escapeExpression(((stack1 = (depth0 && depth0.totalPoints)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</span>\n            <span class=\"points\">points</span>\n        </span>\n    </div>\n";
+    + "</span>\n                <span class=\"points\">points</span>\n            </span>\n        </div>\n    </div>\n";
   return buffer;
   }
 
