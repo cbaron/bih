@@ -8,16 +8,12 @@ def index():
 
 def GET( sf, session ):
 
-    if request.vars.special:
-        request.vars.e = ''
-        request.vars.p = ''
-        #oh sumner
+    if request.vars.e and request.vars.p:
         records = sf.query(\
             ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C ",
                        "WHERE BIH_Username__c = '", request.vars.e, "' ",
-                       "AND ID = 'a1CL0000001ukqjMAA' ",
                        "AND BIH_Password__c ='" , request.vars.p, "'" ] ) )['records']
 
         if len( records ):
