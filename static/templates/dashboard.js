@@ -8,9 +8,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n                    <div class=\"local-event-item\">\n                        <div class=\"local-event-image\">\n                            <!-- <img src=\""
-    + escapeExpression(((stack1 = (depth0 && depth0.image)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\"/> -->\n                            <img src=\"/static/images/uploadPhotoButton.png\"/>\n                        </div>\n                        <div class=\"local-event-text\">\n                            <div class=\"local-event-title\">"
+  buffer += "\n                    <div class=\"local-event-item\">\n                        <div class=\"local-event-image\">\n                            <img src=\""
+    + escapeExpression(((stack1 = (depth0 && depth0.imageUrl)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"/>\n                        </div>\n                        <div class=\"local-event-text\">\n                            <div class=\"local-event-title\">"
     + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</div>\n                            <div class=\"local-event-location\">"
     + escapeExpression(((stack1 = (depth0 && depth0.datetime)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

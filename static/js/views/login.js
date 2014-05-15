@@ -40,8 +40,7 @@ define(
                 user.fetch( {
                     data: {
                         e: this.templateData.email.val(),
-                        p: this.templateData.pass.val(),
-                        special: 'hue'
+                        p: this.templateData.pass.val()
                     }
                 } );
 

@@ -9,20 +9,20 @@ define(
     
     function( $, _, Backbone, event, user ) {
 
-        var events = Backbone.Collection.extend( {
-           
+        return new ( Backbone.Collection.extend( {
+
+            defaults: {
+                imageUrl: undefined,
+                name: undefined,
+                datetime: undefined
+            },
+
             url: '/event',
 
-            model: event
-        } );
+            model: event,
 
-        var instance = new events();
-        instance.fetch( {
-            data: {
-                userId: user.id
-            }
-        } );
-        return instance;
+            initialize: function() { this.fetch(); }
+        } ) )();
     }
 );
 

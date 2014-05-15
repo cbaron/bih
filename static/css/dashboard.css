@@ -138,9 +138,12 @@
   font-size: x-large;
   margin-bottom: 10px;
 }
+.dashboard-container .dashboard-100-point {
+  background-color: rgba(225, 225, 225, 0.5);
+  padding: 20px;
+}
 .dashboard-container .dashboard-100-point .header {
-  color: #15547c;
-  font-size: large;
+  font-size: x-large;
 }
 .dashboard-container .dashboard-100-point .content {
   height: 106px;
@@ -166,7 +169,7 @@
   background-image: url("../images/starburst.png");
   background-repeat: no-repeat;
   width: 106px;
-  height: 100%;
+  height: 104px;
   display: table;
   float: left !important;
 }
@@ -175,12 +178,11 @@
   vertical-align: middle;
   text-align: center;
   color: #0e4d76;
-  font-size: xx-large;
+  font-size: 50px;
 }
 .dashboard-container .dashboard-100-point .content .out-of-display {
   height: 100%;
-  color: #15547c;
-  font-size: medium;
+  font-size: large;
   display: table;
   margin-left: 20px;
   float: left !important;
@@ -192,6 +194,8 @@
 }
 .dashboard-container .dashboard-100-point .complete-challenge-btn {
   padding: 5px 40px;
+  display: block;
+  font-size: large;
 }
 .dashboard-container .dashboard-local-events {
   position: relative;
@@ -199,53 +203,56 @@
   padding-left: 15px;
   padding-right: 15px;
   padding: 20px;
+  float: right !important;
+  background-color: rgba(225, 225, 225, 0.5);
 }
 @media (min-width: 992px) {
   .dashboard-container .dashboard-local-events {
     float: left;
-    width: 66.66666667%;
+    width: 58.33333333%;
   }
 }
 .dashboard-container .dashboard-local-events .local-event-header {
   font-size: x-large;
-  margin-bottom: 20px;
 }
 .dashboard-container .dashboard-local-events .local-event-item {
   margin-left: -15px;
   margin-right: -15px;
+  padding: 10px 0px;
+  height: 80px;
 }
 .dashboard-container .dashboard-local-events .local-event-item .local-event-image {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .dashboard-container .dashboard-local-events .local-event-item .local-event-image {
-    float: left;
-    width: 16.66666667%;
-  }
+  float: left !important;
+  width: 15%;
+  height: 100%;
 }
 .dashboard-container .dashboard-local-events .local-event-item .local-event-image img {
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
+  padding-top: 5px;
+  margin: 0 auto;
+  display: block;
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-image img:hover {
+  cursor: pointer;
 }
 .dashboard-container .dashboard-local-events .local-event-item .local-event-text {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding: 10px 0px;
+  float: left !important;
+  width: 80%;
+  height: 100%;
   border-bottom: 1px solid #3f3f3f;
-}
-@media (min-width: 992px) {
-  .dashboard-container .dashboard-local-events .local-event-item .local-event-text {
-    float: left;
-    width: 83.33333333%;
-  }
+  margin-right: 10px;
 }
 .dashboard-container .dashboard-local-events .local-event-item .local-event-text .local-event-title {
   color: #ec7400;
   font-weight: bold;
-  font-size: medium;
+  font-size: large;
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-text .local-event-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.dashboard-container .dashboard-local-events .local-event-item .local-event-text .local-event-location:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

@@ -23,14 +23,17 @@ require.config( {
             exports: 'Handlebars'
         },
 
-
         'jquery.fileupload': {
             deps: [ 'jquery', 'jquery.ui.widget' ]
         },
         
         'jquery.ui.widget': {
             deps: [ 'jquery' ]
-        }
+        },
+        
+        'dropdown': {
+            deps: [ 'jquery' ]
+        },
     },
 
     map: {
@@ -39,5 +42,3 @@ require.config( {
         }
     }
 } );
-
-require( [ 'app' ] );

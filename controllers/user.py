@@ -36,12 +36,15 @@ def getCleanUser( record ):
     profileThumbnailUrl = URL( c='default', f='download', args=[profileImage[0]['image']] ) \
         if len( profileImage ) else None
 
-    return response.json(\
-        dict( id = record['Id'],
-              firstName = record['First_Name__c'],
-              lastName = record['Last_Name__c'],
-              emailAddress = record['Email__c'],
-              busId = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Id'],
-              busName = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Name'],
-              profileThumbnailUrl = profileThumbnailUrl,
-              isLoggedIn = True ) )
+    rv = dict( id = record['Id'],
+      firstName = record['First_Name__c'],
+      lastName = record['Last_Name__c'],
+      emailAddress = record['Email__c'],
+      profileThumbnailUrl = profileThumbnailUrl,
+      isLoggedIn = True )
+
+    if record['Team_Members__r'] is not None:
+      rv['busId'] = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Id']
+      rv['busName'] = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Name']
+
+    return response.json( rv )

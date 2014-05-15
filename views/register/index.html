@@ -5,8 +5,8 @@
         <script data-main="{{=URL('static','js/main.js')}}"src="{{=URL('static','js/require.js')}}"></script>
     </head>
     <body>
-        <section id="header"></section>
         <section id="content"></section>
     </body>
-    <script>require( [ 'app' ] );</script>
+    {{from gluon.serializers import json}}
+    <script>require(['views/welcome'], function( welcome ) { new welcome( {{response.write(json(user),escape=False)}} ); } );</script>
 </html>

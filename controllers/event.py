@@ -8,17 +8,21 @@ def index():
 
 def GET( sf ):
 
+    if 'userId' not in session:
+        return response.json([])
+
     events = sf.query(\
-        ''.join( [ "Select ID, BIH_Opportunity_Name__c, Clicked__c, Date__c, ",
+        ''.join( [ "Select ID, BIH_Opportunity_Name__c, Clicked__c, Date__c, Image_Location__c, ",
                    "Description__c, Interested__c, Link__c, Not_Interested__c, ",
                    "Score__c, Time__c, Type__c FROM BIH_Notification__c Where BIH_User__r.ID='",
-                   request.vars.userId, "' ORDER BY Score__c DESC" ] ) )['records']
-
+                   session.userId, "' ORDER BY Score__c DESC" ] ) )['records']
 
     rv = [ ]
     for event in events:
+        print event, "\n"
         rv.append(\
             dict( id = event['Id'],
+                  imageUrl = event['Image_Location__c'],
                   name = event['BIH_Opportunity_Name__c'],
                   datetime = ' '.join( [ event['Date__c'], event['Time__c'] ] ) ) )
 

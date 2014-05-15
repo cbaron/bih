@@ -33,10 +33,12 @@ define(
 
             render: function() {
 
-                this.userBusRank =
+                var userBus =
                     buses.find( function( model ) {
                         return model.id === this.user.get('busId')
-                    }, this ).get('rank');
+                    }, this );
+
+                if( userBus ) { this.userBusRank = userBus.get('rank'); }
 
                 this.slurpTemplate( {
                     template: leaderboardHtml( { user: this.user, buses: buses.toJSON() } ),
@@ -48,8 +50,15 @@ define(
                 this.$el.addClass( this.mode + '-mode' );
 
                 if( this.mode === 'short' ) { 
-                    this.templateData[ this.user.get('busId') ].find('.bus-row-right').addClass('user-bus');
-                    _.each( this.templateData, ( this.userBusRank < 5 ) ? this.showTopFour : this.showContext , this );
+
+                    //geh, bad data model
+                    if( this.user.has('busId') ) {
+                        this.templateData[ this.user.get('busId') ].find('.bus-row-right').addClass('user-bus');
+                    }
+
+                    _.each( this.templateData, ( this.userBusRank < 5 || ( ! this.user.has('busId') ) )
+                        ? this.showTopFour
+                        : this.showContext , this );
 
                 } else if ( this.mode === 'leader' ) {
                     _.each( this.templateData, this.showOnlyLeader, this )

@@ -91,6 +91,9 @@
   width: 173px;
   height: 160px;
 }
+.welcome-container .upload-photo-btn-wrapper:hover {
+  cursor: pointer;
+}
 .welcome-container .upload-photo-btn-wrapper .upload-photo-btn {
   background-image: url("../images/uploadPhotoButton.png");
   background-repeat: no-repeat;
@@ -110,6 +113,9 @@
   vertical-align: middle;
   color: gray;
   font-size: xx-large;
+}
+.welcome-container .file-upload {
+  display: none;
 }
 .welcome-container .birthday #day.form-control {
   width: 50%;
