@@ -25,7 +25,8 @@ define(
             events: {
 
                 'click div[data-js="uploadPhotoBtnWrapper"]': 'handleUploadPhotoClick',
-                'click button[data-js="submitButton"]': 'submitClicked'
+                'click ul[data-js="dropdownMenu"] li': 'dropdownClicked',
+                'click button[data-js="submitButton"]': 'submitClicked',
             },
 
             initialize: function( options ) {
@@ -49,6 +50,8 @@ define(
                 } );
 
                 this.initializeUploader();
+
+                this.templateData.dropdownMenu.each( function() { $(this).prev().width() } );
 
                 return this;
             },
@@ -79,6 +82,11 @@ define(
 
             handleUploadPhotoClick: function() {
                 this.templateData.profileImageUpload.click();
+            },
+
+            dropdownClicked: function( e ) {
+                var clicked = $( e.target );
+                this.templateData[ clicked.parent().data('input') ].val( clicked.text() );
             },
 
             submitClicked: function() {

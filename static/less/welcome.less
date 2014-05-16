@@ -91,4 +91,30 @@
             .pull-right();
         }
     }
+
+    .dropdown-menu.month,
+    .dropdown-menu.day,
+    .dropdown-menu.year {
+        margin: 0px 0px 0px 15px;
+        min-width: 0px !important;
+        padding: 0px;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        li {
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .dropdown-toggle > input {
+        background-color: white;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

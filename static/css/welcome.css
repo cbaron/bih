@@ -142,3 +142,21 @@
 .welcome-container .submit-col .btn {
   float: right !important;
 }
+.welcome-container .dropdown-menu.month,
+.welcome-container .dropdown-menu.day,
+.welcome-container .dropdown-menu.year {
+  margin: 0px 0px 0px 15px;
+  min-width: 0px !important;
+  padding: 0px;
+  text-align: center;
+}
+.welcome-container .dropdown-menu li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.welcome-container .dropdown-toggle > input {
+  background-color: white;
+}
+.welcome-container .dropdown-toggle > input:hover {
+  cursor: pointer;
+}

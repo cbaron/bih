@@ -4,7 +4,6 @@
         <div class="row welcome-header">Welcome, {{firstName}}!</div>
         <div class="row welcome-sub-header">Join Bus {{busName}} and win a trip back to Israel!</div>
         <div class="row">
-            <div class="col-md-1"></div>
             <div class="col-md-3">
                 <div data-js="uploadPhotoBtnWrapper" class="upload-photo-btn-wrapper">
                     <div data-js="uploadPhotoBtn" class="upload-photo-btn">
@@ -13,7 +12,7 @@
                 </div>
                 <input data-js="profileImageUpload" class="file-upload" id="profileImageUpload" type="file" name="files[]" data-url="/profileImage/post">
             </div>
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="name" class="col-md-2 control-label">Name</label>
@@ -22,15 +21,15 @@
                         </div>
                     </div>
                     <div class="form-group birthday">
-                        <label for="birthday" class="col-md-2 control-label">Birthday</label>
+                        <label for="month" class="col-md-2 control-label">Birthday</label>
                         <div class="col-md-4 dropdown">
                             <a id="month" class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <input type="text" class="form-control" id="birthday" placeholder="Month">
+                                <input data-js="month" type="text" class="form-control" id="month" placeholder="Month" readonly>
                                 {{~#if true~}}
                                     <span data-js="monthDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
                                 {{~/if~}}
                             </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="month">
+                            <ul data-js="dropdownMenu" data-input="month" class="dropdown-menu month" role="menu" aria-labelledby="month">
                                 <li>January</li>
                                 <li>February</li>
                                 <li>March</li>
@@ -45,17 +44,78 @@
                                 <li>December</li>
                             </ul>
                         </div>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" id="day" placeholder="Day">
-                            {{~#if true~}}
-                                <span data-js="dayDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                            {{~/if~}}
+                        <div class="col-md-3 dropdown">
+                            <a id="day" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <input type="text" class="form-control" data-js="day" placeholder="Day">
+                                {{~#if true~}}
+                                    <span data-js="dayDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                                {{~/if~}}
+                            </a>
+                            <ul data-js="dropdownMenu" data-input="day" class="dropdown-menu day" role="menu">
+                                <li>1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                                <li>5</li>
+                                <li>6</li>
+                                <li>7</li>
+                                <li>8</li>
+                                <li>9</li>
+                                <li>10</li>
+                                <li>11</li>
+                                <li>12</li>
+                                <li>13</li>
+                                <li>14</li>
+                                <li>15</li>
+                                <li>16</li>
+                                <li>17</li>
+                                <li>18</li>
+                                <li>19</li>
+                                <li>20</li>
+                                <li>21</li>
+                                <li>22</li>
+                                <li>23</li>
+                                <li>24</li>
+                                <li>25</li>
+                                <li>26</li>
+                                <li>27</li>
+                                <li>28</li>
+                                <li>29</li>
+                                <li>30</li>
+                                <li>31</li>
+                            </ul>
                         </div>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" id="year" placeholder="Year">
-                            {{~#if true~}}
-                                <span data-js="yearDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                            {{~/if~}}
+                        <div class="col-md-3 dropdown">
+                            <a id="year" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <input type="text" class="form-control" data-js="year" placeholder="Year">
+                                {{~#if true~}}
+                                    <span data-js="yearDropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                                {{~/if~}}
+                            </a>
+                            <ul data-js="dropdownMenu" data-input="year" class="dropdown-menu year" role="menu">
+                            <li>2005</li>
+                            <li>2004</li>
+                            <li>2003</li>
+                            <li>2002</li>
+                            <li>2001</li>
+                            <li>2000</li>
+                            <li>1999</li>
+                            <li>1998</li>
+                            <li>1997</li>
+                            <li>1996</li>
+                            <li>1995</li>
+                            <li>1994</li>
+                            <li>1993</li>
+                            <li>1992</li>
+                            <li>1991</li>
+                            <li>1990</li>
+                            <li>1989</li>
+                            <li>1988</li>
+                            <li>1987</li>
+                            <li>1986</li>
+                            <li>1985</li>
+                            <li>1984</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,5 +140,4 @@
             </div>
         </div>
     </div>
-    <div class="col-md-1"></div>
 </div>
