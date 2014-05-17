@@ -122,7 +122,7 @@ define(
                     $.ajax( {
                         url: '/register/post',
                         data: data,
-                        type: 'POST',
+                        //type: 'POST',
                         success: function( response ) {
                             console.log(response);
                         }

@@ -10,13 +10,17 @@ def GET( sf, session ):
 
     if request.vars.e and request.vars.p:
         records = sf.query(\
-            ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, ",
+            ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, Date_of_First_Login__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C ",
                        "WHERE BIH_Username__c = '", request.vars.e, "' ",
                        "AND BIH_Password__c ='" , request.vars.p, "'" ] ) )['records']
 
         if len( records ):
+
+            if records[0]['Date_of_First_Login__c'] is None:
+                redirect( URL(a='bih',c='default',f='index') )
+
             session.userId = records[0]['Id']
             return getCleanUser( records[0] )
 

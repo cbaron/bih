@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 from simple_salesforce import Salesforce
 from sf import *
 
@@ -37,20 +38,27 @@ def post():
     sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
 
     weCool = True
+    errorMsg = ''
 
-    try:
-        sf.BIH_User__c.update( session.userId, {\
-            'Birthdate__c': request.vars.year[0:3] + '-' + request.vars.month[0:1] + '-' + request.vars.day[0:1],
-            'Phone__c': request.vars.phone,
-            'Location__c': request.vars.location,
-            'School__c': request.vars.university,
-            'Occupation__c': request.vars.occupation,
-            'Date_of_Graduation__c': request.vars.graduation[0:3] + '-01-01',
-            'BIH_Password__c': request.vars.password
-        } )
-    except:
-        weCool = False
-        print sys.exc_info()[0]
+    yearGraduated = request.vars.graduated[0:3] if len( request.vars.graduated ) > 3 else '1970'
 
+    #try:
+    sf.BIH_User__c.update( session.userId, {\
+        'Birthdate__c': request.vars.year[0:3] + '-' + request.vars.month[0:1] + '-' + request.vars.day[0:1],
+        'Phone__c': request.vars.phone,
+        'Location__c': request.vars.location,
+        'School__c': request.vars.university,
+        'Occupation__c': request.vars.occupation,
+        'Date_of_Graduation__c': yearGraduated + '-01-01',
+        'BIH_Password__c': request.vars.password,
+        'Short_Biography__c': request.vars.biography
+    } )
+    #except:
+    #weCool = False
+    #errorMsg = sys.exc_info()[0]
+    #print sys.exc_info()[0]
 
-    return response.json( weCool )
+    if weCool:
+        redirect( URL(a='bih',c='default',f='index') )
+
+    return response.json( dict( error=str(errorMsg) ) )

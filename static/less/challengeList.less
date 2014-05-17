@@ -25,6 +25,12 @@
             .make-row();
             background-color: rgb( 224, 224, 224 );
             border-bottom: 1px solid @gray;
+                    
+            &:hover {
+                background-color: rgba( 224, 224, 224, 0.5 );
+                cursor: pointer;
+            }
+
 
             .number {
                 background-color: @dark-gray;
@@ -48,10 +54,6 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
-
-                    &:hover {
-                        background-color: @gray;
-                    }
 
                     .name {
                         font-weight: bold;
