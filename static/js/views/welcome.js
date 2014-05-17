@@ -96,15 +96,19 @@ define(
                 var toSubmit = true,
                     data = {};
 
-                _.each( [ 'phone', 'location' ], function( attr ) {
+                _.each( [ 'phone', 'location', 'password' ], function( attr ) {
                     if( $.trim( this.templateData[ attr ].val() ) === '' ) { toSubmit = false; }
                 }, this ); 
+
+                if( this.templateData.password.val() !== this.templateData.repeat.val() ) {
+                    toSubmit = false;
+                }
 
                 if( toSubmit ) {
 
                     data = _.reduce(
                         [ 'month', 'day', 'year', 'phone', 'university', 'location',
-                          'graduated', 'occupation', 'biography' ],
+                          'password', 'graduated', 'occupation', 'biography' ],
                         
                         function( memo, attr ) {
                             memo[attr] = this.templateData[attr].val();

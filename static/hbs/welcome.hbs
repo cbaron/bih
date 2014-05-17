@@ -20,6 +20,16 @@
                             <input type="text" class="form-control" id="name" value="{{firstName}} {{lastName}}" readonly>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-2 control-label">Password</label>
+                        <div class="col-md-4">
+                            <input data-js="password" type="password" class="form-control" id="password" value="">
+                        </div>
+                        <label for="repeat" class="col-md-2 control-label">Repeat</label>
+                        <div class="col-md-4">
+                            <input data-js="repeat" type="password" class="form-control" id="name">
+                        </div>
+                    </div>
                     <div class="form-group birthday">
                         <label for="month" class="col-md-2 control-label">Birthday</label>
                         <div class="col-md-4 dropdown">
@@ -120,13 +130,11 @@
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-md-2 control-label">Email</label>
-                        <div class="col-md-10">
+                        <div class="col-md-5">
                             <input type="text" class="form-control" id="email" value="{{emailAddress}}" readonly>
                         </div>
-                    </div>
-                    <div class="form-group">
                         <label for="phone" class="col-md-2 control-label">Phone</label>
-                        <div class="col-md-10">
+                        <div class="col-md-3">
                             <input data-js="phone" type="text" class="form-control" id="phone" value="{{phoneNumber}}" placeholder="(222) 555-5555">
                         </div>
                     </div>

@@ -36,8 +36,21 @@ def index():
 def post():
     sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
 
-    user = sf.User.get( session.userId )
+    weCool = True
 
-    print user
+    try:
+        sf.BIH_User__c.update( session.userId, {\
+            'Birthdate__c': request.vars.year[0:3] + '-' + request.vars.month[0:1] + '-' + request.vars.day[0:1],
+            'Phone__c': request.vars.phone,
+            'Location__c': request.vars.location,
+            'School__c': request.vars.university,
+            'Occupation__c': request.vars.occupation,
+            'Date_of_Graduation__c': request.vars.graduation[0:3] + '-01-01',
+            'BIH_Password__c': request.vars.password
+        } )
+    except:
+        weCool = False
+        print sys.exc_info()[0]
 
-    return response.json( dict() )
+
+    return response.json( weCool )
