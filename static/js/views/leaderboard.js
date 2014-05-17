@@ -21,8 +21,10 @@ define(
 
                 _.extend( this, {
                     user: options.user,
-                    mode: options.mode
+                    model: new Backbone.Model( { mode: options.mode } )
                 } );
+
+                this.listenTo( this.model, 'change:mode', this.update );
 
                 this[ ( buses.length )
                     ? 'render'
@@ -47,9 +49,21 @@ define(
                     keepDataJs: false
                 } );
 
-                this.$el.addClass( this.mode + '-mode' );
 
-                if( this.mode === 'short' ) { 
+                this.update();
+
+                return this;
+            },
+
+            update: function() {
+               
+                if( this.model.previous('mode') ) {
+                    this.$el.removeClass( this.model.previous('mode') + '-mode' );
+                } 
+
+                this.$el.addClass( this.model.get('mode') + '-mode' );
+
+                if( this.model.get('mode') === 'short' ) { 
 
                     //geh, bad data model
                     if( this.user.has('busId') ) {
@@ -60,16 +74,23 @@ define(
                         ? this.showTopFour
                         : this.showContext , this );
 
-                } else if ( this.mode === 'leader' ) {
-                    _.each( this.templateData, this.showOnlyLeader, this )
-                }
+                } else if ( this.model.get('mode') === 'leader' ) {
 
-                return this;
+                    _.each( this.templateData, this.showOnlyLeader, this )
+
+                } else if ( this.model.get('mode') === 'full' ) {
+
+                    _.each( this.templateData, this.showAll, this );
+                }
+            },
+
+            showAll: function( el ) {
+                $(el).fadeIn();
             },
 
             showOnlyLeader: function( el ) {
                 var el = $(el);
-                if( el.data('rank') > 1 ) { el.hide(); }
+                if( el.data('rank') > 1 ) { el.fadeOut(); }
             },
 
             showTopFour: function( el ) {

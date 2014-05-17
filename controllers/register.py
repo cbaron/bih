@@ -12,8 +12,6 @@ def index():
         ''.join( [ "Select ID, Date_of_First_Login__c ",
                    "FROM BIH_USER__C" ] ) )['records']
 
-    print users
-
     result = [ ]
 
     try:
@@ -33,3 +31,13 @@ def index():
             emailAddress = record['Email__c'] ) )
     except:
         redirect( URL(a='bih',c='default',f='index') )
+
+
+def post():
+    sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
+
+    user = sf.User.get( session.userId )
+
+    print user
+
+    return response.json( dict() )

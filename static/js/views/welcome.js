@@ -31,7 +31,7 @@ define(
 
             initialize: function( options ) {
 
-                this.user = options;
+                this.user = new Backbone.Model( options );
 
                 this.render();
 
@@ -43,7 +43,7 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: welcomeHtml( this.user ),
+                    template: welcomeHtml( this.user.attributes ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
@@ -51,7 +51,10 @@ define(
 
                 this.initializeUploader();
 
-                this.templateData.dropdownMenu.each( function() { $(this).prev().width() } );
+                this.templateData.dropdownMenu.each( function() {
+                    var menuEl = $(this);
+                    menuEl.width( menuEl.prev().width() );
+                } );
 
                 return this;
             },
@@ -90,6 +93,37 @@ define(
             },
 
             submitClicked: function() {
+                var toSubmit = true,
+                    data = {};
+
+                _.each( [ 'phone', 'location' ], function( attr ) {
+                    if( $.trim( this.templateData[ attr ].val() ) === '' ) { toSubmit = false; }
+                }, this ); 
+
+                if( toSubmit ) {
+
+                    data = _.reduce(
+                        [ 'month', 'day', 'year', 'phone', 'university', 'location',
+                          'graduated', 'occupation', 'biography' ],
+                        
+                        function( memo, attr ) {
+                            memo[attr] = this.templateData[attr].val();
+                            if( attr === 'biography' ) {
+                                memo[attr] = this.templateData[attr].text();
+                            };
+                            return memo; },
+
+                        { }, this );
+
+                    $.ajax( {
+                        url: '/register/post',
+                        data: data,
+                        type: 'POST',
+                        success: function( response ) {
+                            console.log(response);
+                        }
+                    } );
+                }
             }
 
         } );

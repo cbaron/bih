@@ -69,11 +69,11 @@
   clear: both;
 }
 body {
-  background-color: black;
+  background-color: black !important;
 }
 body #content {
   background-image: url("../images/background.jpg");
-  background-size: 100% 627px;
+  background-size: 100% 100%;
   min-height: 627px;
 }
 body #content .btn {

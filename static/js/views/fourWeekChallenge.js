@@ -19,8 +19,34 @@ define(
 
             templateData: { },
 
-            events: {
-                'click *[data-js="viewPastChallengeButton"]': 'handleViewPastChallengeClick'
+            events: function() {
+                if( this.model === undefined ) { return { }; }
+
+                return _.extend(
+                    { },
+                    this.eventController.leaderboard[ this.model.get('leaderboard' ) ],
+                    this.eventController.challengeList[ this.model.get('challengeList' ) ] );
+            },
+
+            eventController: {
+
+                leaderboard: {
+                    leader: {
+                        'click span[data-js="viewFullLeaderboardBtn"]': 'viewFullLeaderboardClicked'
+                    },
+                    full: {
+                        'click span[data-js="viewFullLeaderboardBtn"]': 'hideFullLeaderboardClicked'
+                    }
+                },
+
+                challengeList: {
+                    viewPast: {
+                        'click [data-js="viewPastChallengeButton"]': 'viewPastChallengeClick',
+                    },
+                    hidePast: {
+                        'click [data-js="viewPastChallengeButton"]': 'hidePastChallengeClick',
+                    }
+                }
             },
 
             initialize: function() {
@@ -29,6 +55,10 @@ define(
                 this[ ( user.has('firstName') )
                     ? 'render'
                     : 'waitForUserData' ]();
+
+                this.model = new Backbone.Model( {
+                    challengeList: 'viewPast',
+                    leaderboard: 'leader' } );
 
                 return this;
             },
@@ -56,19 +86,59 @@ define(
                     el: this.templateData.busMatesItemContainer
                 } );
 
+                this.listenToOnce( this.challenges, 'rendered', this.updateBusMateHeader );
+
+                this.delegateEvents();
+
                 return this;
+            },
+
+            updateBusMateHeader: function() {
+              
+                this.templateData.busMatesHeader.text(   
+                    this.challenges.challenges.at(0).attributes.week
+                );
             },
 
             waitForUserData: function() {
                 this.listenToOnce( user, 'change', this.render );
             },
 
-            handleViewPastChallengeClick: function() {
+            viewPastChallengeClick: function() {
+                if( this.pastChallenges === undefined ) {
+                    this.pastChallenges = new challengeList( {
+                        el: this.templateData.pastChallengeContainer,
+                        type: 'pastChallenges',
+                    } );
+                }
+                     
+                this.pastChallenges.$el.fadeIn();
+                
+                this.templateData.viewPastChallengeButton.text('Hide Past Challenges');
+                this.model.set( 'challengeList', 'hidePast' );
+                this.delegateEvents();
+            },
 
-                this.pastChallenges = new challengeList( {
-                    el: this.templateData.pastChallengeContainer,
-                    type: 'pastChallenges',
-                } ).$el.fadeIn();
+            hidePastChallengeClick: function() {
+                this.pastChallenges.$el.fadeOut();
+                
+                this.templateData.viewPastChallengeButton.text('View Past Challenges');
+                this.model.set( 'challengeList', 'viewPast' );
+                this.delegateEvents();
+            },
+
+            viewFullLeaderboardClicked: function() {
+                this.model.set( 'leaderboard', 'full' );
+                this.leaderboard.model.set( 'mode', 'full' );
+                this.templateData.viewFullLeaderboardBtn.text('Hide Full Leaderboard');
+                this.delegateEvents();
+            },
+
+            hideFullLeaderboardClicked: function() {
+                this.model.set( 'leaderboard', 'leader' );
+                this.leaderboard.model.set( 'mode', 'leader' );
+                this.templateData.viewFullLeaderboardBtn.text('Show Full Leaderboard');
+                this.delegateEvents();
             }
 
         } );

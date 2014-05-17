@@ -53,6 +53,8 @@ define(
                     keepDataJs: true
                 } );
 
+                this.trigger('rendered');
+
                 this.delegate();
 
                 return this;

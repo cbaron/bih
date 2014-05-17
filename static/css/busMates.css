@@ -74,16 +74,37 @@
 .bus-mate-row {
   margin-left: -15px;
   margin-right: -15px;
+  background-color: #edb680;
+  border-bottom: 1px solid white;
+  height: 40px;
 }
 .bus-mate-row .image {
-  float: left;
-  background-color: darkgray;
-  width: 30px;
-  height: 30px;
+  background-color: #4f4f4f;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 40px !important;
+  height: 40px;
+  border-bottom: 1px solid white;
+}
+@media (min-width: 992px) {
+  .bus-mate-row .image {
+    float: left;
+    width: 8.33333333%;
+  }
 }
 .bus-mate-row .bus-mate-detail {
-  background-color: 'orange';
+  height: 40px;
+  font-size: large;
 }
 .bus-mate-row .bus-mate-detail:hover {
   background-color: 'beige';
+}
+.bus-mate-row .bus-mate-detail .glyphicon-comment {
+  color: #edb680;
+  padding: 4px;
+  border-radius: 8px;
+  background-color: #ec7400;
+  margin: 7px 30px;
 }

@@ -16,7 +16,7 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span>\n                    <span class=\"points\">"
     + escapeExpression(((stack1 = (depth0 && depth0.points)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " pt</span>\n                    <span class=\"rules\">"
+    + " pt</span>\n                    <span class=\"rules\"> - "
     + escapeExpression(((stack1 = (depth0 && depth0.rules)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span>\n                </div>\n            </div>\n        </div>\n    ";
   return buffer;

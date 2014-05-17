@@ -124,3 +124,9 @@
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
+.leaderboard-item-container.full-mode .bus-row:nth-child(even) .bus-row-right {
+  background-color: #2c50d8;
+}
+.leaderboard-item-container.full-mode .bus-row:nth-child(odd) .bus-row-right {
+  background-color: #2c95d8;
+}

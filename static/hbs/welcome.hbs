@@ -127,14 +127,65 @@
                     <div class="form-group">
                         <label for="phone" class="col-md-2 control-label">Phone</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="phone" value="{{phoneNumber}}" placeholder="(222) 555-5555">
+                            <input data-js="phone" type="text" class="form-control" id="phone" value="{{phoneNumber}}" placeholder="(222) 555-5555">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-md-1"></div>
         </div>
-        <div class="row">
+        <form class="form-horizontal" role="form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="university" class="col-md-3 control-label left-label">University</label>
+                        <div class="col-md-9">
+                            <input data-js="university" type="text" class="form-control" id="university" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="location" class="col-md-3 control-label">Location</label>
+                        <div class="col-md-9">
+                            <input data-js="location" type="text" class="form-control" id="location" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="graduated" class="col-md-6 control-label">Graduated</label>
+                        <div class="col-md-6">
+                            <input data-js="graduated" type="text" class="form-control" id="graduated" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="occupation" class="col-md-3 control-label">Occupation</label>
+                        <div class="col-md-9">
+                            <input data-js="occupation" type="text" class="form-control" id="occupation" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-md-12 left-label" for="biography">Short Biography</label>
+                        <div class="col-md-12 left-label">
+                            <textarea class="biography form-control"
+                                      rows="4"
+                                      id="biography"
+                                      data-js="biography" placeholder="Type just a few sentences about yourself for others to read on your profile page"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
             <div class="col-md-11 submit-col">
                 <button data-js="submitButton" class="btn">Submit</div>
             </div>

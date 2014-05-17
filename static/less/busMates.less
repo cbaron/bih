@@ -6,22 +6,32 @@
 .bus-mate-row {
 
     .make-row();
+    background-color: @light-orange;
+    border-bottom: 1px solid white;
+    height: 40px;
 
     .image {
-        float: left;
-        background-color: darkgray;
-        width: 30px;
-        height: 30px;
+        background-color: @dark-gray;
+        .make-md-column(1);
+        width: 40px !important;
+        height: 40px;
+        border-bottom: 1px solid white;
     }
 
     .bus-mate-detail {
-        background-color: 'orange';
+        height: 40px;
+        font-size: large;
 
         &:hover {
             background-color: 'beige';
         }
 
-        .glyphicon-message {
+        .glyphicon-comment {
+            color: @light-orange;
+            padding: 4px;
+            border-radius: 8px;
+            background-color: @orange;
+            margin: 7px 30px;
         }
 
         name {

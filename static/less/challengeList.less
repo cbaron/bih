@@ -13,7 +13,7 @@
         font-size: large;
         background-color: @orange;
         color: white;
-        padding: 5px 10px;
+        padding: 5px 35px;
     }
     
     .challenge-item-container {
@@ -23,15 +23,25 @@
         .challenge-row {
 
             .make-row();
+            background-color: rgb( 224, 224, 224 );
+            border-bottom: 1px solid @gray;
 
             .number {
-                background-color: darkgrey;
+                background-color: @dark-gray;
+                color: white;
                 .make-md-column(1);
+                width: 40px !important;
+                padding: 5px;
+                text-align: center;
+                font-weight: bold;
+                font-size: large;
             }
 
             .challenge-detail-wrap {
                 .make-md-column(11);
-                background-color: white;
+                background-color: rgba( 225, 225, 225, 0.5 );
+                padding: 5px;
+                font-size: large;
 
                 .challenge-detail {
 
@@ -44,10 +54,15 @@
                     }
 
                     .name {
+                        font-weight: bold;
+                        padding-left: 10px;
                     }
+
                     .points {
                         color: blue;
+                        font-weight: bold;
                     }
+
                     .rules {
                     }
                 }
@@ -104,6 +119,6 @@
 
 .past-challenge-container {
     .challenge-header {
-        background-color: brown;
+        background-color: @brown;
     }
 }

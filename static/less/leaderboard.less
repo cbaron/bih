@@ -64,5 +64,18 @@
         }
 
     }
+    
+    &.full-mode {
+        .bus-row:nth-child(even) {
+            .bus-row-right {
+                background-color: @blue;
+            }
+        }
+        .bus-row:nth-child(odd) {
+            .bus-row-right {
+                background-color: @sky-blue;
+            }
+        }
+    }
 
 }
