@@ -2,50 +2,129 @@
 @import (reference) "bih.less";
 
 .challenge-page {
-
-    .make-row();
+    .container();
 
     .header {
         .make-row();
         text-align: center;
         color: @blue;
         font-size: xx-large;
+        margin-top: 40px;
     }
 
     .challenge-container {
         .make-row();
 
-        .header {
+        .challenge-header {
             .make-row();
+            margin-top: 10px;
 
             .number {
-                float: left;
+                background-color: @dark-gray;
                 color: white;
-                background-color: black;
-                height: 30px;
-                width: 30px;
+                width: 40px !important;
+                padding: 5px;
+                text-align: center;
+                font-weight: bold;
+                font-size: large;
+                z-index: 2;
+                float: left;
             }
             
             .detail {
+                font-size: large;
                 background-color: @orange;
                 color: white;
+                padding: 5px;
 
                 .title {
                     font-size: large;
+                    margin-left: 10px;
                 }
                 
                 .back {
+                    margin-right: 10px;
+                    .pull-right();
                     &:hover {
+                        cursor: pointer;
                         text-decoration: underline;
                     }
                 }
             }
         }
-    }
 
-    .bus-mates-header {
-        color: white;
-        background-color: gray;
-    }
+        .body {
+            .make-row();
+            padding: 20px;
+            background-color: rgba( 225, 225, 225, 0.5 );
 
+            .description-header {
+                .make-row();
+                font-size: large;
+                padding: 20px;
+            }
+            
+            .description {
+                .make-row();
+                padding: 20px;
+            }
+
+            .submission {
+                .make-row();
+                padding: 20px;
+
+                .text {
+                    background-color: white;
+                    border: 1px solid lightgray;
+
+                    textarea {
+                        display: block;
+                        width: 100%;
+                        padding: 5px;
+                        margin: 0px;
+                        border: none;
+                    }
+                }
+
+                .bottom {
+                    .make-row();
+                    border-bottom: 1px solid lightgray;
+                    border-right: 1px solid lightgray;
+                    border-left: 1px solid lightgray;
+                    background-color: white;
+
+                    span,
+                    button {
+                        padding: 5px 15px;
+                    }
+
+                    .glyphicon {
+                        .make-md-column(1);
+                        color: lightgray;
+                        font-size: 30px;
+                        border-right: 1px solid lightgray;
+                        text-align: center;
+                    }
+
+                    .filename {
+                        .make-md-column(7);
+                        height: 40px;
+                    }
+                    
+                    .submit {
+                        .make-md-column(3);
+                        background-color: @orange;
+                        color: white;
+                        text-align: center;
+                        border: none;
+                        height: 40px;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

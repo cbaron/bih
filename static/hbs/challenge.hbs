@@ -1,37 +1,40 @@
 <div class="challenge-page">
-    <div class="col-md-12">
-        <div class="header">4 Week Challenge</div>
-        <div class="challenge-container">
-            <div class="col-md-12">
-                <div class="header">
-                    <div data-js="challengeNumber" class="number"></div>
-                    <div class="detail">
-                        <div data-js="challengeTitle" class="title"></div>
-                        <div data-js="backButton" class="back"></div>
-                    </div>
+    <div class="header">4 Week Challenge</div>
+    <div class="challenge-container">
+        <div class="col-md-12">
+            <div class="challenge-header">
+                <div data-js="challengeNumber" class="number"></div>
+                <div class="detail">
+                    <span data-js="challengeTitle" class="title"></span>
+                    <span data-js="backButton" class="back">
+                        <span class="glyphicon glyphicon-hand-left"></span>
+                        <span>Back</span>
+                    </span>
                 </div>
-                <div class="body">
-                    <div class="col-md-12">
-                        <div class="header">Challenge Description</div>
-                        <div data-js="description" class="description"></div>
-                    </div>
-                </div>
-                <div class="submission">
-                    <div class="col-md-12">
+            </div>
+            <div class="body">
+
+                <div class="col-md-12">
+                    <div class="description-header">Challenge Description</div>
+                    <div data-js="description" class="description"></div>
+
+                    <div class="submission">
                         <div class="text">
-                            <textarea placeholder="Type submission here..."></textarea>
+                            <textarea rows="5" placeholder="Type submission here..."></textarea>
                         </div>
-                        <div class="bottom">
-                            <div class="photo"></div>
-                            <div class="video"></div>
-                            <div class="filename"></div>
-                            <button class="submit"></div>
+                        <div class="col-md-12">
+                            <div class="bottom">
+                                <span class="glyphicon glyphicon-picture"></span>
+                                <span class="glyphicon glyphicon-facetime-video"></span>
+                                <span class="filename"></span>
+                                <button class="submit">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="bus-mates-header">Submissions</div>
-        <div data-js="busMatesContainer" class="bus-mates-container"></div>
     </div>
+    <div class="bus-mates-header">Submissions</div>
+    <div data-js="busMatesContainer" class="bus-mates-container"></div>
 </div>

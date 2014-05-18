@@ -3,11 +3,12 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'models/user',
       'templates/challengeList',
-      'css!styles/challengeList'
+      'css!styles/challengeList',
     ],
     
-    function( $, _, Backbone, template ) {
+    function( $, _, Backbone, user, template ) {
 
         return Backbone.View.extend( {
 
@@ -65,7 +66,11 @@ define(
             },
 
             handleChallengeClick: function(e) {
-                this.router.navigate( [ 'challenge', 'index', $(e.currentTarget).attr('data-js') ].join("/"), { trigger: true } );
+                this.router.navigate( [
+                    'challenge',
+                    'detail',
+                    user.get('busId'),
+                    $(e.currentTarget).attr('data-js') ].join("/"), { trigger: true } );
             }
 
         } );

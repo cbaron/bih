@@ -14,13 +14,13 @@ define(
             content: $("#content"),
 
             routes: {
-                'challenge/index/:id':  'challenge',
-                'fourweekchallenge':    'fourWeekChallenge',
-                'hundredpointchallenge': 'hundredPointChallenge',
-                'register':             'register',
-                'dashboard':            'dashboard',
-                'index':                'dashboard',
-                '':                     'dashboard'
+                'challenge/detail/:bus/:id': 'challenge',
+                'fourweekchallenge':        'fourWeekChallenge',
+                'hundredpointchallenge':    'hundredPointChallenge',
+                'register':                 'register',
+                'dashboard':                'dashboard',
+                'index':                    'dashboard',
+                '':                         'dashboard'
             },
 
             isLoggedIn: function() {
@@ -84,11 +84,11 @@ define(
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
 
-            challenge: function(id) {
+            challenge: function(bus,id) {
                 this.toDo = function() {
                     this.hideContent();
                     require( [ 'views/header' ] );
-                    require( [ 'views/challenge' ], function( challenge ) { challenge.update(id); } );
+                    require( [ 'views/challenge' ], function( challenge ) { challenge.update(bus,id); } );
                 }
                 if( this.isLoggedIn() ) { this.toDo(); }
             },

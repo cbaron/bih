@@ -40,3 +40,7 @@ def GET( sf ):
                          points = row['BIH_Challenge__r']['Points_per_entry__c'] ) )
 
     return response.json( rv )
+
+def detail():
+    response.view = 'default/index.html'
+    return dict()
