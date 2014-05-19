@@ -83,7 +83,8 @@ define(
                 } );
                 
                 this.busMates = new busMates( {
-                    el: this.templateData.busMatesItemContainer
+                    el: this.templateData.busMatesItemContainer,
+                    mode: 'badges'
                 } );
 
                 this.listenToOnce( this.challenges, 'rendered', this.updateBusMateHeader );

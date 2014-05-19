@@ -5,7 +5,9 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
         defaults: {
             "id": undefined,
             "name": undefined,
-            "datetime": undefined
+            "description": undefined,
+            "datetime": undefined,
+            "imageUrl": undefined
         }
 
     } );

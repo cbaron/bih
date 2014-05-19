@@ -1,11 +1,16 @@
 {{#each busMates}}
     <div data-js="{{this.id}}" class="bus-mate-row">
-        <div class="image"></div>
+        <div class="image">
+            <img data-js="image"/>
+        </div>
         <div class="bus-mate-detail">
             <span class="glyphicon glyphicon-comment"></span>
             <span class="name">{{this.lastName}}, {{this.firstName}}</span>
-            {{#each badge}}
-            {{/each}}
+            <span class="badge-container" data-js="badgeContainer"></span>
+        </div>
+        <div class="clearfix hide">
+            <div class="col-md-2"></div>
+            <div class="detail-container" data-js="detailContainer"></div>
         </div>
     </div>
 {{/each}}

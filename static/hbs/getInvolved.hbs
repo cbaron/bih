@@ -1,0 +1,15 @@
+<div class="get-involved-header">Get Involved</div>
+<div class="get-involved-item-container">
+    <div class="md-col-12">
+    {{#each event}}
+        <div class="event-container">
+            <div class="image">
+                <img src="{{this.imageUrl}}">
+            </div>
+            <div class="detail">
+                <div class="title">{{this.title}}</div>
+                <div class="description">{{this.description}}</div>
+            </div>
+        </div>
+    {{/each}}
+</div>

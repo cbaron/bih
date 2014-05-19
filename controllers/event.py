@@ -19,11 +19,11 @@ def GET( sf ):
 
     rv = [ ]
     for event in events:
-        print event, "\n"
         rv.append(\
             dict( id = event['Id'],
                   imageUrl = event['Image_Location__c'],
                   name = event['BIH_Opportunity_Name__c'],
+                  description = event['Description__c'],
                   datetime = ' '.join( [ event['Date__c'], event['Time__c'] ] ) ) )
 
 

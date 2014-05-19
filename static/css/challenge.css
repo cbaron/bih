@@ -67,7 +67,9 @@
 .challenge-page .challenge-container .body .submission:before,
 .challenge-page .challenge-container .body .submission:after,
 .challenge-page .challenge-container .body .submission .bottom:before,
-.challenge-page .challenge-container .body .submission .bottom:after {
+.challenge-page .challenge-container .body .submission .bottom:after,
+.challenge-page .bus-mates-header:before,
+.challenge-page .bus-mates-header:after {
   content: " ";
   display: table;
 }
@@ -92,7 +94,8 @@
 .challenge-page .challenge-container .body .description-header:after,
 .challenge-page .challenge-container .body .description:after,
 .challenge-page .challenge-container .body .submission:after,
-.challenge-page .challenge-container .body .submission .bottom:after {
+.challenge-page .challenge-container .body .submission .bottom:after,
+.challenge-page .bus-mates-header:after {
   clear: both;
 }
 .challenge-page {
@@ -144,6 +147,7 @@
   margin-left: -15px;
   margin-right: -15px;
   margin-top: 10px;
+  padding: 0px;
 }
 .challenge-page .challenge-container .challenge-header .number {
   background-color: #4f4f4f;
@@ -235,12 +239,21 @@
     width: 8.33333333%;
   }
 }
+.challenge-page .challenge-container .body .submission .bottom .glyphicon.enabled {
+  color: black;
+}
+.challenge-page .challenge-container .body .submission .bottom .glyphicon.enabled:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .challenge-page .challenge-container .body .submission .bottom .filename {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   height: 40px;
+  line-height: 30px;
+  color: lightgray;
 }
 @media (min-width: 992px) {
   .challenge-page .challenge-container .body .submission .bottom .filename {
@@ -267,4 +280,37 @@
 }
 .challenge-page .challenge-container .body .submission .bottom .submit:hover {
   text-decoration: underline;
+}
+.challenge-page .bus-mates-header {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 20px;
+  background-color: #4f4f4f;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+}
+.challenge-page .bus-mates-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding: 0px 40px;
+  margin-bottom: 40px;
+  background-color: white;
+}
+@media (min-width: 992px) {
+  .challenge-page .bus-mates-container {
+    float: left;
+    width: 100%;
+  }
+}
+.challenge-page .bus-mates-container .bus-mate-row {
+  background-color: white;
+  height: 50px;
+  padding: 5px 0px;
+  border-bottom: 1px solid lightgray;
+}
+.challenge-page .bus-mates-container .glyphicon-comment {
+  color: white;
 }

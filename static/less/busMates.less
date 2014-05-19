@@ -12,10 +12,21 @@
 
     .image {
         background-color: @dark-gray;
-        .make-md-column(1);
-        width: 40px !important;
+        float: left;
+        width: 40px;
         height: 40px;
         border-bottom: 1px solid white;
+
+        img {
+            width: 100%;
+            height: 100%;
+
+            &.enabled {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     .bus-mate-detail {
@@ -35,8 +46,31 @@
         }
 
         name {
+            font-weight: bold;
         }
 
     }
 
+    .badge-container {
+        display: inline-block;
+        float: right;
+    }
+
+    .bih-badge {
+        background-color: @dark-gray;
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        color: @light-orange;
+        font-size: large;
+        text-align: center;
+        font-weight: bold;
+        line-height: 30px;
+    }
+
+    .detail-container {
+        .make-md-column(10);
+        padding: 10px;
+    }
 }

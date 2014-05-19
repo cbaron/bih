@@ -17,6 +17,7 @@ define(
                 'challenge/detail/:bus/:id': 'challenge',
                 'fourweekchallenge':        'fourWeekChallenge',
                 'hundredpointchallenge':    'hundredPointChallenge',
+                'getinvolved':              'getInvolved',
                 'register':                 'register',
                 'dashboard':                'dashboard',
                 'index':                    'dashboard',
@@ -98,6 +99,15 @@ define(
                 require( [ 'views/header' ] );
                 require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
                     if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
+
+                if( this.isLoggedIn() ) { this.toDo(); }
+            },
+
+            getInvolved: function() {
+                this.hideContent();
+                require( [ 'views/header' ] );
+                require( [ 'views/getInvolved' ], function( getInvolved ) {
+                    if( getInvolved.$el.is(':hidden') ) { getInvolved.$el.fadeIn(); } } );
 
                 if( this.isLoggedIn() ) { this.toDo(); }
             },

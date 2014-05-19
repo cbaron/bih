@@ -25,10 +25,18 @@
             .make-row();
             background-color: rgb( 224, 224, 224 );
             border-bottom: 1px solid @gray;
-                    
-            &:hover {
+
+            &.completed {
                 background-color: rgba( 224, 224, 224, 0.5 );
+            }
+                                
+            &:hover {
                 cursor: pointer;
+
+                .number,
+                .challenge-detail { 
+                    text-decoration: underline;
+                }
             }
 
 
@@ -45,7 +53,6 @@
 
             .challenge-detail-wrap {
                 .make-md-column(11);
-                background-color: rgba( 225, 225, 225, 0.5 );
                 font-size: large;
 
                 .challenge-detail {

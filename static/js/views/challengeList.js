@@ -4,11 +4,12 @@ define(
       'underscore',
       'backbone',
       'models/user',
+      'collections/userPost',
       'templates/challengeList',
       'css!styles/challengeList',
     ],
     
-    function( $, _, Backbone, user, template ) {
+    function( $, _, Backbone, user, userPosts, template ) {
 
         return Backbone.View.extend( {
 
@@ -54,6 +55,12 @@ define(
                     keepDataJs: true
                 } );
 
+                if( userPosts.length ) {
+                    this.addUserPostMarkup();
+                } {
+                    this.listenToOnce( userPosts, 'sync', this.addUserPostMarkup );
+                }
+
                 this.trigger('rendered');
 
                 this.delegate();
@@ -71,6 +78,15 @@ define(
                     'detail',
                     user.get('busId'),
                     $(e.currentTarget).attr('data-js') ].join("/"), { trigger: true } );
+            },
+
+            addUserPostMarkup: function() {
+                
+                userPosts.each( function( post ) {
+                    if( this.templateData[ post.get('challengeId') ] ) {
+                        this.templateData[ post.get('challengeId') ].addClass('completed');
+                    }
+                }, this );
             }
 
         } );

@@ -106,10 +106,19 @@
   background-color: #e0e0e0;
   border-bottom: 1px solid #3f3f3f;
 }
+.past-challenge-container .challenge-item-container .challenge-row.completed,
+.challenge-container .challenge-item-container .challenge-row.completed {
+  background-color: rgba(224, 224, 224, 0.5);
+}
 .past-challenge-container .challenge-item-container .challenge-row:hover,
 .challenge-container .challenge-item-container .challenge-row:hover {
-  background-color: rgba(224, 224, 224, 0.5);
   cursor: pointer;
+}
+.past-challenge-container .challenge-item-container .challenge-row:hover .number,
+.challenge-container .challenge-item-container .challenge-row:hover .number,
+.past-challenge-container .challenge-item-container .challenge-row:hover .challenge-detail,
+.challenge-container .challenge-item-container .challenge-row:hover .challenge-detail {
+  text-decoration: underline;
 }
 .past-challenge-container .challenge-item-container .challenge-row .number,
 .challenge-container .challenge-item-container .challenge-row .number {
@@ -138,7 +147,6 @@
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: rgba(225, 225, 225, 0.5);
   font-size: large;
 }
 @media (min-width: 992px) {

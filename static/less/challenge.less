@@ -18,6 +18,7 @@
         .challenge-header {
             .make-row();
             margin-top: 10px;
+            padding: 0px;
 
             .number {
                 background-color: @dark-gray;
@@ -104,11 +105,22 @@
                         font-size: 30px;
                         border-right: 1px solid lightgray;
                         text-align: center;
+
+                        &.enabled {
+                            color: black;
+
+                            &:hover {
+                                cursor: pointer;
+                                text-decoration: underline;
+                            }
+                        }
                     }
 
                     .filename {
                         .make-md-column(7);
                         height: 40px;
+                        line-height: 30px;
+                        color: lightgray;
                     }
                     
                     .submit {
@@ -125,6 +137,36 @@
                     }
                 }
             }
+        }
+    }
+
+    .bus-mates-header {
+        .make-row();
+        margin-top: 20px;
+        background-color: @dark-gray;
+        font-size: large;
+        color: white;
+        padding: 10px 20px;
+    }
+
+    .bus-mates-container {
+        .make-md-column(12);
+        padding: 0px 40px;
+        margin-bottom: 40px;
+        background-color: white;
+
+        .bus-mate-row {
+            background-color: white;
+            height: 50px;
+            padding: 5px 0px;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .image {
+        }
+
+        .glyphicon-comment {
+            color: white;
         }
     }
 }

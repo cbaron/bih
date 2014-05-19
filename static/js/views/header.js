@@ -16,9 +16,11 @@ define(
 
         events: {
             
-           'click  *[data-js="dropdownButton"]': 'showDropdown',
-           'click  *[data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick',
-           'click  *[data-js="hundredPointChallengeBtn"]': 'handlePointChallengeBtnClick'
+           'click  [data-js="dropdownButton"]': 'showDropdown',
+           'click  [data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick',
+           'click  [data-js="hundredPointChallengeBtn"]': 'handlePointChallengeBtnClick',
+           'click  [data-js="getInvolvedBtn"]': 'getInvolvedClicked'
+                
         },
 
         initialize: function() {
@@ -78,6 +80,10 @@ define(
 
         handlePointChallengeBtnClick: function() {
             this.router.navigate('hundredpointchallenge', { trigger: true} );
+        },
+        
+        getInvolvedClicked: function() {
+            this.router.navigate('getinvolved', { trigger: true} );
         },
 
     } );
