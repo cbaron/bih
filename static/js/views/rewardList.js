@@ -7,10 +7,11 @@ define(
         'models/user',
         'collections/events',
         'templates/dashboard',
-        'css!styles/dashboard'
+        'css!styles/dashboard',
+        'collections/rewardTable'
     ],
 
-    function( $, _, Backbone, leaderboard, user, events, dashboardHtml ) {
+    function( $, _, Backbone, rewardTable) {
 
         var dashboard = Backbone.View.extend( {
 
