@@ -3,10 +3,10 @@ define(
     [ 'jquery',
         'underscore',
         'backbone',
-        'models/bus'
+        'models/reward'
     ],
 
-    function( $, _, Backbone, bus ) {
+    function( $, _, Backbone, reward ) {
 
         var rewards = Backbone.Collection.extend( {
 

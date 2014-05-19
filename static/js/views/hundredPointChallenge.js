@@ -10,11 +10,12 @@ define(
         'views/challengeList',
         'models/user',
         'collections/rewards',
+        'views/rewardList',
         'templates/hundredPointChallenge',
         'css!styles/hundredPointChallenge'
     ],
 
-    function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
+    function( $, _, Backbone, rewards, rewardList ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -44,10 +45,8 @@ define(
                     keepDataJs: true
                 } );
 
-                this.rewardTable = new rewardTable( {
+                this.rewardList = new rewardList( {
                     el: this.templateData.rewards,
-                    mode: 'leader',
-                    user: user,
                     rewards: rewards
                 } );
 

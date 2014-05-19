@@ -8,10 +8,10 @@ define(
         'collections/events',
         'templates/dashboard',
         'css!styles/dashboard',
-        'collections/rewardTable'
+        'collections/rewards'
     ],
 
-    function( $, _, Backbone, rewardTable) {
+    function( $, _, Backbone, rewards) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -26,7 +26,7 @@ define(
 
             initialize: function() {
 
-                this[ ( events.length )
+                this[ ( rewards.length )
                     ? 'render'
                     : 'waitForData' ]();
 
@@ -42,10 +42,8 @@ define(
                     keepDataJs: true
                 } );
 
-                this.rewardTable = new rewardTable( {
+                this.rewardList = new rewardList( {
                     el: this.templateData.rewards,
-                    mode: 'short',
-                    user: user
                 } );
 
                 return this;
