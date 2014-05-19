@@ -95,6 +95,7 @@
 }
 .login-container .button:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 .login-container .login-button {
   background-color: #1385ce;

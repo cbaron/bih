@@ -9,8 +9,7 @@ define(
         'views/leaderboard',
         'views/challengeList',
         'models/user',
-        'collections/buses',
-        'collections/challenges',
+        'collections/rewards',
         'templates/hundredPointChallenge',
         'css!styles/hundredPointChallenge'
     ],
@@ -45,16 +44,11 @@ define(
                     keepDataJs: true
                 } );
 
-                this.leaderboard = new leaderboard( {
-                    el: this.templateData.leaderboardItems,
+                this.rewardTable = new rewardTable( {
+                    el: this.templateData.rewards,
                     mode: 'leader',
                     user: user,
-                    buses: buses
-                } );
-
-                this.challenges = new challengeList( {
-                    el: this.templateData.challengeContainer,
-                    challenges: challenges
+                    rewards: rewards
                 } );
 
                 return this;
@@ -66,5 +60,5 @@ define(
 
         } );
 
-        return new dashboard();
+        return new rewardTable();
     } );
