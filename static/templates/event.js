@@ -1,0 +1,12 @@
+define(['handlebars.runtime'], function(Handlebars) {
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"header\">Get Involved</div>\n<div class=\"event-container\">\n    <div class=\"col-md-12\">\n        <div class=\"nav-row\">\n            <span data-js=\"backButton\" class=\"back\">\n                <span class=\"glyphicon glyphicon-hand-left\"></span>\n                <span>Back</span>\n            </span>\n        </div>        \n        <div data-js=\"name\" class=\"name\"></div>\n        <div class=\"image-content\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10\">\n                <div class=\"image-container\">\n                    <img data-js=\"imageUrl\" src=\"\" />\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n        <div class=\"content\">\n            <div class=\"col-md-1\"></div>\n            <div class=\"col-md-10\">\n                <div data-js=\"datetime\" class=\"datetime\"></div>\n                <div data-js=\"venue\" class=\"venue\"></div>\n                <div data-js=\"address\" class=\"address\"></div>\n                <div data-js=\"description\" class=\"description\"></div>\n                <div class=\"action-row\">\n                    <div class=\"action\">\n                        <div>\n                            <span class=\"glyphicon glyphicon-thumbs-up\"></span>\n                        </div>\n                        <div>Count me in!</div>\n                    </div>\n                    <div class=\"action\">\n                        <div>\n                            <span class=\"glyphicon glyphicon-road\"></span>\n                        </div>\n                        <div>Maybe next time</div>\n                    </div>\n                    <div class=\"action\">\n                        <div>\n                            <span class=\"glyphicon glyphicon-thumbs-down\"></span>\n                        </div>\n                        <div>Not for me</div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-md-1\"></div>\n        </div>\n    </div>\n</div>\n";
+  })
+
+});

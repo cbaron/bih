@@ -32,7 +32,7 @@
         <div class="header">100 Point Challenge</div>
         <div class="content">
             <div class="individual-point-display">
-                <div>74</div>
+                <div>{{user.points}}</div>
             </div>
             <div class="out-of-display">
                 <div>
@@ -41,20 +41,20 @@
                 </div>
             </div>
         </div>
-        <div class="complete-challenge-btn btn">Complete a Challenge!</div>
+        <div data-js="hundredPointBtn" class="complete-challenge-btn btn">Complete a Challenge!</div>
     </div>
 
     <div class="dashboard-local-events">
         <div class="local-event-header">Local Events</div>
             <div data-js="localEventItems" class="local-event-items"">
                 {{#each events}}
-                    <div class="local-event-item">
-                        <div class="local-event-image">
+                    <div data-id="{{this.id}}" class="local-event-item">
+                        <div data-js="eventBtn" class="local-event-image">
                             <img src="{{this.imageUrl}}"/>
                         </div>
                         <div class="local-event-text">
-                            <div class="local-event-title">{{this.name}}</div>
-                            <div class="local-event-location">{{this.datetime}}</div>
+                            <div data-js="eventBtn" class="local-event-title">{{this.name}}</div>
+                            <div data-js="eventBtn" class="local-event-location">{{this.datetime}}</div>
                         </div>
                     </div>
                 {{/each}}

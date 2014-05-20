@@ -1,0 +1,102 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.event-page {
+    .container();
+
+    .header {
+        .make-row();
+        text-align: center;
+        color: @blue;
+        font-size: xx-large;
+        padding-top: 50px;
+    }
+
+    .event-container {
+        .make-row();
+        background-color: rgba( 225, 225, 225, 0.5 );
+        margin-top: 10px;
+    }
+
+    .nav-row {
+        .make-row();
+    }
+    
+    .back {
+        margin-right: 10px;
+        .pull-right();
+        font-size: large;
+        padding: 5px;
+        color: black;
+
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    .name {
+        .make-row();
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .content,
+    .image-content {
+        .make-row();
+    }
+
+    .content {
+        background-color: lightgray;
+    }
+    
+    .image-content {
+        padding-bottom: 40px;
+    }
+
+    .image-container {
+        .make-row();
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .datetime {
+        .make-row();
+        padding: 10px;
+        color: @orange;
+        font-size: large;
+        text-align: center;
+    }
+
+    .description {
+        .make-row();
+        border-top: 1px solid black;
+        padding-top: 10px;
+        margin: 20px 0px 40px;
+    }
+
+    .action-row {
+        .make-row();
+        font-size: large;
+    }
+
+    .action {
+        .make-md-column(4);
+
+        span {
+            background-color: @orange;
+        }
+
+        .glyphicon {
+            color: lightgray;
+        }
+    }
+
+
+}

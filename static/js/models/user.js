@@ -19,6 +19,7 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "busId": undefined,
             "busName": undefined,
             "profileImageUrl": undefined,
+            "points": undefined,
             "isLoggedIn": false,
 
         },

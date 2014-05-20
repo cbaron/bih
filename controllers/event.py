@@ -29,3 +29,7 @@ def GET( sf ):
 
     return response.json( rv )
 
+
+def detail():
+    response.view = 'default/index.html'
+    return dict()

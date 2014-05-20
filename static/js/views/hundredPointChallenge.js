@@ -6,11 +6,7 @@ define(
     [ 'jquery',
         'underscore',
         'backbone',
-        'views/leaderboard',
-        'views/challengeList',
-        'models/user',
-        'collections/buses',
-        'collections/challenges',
+        'collections/prizePath',
         'templates/hundredPointChallenge',
         'css!styles/hundredPointChallenge'
     ],

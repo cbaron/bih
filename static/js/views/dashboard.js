@@ -25,6 +25,8 @@ define(
             events: {
 
                 'click div[data-js="uploadPhotoBtn"]': 'handleUploadPhotoClick',
+                'click div[data-js="hundredPointButton"]': 'hundredPointClicked',
+                'click [data-js="eventBtn"]': 'eventClicked'
             },
 
             initialize: function() {
@@ -88,6 +90,17 @@ define(
 
             handleUploadPhotoClick: function() {
                 this.templateData.profileImageUpload.click();
+            },
+
+            hundredPointClicked: function() {
+                this.router.navigate( 'hundredpointchallenge', { trigger: true } );
+            },
+
+            eventClicked: function(e) {
+                this.router.navigate( [
+                    'event',
+                    'detail',
+                    $(e.currentTarget).closest('[data-id]').attr('data-id') ].join("/"), { trigger: true } );
             }
 
         } ) )();
