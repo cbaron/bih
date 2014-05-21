@@ -41,10 +41,17 @@ def post():
     errorMsg = ''
 
     yearGraduated = request.vars.graduated[0:3] if len( request.vars.graduated ) > 3 else '1970'
+    birthday = '1970-01-01'
+    if request.vars.year:
+        birthday[0:3] = request.vars.year[0:3]
+    if request.vars.month:
+        birthday[5:6] = request.vars.month[0:1]
+    if request.vars.day:
+        birthday[8:9] = request.vars.day[0:1]
 
     #try:
     sf.BIH_User__c.update( session.userId, {\
-        'Birthdate__c': request.vars.year[0:3] + '-' + request.vars.month[0:1] + '-' + request.vars.day[0:1],
+        'Birthdate__c': birthday,
         'Phone__c': request.vars.phone,
         'Location__c': request.vars.location,
         'School__c': request.vars.university,

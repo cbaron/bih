@@ -1,21 +1,21 @@
 /**
  * Created by tonybaron on 5/8/14.
+ * HueHue'd by Chris Baron on 5/20/14
  */
 define(
-
-    [ 'jquery',
-        'underscore',
-        'backbone',
-        'collections/prizePath',
-        'templates/hundredPointChallenge',
-        'css!styles/hundredPointChallenge'
+    [
+      'jquery',
+      'underscore',
+      'backbone',
+      'models/enroll',
+      'models/user'
     ],
 
-    function( $, _, Backbone, leaderboard, challengeList, user, buses, challenges, template ) {
+    function( $, _, Backbone, enroll, user ) {
 
-        var dashboard = Backbone.View.extend( {
+        return new ( Backbone.View.extend( {
 
-            className: 'container hundred-point-container',
+            className: 'hundred-point-container',
 
             templateData: { },
 
@@ -25,42 +25,74 @@ define(
             initialize: function() {
 
                 //should just get the user on every route
-                this[ ( user.has('firstName') )
-                    ? 'render'
-                    : 'waitForUserData' ]();
+                this[ ( enroll.has('challengeId') )
+                    ? 'waitForData'
+                    : 'waitForEnrollData' ]();
 
                 return this;
             },
 
             render: function() {
 
+                console.log( this.templateInput );
+
                 this.slurpTemplate( {
-                    template: template( { user: user.attributes } ),
+                    template: this.template( this.templateInput ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
                 } );
 
-                this.leaderboard = new leaderboard( {
-                    el: this.templateData.leaderboardItems,
-                    mode: 'leader',
-                    user: user,
-                    buses: buses
-                } );
-
-                this.challenges = new challengeList( {
-                    el: this.templateData.challengeContainer,
-                    challenges: challenges
-                } );
-
                 return this;
             },
 
-            waitForUserData: function() {
-                this.listenToOnce( user, 'change', this.render );
+            challengeController: function() {
+                var categories = [],
+                    categoryClass = '';
+
+                categories = _.uniq( _.pluck( this.challenges.toJSON(), 'category' ) );
+                categoryClass = 'col-md-' + Math.floor( 12 / categories.length );
+                this.templateInput = {
+                    data: this.challenges.toJSON(),
+                    userPoints: user.get('points'),
+                    categories: categories,
+                    categoryClass: categoryClass
+                };
+                this.render();
+            },
+
+            waitForEnrollData: function() {
+                this.listenToOnce( enroll, 'sync', this.waitForData );
+            },
+
+            waitForData: function() {
+                var self = this;
+
+                if( enroll.get('challengeId') ) {
+                    require(
+                        [ 'collections/hundredChallenge',
+                          'templates/hundredChallenges',
+                          'css!styles/hundredChallenges' ],
+                             
+                        function( challenges, template ) {
+                            self.challenges = challenges;
+                            self.template = template;
+                            if( challenges.length ) { this.challengeController(); }
+                            else { self.listenToOnce( challenges, 'sync', self.challengeController ); }
+                        }
+                    );
+                } else {
+                    require(
+                        [ 'collections/challengeOption',
+                          'templates/challengeOptions',
+                          'css!styles/challengeOptions' ],
+                               
+                        function( options, template ) {
+                           self.templateInput = { data: options, userPoints: user.points }; self.template = template; self.render();
+                        }
+                    );
+                }
             }
 
-        } );
-
-        return new dashboard();
+        } ) )();
     } );

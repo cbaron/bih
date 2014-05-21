@@ -1,0 +1,38 @@
+<div class="header">100 Point Challenge</div>
+<div class="point-container">
+    <div class="col-md-12">
+        <div class="point-header">You've earned {{userPoints}} points!</div>
+        <div class="point-bar-container">
+            <div class="point-bar"></div>
+        </div>
+    </div>
+</div>
+<div class="challenge-container">
+    <div class="col-md-12">
+        <div class="row">
+            {{#each data.categories}}
+                <div class="category-header {{categoryClass}}">{{this}}</div>
+            {{/each}}
+        </div>
+        <div class="category-footer"></div>
+        <div class="challenge-list">
+            <div class="col-md-12">
+                {{#each data}}
+                    <div data-category="{{this.category}}" class="challenge-row">
+                        <div class="content">
+                            <div class="heading">
+                                <span class="name">{{this.name}}</span>
+                                <span class="count">{{this.points}}</span>
+                                <span class="points">points</span>
+                            </div>
+                            <div class="rules">{{this.rules}}</div>
+                        </div>
+                        <div class="check">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

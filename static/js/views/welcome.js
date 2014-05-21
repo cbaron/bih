@@ -124,7 +124,6 @@ define(
                         data: data,
                         //type: 'POST',
                         success: function( response ) {
-                            console.log(response);
                         }
                     } );
                 }

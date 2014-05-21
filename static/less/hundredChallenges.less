@@ -1,0 +1,83 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.hundred-point-container {
+    .container();
+
+    .header {
+        .make-row();
+        text-align: center;
+        color: @blue;
+        font-size: xx-large;
+        padding-top: 50px;
+    }
+
+    .point-container {
+        .make-row();
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 5px;
+        background-color: rgba( 225, 225, 225, 0.5 );
+    }
+
+    .point-header {
+        .make-row();
+        text-align: center;
+        font-size: large;
+    }
+
+    .point-bar-container {
+        .make-row();
+        border: 5px solid gray;
+        background-color: @sky-blue;
+        height: 60px;
+    }
+
+    .point-bar {
+        height: 50px;
+        background-color: @blue;
+    }
+
+    .challenge-container {
+        .make-row();
+    }
+
+    .category-footer {
+        .make-row();
+        background-color: @blue;
+    }
+
+    .challenge-list {
+        .make-row();
+    }
+
+    .challenge-row {
+        .make-row();
+        background-color: rgba( 225, 225, 225, 0.5 );
+
+        .content {
+            .make-md-column(10);
+        }
+
+        .name {
+            font-size: medium;
+        }
+
+        .heading {
+            padding: 5px;
+        }
+
+        .count {
+            color: @blue;
+            font-size: large;
+        }
+        
+        .check {
+            .make-md-column(2);
+            text-align: center;
+            font-size: x-large;
+            background-color: @blue;
+            color: gray;
+        }
+    }
+}
