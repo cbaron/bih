@@ -20,11 +20,13 @@ define(
             templateData: { },
 
             events: {
+                'click button[data-js="selectBtn"]': 'selectClicked'
             },
 
             initialize: function() {
 
-                //should just get the user on every route
+                console.log( enroll);
+
                 this[ ( enroll.has('challengeId') )
                     ? 'waitForData'
                     : 'waitForEnrollData' ]();
@@ -34,8 +36,6 @@ define(
 
             render: function() {
 
-                console.log( this.templateInput );
-
                 this.slurpTemplate( {
                     template: this.template( this.templateInput ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
@@ -44,6 +44,11 @@ define(
                 } );
 
                 return this;
+            },
+
+            optionController: function() {
+                this.templateInput = { data: this.options.toJSON() };
+                this.render();
             },
 
             challengeController: function() {
@@ -88,10 +93,18 @@ define(
                           'css!styles/challengeOptions' ],
                                
                         function( options, template ) {
-                           self.templateInput = { data: options, userPoints: user.points }; self.template = template; self.render();
+                            self.options = options;
+                            self.template = template;
+                            if( options.length ) { this.optionController(); }
+                            else { self.listenToOnce( options, 'sync', self.optionController ); }
+                            
                         }
                     );
                 }
+            },
+
+            selectClicked: function(e) {
+                enroll.set('challengeId', $(e.currentTarget).data('id') ).save();
             }
 
         } ) )();

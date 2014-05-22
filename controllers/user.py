@@ -13,7 +13,7 @@ def GET( sf, session ):
             ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C ",
-                       "WHERE BIH_Username__c = '", request.vars.e, "' ",
+                       "WHERE Email__c = '", request.vars.e, "' ",
                        "AND BIH_Password__c ='" , request.vars.p, "'" ] ) )['records']
 
         if len( records ):

@@ -9,7 +9,8 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "name": undefined,
             "rules": undefined,
             "week": undefined,
-            "points": undefined
+            "points": undefined,
+            "imageUrl": undefined
         }
 
     } );
