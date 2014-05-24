@@ -29,7 +29,7 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: template( { name: user.busName } ),
+                    template: template( { busName: user.get('busName') } ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true

@@ -116,20 +116,22 @@ define(
             },
 
             getInvolved: function() {
-                this.hideContent();
-                require( [ 'views/header' ] );
-                require( [ 'views/getInvolved' ], function( getInvolved ) {
-                    if( getInvolved.$el.is(':hidden') ) { getInvolved.$el.fadeIn(); } } );
-
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/getInvolved' ], function( getInvolved ) {
+                        if( getInvolved.$el.is(':hidden') ) { getInvolved.$el.fadeIn(); } } );
+                }
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
 
             myBus: function() {
-                this.hideContent();
-                require( [ 'views/header' ] );
-                require( [ 'views/myBus' ], function( myBus ) {
-                    if( myBus.$el.is(':hidden') ) { myBus.$el.fadeIn(); } } );
-
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/myBus' ], function( myBus ) {
+                        if( myBus.$el.is(':hidden') ) { myBus.$el.fadeIn(); } } );
+                }
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
 
