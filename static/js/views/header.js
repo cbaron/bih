@@ -19,7 +19,8 @@ define(
            'click  [data-js="dropdownButton"]': 'showDropdown',
            'click  [data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick',
            'click  [data-js="hundredPointChallengeBtn"]': 'handlePointChallengeBtnClick',
-           'click  [data-js="getInvolvedBtn"]': 'getInvolvedClicked'
+           'click  [data-js="getInvolvedBtn"]': 'getInvolvedClicked',
+           'click  [data-js="myBusBtn"]': 'myBusClicked'
                 
         },
 
@@ -85,6 +86,10 @@ define(
         getInvolvedClicked: function() {
             this.router.navigate('getinvolved', { trigger: true} );
         },
+        
+        myBusClicked: function() {
+            this.router.navigate('mybus', { trigger: true} );
+        }
 
     } );
 

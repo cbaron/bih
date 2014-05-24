@@ -25,8 +25,6 @@ define(
 
             initialize: function() {
 
-                console.log( enroll);
-
                 this[ ( enroll.has('challengeId') )
                     ? 'waitForData'
                     : 'waitForEnrollData' ]();

@@ -15,6 +15,7 @@ define(
             url: '/hundredChallenge/index/' + enroll.get('challengeId'),
 
             model: challenge
+
         } ) )();
     }
 );

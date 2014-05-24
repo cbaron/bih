@@ -1,4 +1,4 @@
-define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
+define( [ 'backbone' ], function( Backbone ) {
     
     return Backbone.Model.extend( {
 
@@ -10,7 +10,8 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "rules": undefined,
             "week": undefined,
             "points": undefined,
-            "imageUrl": undefined
+            "imageUrl": undefined,
+            "idx": undefined
         }
 
     } );

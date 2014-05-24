@@ -60,9 +60,12 @@ define(
                 var self = this,
                     fun = function() { busBadges.each( function( model ) {
                         if( this.templateData ) {
-                            this.templateData[ model.get('userId') ].find( 'span[data-js="badgeContainer"]').append(
-                                badgeHtml( { number: challenges.find( function( challenge ) {
-                                    return ( challenge.id == model.get('challengeId') ) }, this ).get('number') } ) );
+                            var challenge = challenges.find( function( challenge ) {
+                                    return ( challenge.id == model.get('challengeId') ) }, this );
+                            if( challenge && challenge.has('number') ) {
+                                this.templateData[ model.get('userId') ].find( 'span[data-js="badgeContainer"]').append(
+                                    badgeHtml( { number: challenge.get('number') } ) );
+                            }
                         }
                     }, this ) },
                     detail = function() { busBadges.each( function( model ) {
@@ -77,7 +80,7 @@ define(
                             var url = model.get('url');
                             if( url ) {
 
-                                if( url.indexOf('youtube') ) {
+                                if( url.indexOf('youtube') > -1 ) {
                                     var video_id = url.split('v=')[1];
                                     var ampersandPosition = video_id.indexOf('&');
                                     if(ampersandPosition != -1) {
@@ -87,6 +90,12 @@ define(
                                     this.templateData[ model.get('userId') ]
                                         .find( 'img[data-js="image"]')
                                             .attr( 'src', 'http://img.youtube.com/vi/' + video_id + '/1.jpg' )
+                                            .addClass('enabled')
+                                            .on( 'click', function() { window.open( url ); } );
+                                } else {
+                                    this.templateData[ model.get('userId') ]
+                                        .find( 'img[data-js="image"]')
+                                            .attr( 'src', url )
                                             .addClass('enabled')
                                             .on( 'click', function() { window.open( url ); } );
                                 }

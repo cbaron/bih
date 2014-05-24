@@ -103,9 +103,6 @@
   top: 10px;
   left: 10px;
 }
-.dashboard-container .dashboard-id .file-upload {
-  display: none;
-}
 .dashboard-container .dashboard-id .upload-photo-btn {
   font-size: medium;
   margin-top: 5px;

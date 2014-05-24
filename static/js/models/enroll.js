@@ -12,7 +12,14 @@ define( [ 'backbone', 'models/user' ], function( Backbone, user ) {
         urlRoot: '/enroll',
 
         sync: function( method, model ) {
+            var self = this;
             if( method === 'read' ) {
+                $.ajax( {
+                    url: '/enroll',
+                    type: 'GET',
+                    success: function( response ) {
+                        self.set(response).trigger('sync');
+                    } } );
             }
 
             if( method === 'create' ) {
@@ -26,19 +33,3 @@ define( [ 'backbone', 'models/user' ], function( Backbone, user ) {
 
     } ) )();
 } );
-
-/*
-fetch: function(options) {
-      options = options ? _.clone(options) : {};
-      if (options.parse === void 0) options.parse = true;
-      var model = this;
-      var success = options.success;
-      options.success = function(resp) {
-        if (!model.set(model.parse(resp, options), options)) return false;
-        if (success) success(model, resp, options);
-        model.trigger('sync', model, resp, options);
-      };
-      wrapError(this, options);
-      return this.sync('read', this, options);
-    },
-*/

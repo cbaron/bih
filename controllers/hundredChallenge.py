@@ -18,11 +18,12 @@ def GET( sf, session ):
                      "BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c, BIH_Challenge__r.Enrollment_Start_Date__c, ",
                      "BIH_Challenge__r.Enrollment_End_Date__c,BIH_Challenge__r.Enrollment_Open__c  ",
                      "FROM X100_Point_Challenges_Enrolled__c ",
-                     "WHERE BIH_Challenge__r.Active__c = TRUE AND Active__c = TRUE AND BIH_Challenge__r.ID = '",
+                     "WHERE BIH_Challenge__r.Active__c = True AND BIH_Challenge__r.ID = '",
                       request.args[0], "'" ] ) )['records']
 
-        for row in records:
+        for idx, row in enumerate( records ):
             rv.append( dict( id = row['BIH_Challenge__r']['Id'],
+                             idx = idx,
                              name = row['BIH_Challenge__r']['Name'],
                              rules = row['BIH_Challenge__r']['Challenge_Rules__c'],
                              week = row['BIH_Challenge__r']['Challenge_Type__c'],
@@ -30,5 +31,6 @@ def GET( sf, session ):
                              category = row['BIH_Challenge__r']['Challenge_Type__c'],
                              points = row['BIH_Challenge__r']['Points_per_entry__c'] ) )
 
+    response.headers['Content-Type']='application/json'
     return response.json(rv)
 

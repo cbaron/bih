@@ -17,8 +17,6 @@ def GET( sf, session ):
                        "WHERE Challenge_Completed__c = TRUE AND "
                        "BIH_Bus__r.ID = '", request.vars.busId, "'" ] ) )['records']
 
-        print records
-
         rv = []
         for row in records:
             rv.append( dict(\

@@ -3,7 +3,7 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'models/post',
+      'models/busMatePost',
       'models/user'
     ],
     

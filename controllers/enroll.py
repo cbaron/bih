@@ -18,6 +18,7 @@ def GET( sf, session ):
     if len( record ) == 0:
         return response.json(dict(challengeId=False))
 
+    response.headers['Content-Type']='application/json'
     return response.json( dict( challengeId = record[0]['BIH_Challenge__c'] ) )
 
 
