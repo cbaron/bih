@@ -65,7 +65,6 @@ define(
                     this.templateData.mediaReference
                         .prop( 'contenteditable', true )
                         .text( 'Paste your youtube link here' );
-
                 }
 
                 if( this.busMates === undefined ) {

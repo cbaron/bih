@@ -37,7 +37,7 @@ def GET( sf, session ):
                        "BIH_Challenge__r.ID = '", request.vars.challengeId, "'" ] ) )['records']
 
         if len( records ) == 0:
-            return response.json(dict())
+            return response.json(dict(challengeId=request.vars.challengeId))
 
         return response.json( dict(\
             id = records[0]['Id'],
@@ -98,8 +98,6 @@ def POST( sf, session ):
         'Image_or_Video_URL__c': request.vars.url,
         'Post_Body__c': request.vars.body,
         'Post_Title__c': request.vars.title } )
-
-    print id
 
     #except:
     #weCool = False

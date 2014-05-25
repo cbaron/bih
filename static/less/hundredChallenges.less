@@ -42,8 +42,41 @@
         .make-row();
     }
 
+    .category-header {
+        text-align: center;
+        font-size: large;
+        line-height: 40px;
+
+        &:nth-child(1) {
+            background-color: @orange;
+        }
+        
+        &:nth-child(2) {
+            background-color: @light-orange;
+        }
+        
+        &:nth-child(3) {
+            background-color: @salmon;
+        }
+        
+        &:nth-child(4) {
+            background-color: bisque;
+        }
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline
+        }
+
+        &.selected {
+            color: white;
+            background-color: @blue;
+        }
+    }
+
     .category-footer {
         .make-row();
+        height: 20px;
         background-color: @blue;
     }
 
@@ -54,30 +87,136 @@
     .challenge-row {
         .make-row();
         background-color: rgba( 225, 225, 225, 0.5 );
+        padding: 20px 0px;
+        border-bottom: 1px solid black;
+        position: relative;
+
+        .resize {
+            position: absolute;
+            top: 5%;
+            left: 95%;
+            font-size: x-large;
+        
+            &:hover {
+                cursor: pointer;
+            }
+        }
 
         .content {
             .make-md-column(10);
+            line-height: 30px;
         }
 
         .name {
             font-size: medium;
+            font-weight: bold;
+            margin: 0px 20px;
+        }
+        .rules {
+            margin: 0px 20px;
         }
 
         .heading {
-            padding: 5px;
         }
 
         .count {
             color: @blue;
-            font-size: large;
+            font-size: x-large;
         }
         
         .check {
             .make-md-column(2);
             text-align: center;
             font-size: x-large;
-            background-color: @blue;
             color: gray;
+            position: relative;
+            top: 30px;
+
+            span.glyphicon {
+                background-color: @blue;
+                padding: 10px;
+                border-radius: 20px;
+            }
+        }
+
+        &.active {
+            
+            &:hover {
+                background-color: lightgray;
+                cursor: default;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: lightgray;
+        }
+    }
+
+    .submission-container {
+
+        .text {
+            background-color: white;
+            border: 1px solid lightgray;
+            margin-top: 30px;
+
+            textarea {
+                display: block;
+                width: 100%;
+                padding: 5px;
+                margin: 0px;
+                border: none;
+            }
+        }
+
+        .bottom {
+            .make-row();
+            border-bottom: 1px solid lightgray;
+            border-right: 1px solid lightgray;
+            border-left: 1px solid lightgray;
+            background-color: white;
+
+            span,
+            button {
+                padding: 5px 15px;
+            }
+
+            .glyphicon {
+                .make-md-column(1);
+                color: lightgray;
+                font-size: 30px;
+                border-right: 1px solid lightgray;
+                text-align: center;
+
+                &.enabled {
+                    color: black;
+
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .filename {
+                .make-md-column(7);
+                height: 40px;
+                line-height: 30px;
+                color: lightgray;
+            }
+            
+            .submit {
+                .make-md-column(3);
+                background-color: @orange;
+                color: white;
+                text-align: center;
+                border: none;
+                height: 40px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

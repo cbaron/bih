@@ -3,32 +3,55 @@
     <div class="col-md-12">
         <div class="point-header">You've earned {{userPoints}} points!</div>
         <div class="point-bar-container">
-            <div class="point-bar"></div>
+            <div data-js="pointBar" class="point-bar"></div>
         </div>
     </div>
 </div>
 <div class="challenge-container">
     <div class="col-md-12">
         <div class="row">
-            {{#each data.categories}}
-                <div class="category-header {{categoryClass}}">{{this}}</div>
+            {{#each categories}}
+                <div data-js="categoryHeader" class="category-header {{this.class}}">{{this.name}}</div>
             {{/each}}
         </div>
         <div class="category-footer"></div>
-        <div class="challenge-list">
+        <div data-js="challengeList" class="challenge-list">
             <div class="col-md-12">
                 {{#each data}}
-                    <div data-category="{{this.category}}" class="challenge-row">
-                        <div class="content">
-                            <div class="heading">
-                                <span class="name">{{this.name}}</span>
-                                <span class="count">{{this.points}}</span>
-                                <span class="points">points</span>
+                    <div data-js="{{this.id}}" data-category="{{this.category}}" class="challenge-row hide">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div data-js="resize" class="resize hide">
+                                    <span class="glyphicon glyphicon-resize-small"></span>
+                                </div>
+                                <div class="content">
+                                    <div class="heading">
+                                        <span class="name">{{this.name}}</span>
+                                        <span class="count">{{this.points}}</span>
+                                        <span class="points">points</span>
+                                    </div>
+                                    <div class="rules">{{this.rules}}</div>
+                                </div>
+                                <div class="check hide">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
                             </div>
-                            <div class="rules">{{this.rules}}</div>
-                        </div>
-                        <div class="check">
-                            <span class="glyphicon glyphicon-ok"></span>
+                            <div data-js="submissionContainer" class="submission-container hide">
+                                <div data-js="submittedDate" class="date"></div>
+                                <div data-js="submittedBody" class="body"></div>
+                                <div class="text">
+                                    <textarea data-js="text" rows="5" placeholder="Type submission here..."></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bottom">
+                                        <span data-js="image" class="glyphicon glyphicon-picture"></span>
+                                        <span data-js="video" class="glyphicon glyphicon-facetime-video"></span>
+                                        <span class="filename" data-js="mediaReference"></span>
+                                        <button data-js="submitBtn" class="submit">Submit</button>
+                                        <input data-js="imageUpload" class="file-upload" id="imageUpload" type="file" name="files[]" data-url="/submission/post">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 {{/each}}

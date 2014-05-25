@@ -8,7 +8,8 @@ define(
       'underscore',
       'backbone',
       'models/enroll',
-      'models/user'
+      'models/user',
+      'jquery.fileupload'
     ],
 
     function( $, _, Backbone, enroll, user ) {
@@ -20,7 +21,11 @@ define(
             templateData: { },
 
             events: {
-                'click button[data-js="selectBtn"]': 'selectClicked'
+                'click button[data-js="selectBtn"]': 'selectClicked',
+                'click button[data-js="submitBtn"]': 'submitClicked',
+                'click div[data-js="categoryHeader"]': 'categoryClicked',
+                'click div[data-js="challengeList"] div[data-category]': 'challengeClicked',
+                'click [data-js="resize"]': 'resizeClicked'
             },
 
             initialize: function() {
@@ -51,17 +56,53 @@ define(
 
             challengeController: function() {
                 var categories = [],
-                    categoryClass = '';
+                    categoryClass = '',
+                    width,
+                    self = this;
 
                 categories = _.uniq( _.pluck( this.challenges.toJSON(), 'category' ) );
+                
                 categoryClass = 'col-md-' + Math.floor( 12 / categories.length );
+                
+                categories = _.map( categories, function(category) {
+                        if( ! category ) { category = 'null'; } return { name: category, class: categoryClass }; } );
+
                 this.templateInput = {
                     data: this.challenges.toJSON(),
                     userPoints: user.get('points'),
-                    categories: categories,
-                    categoryClass: categoryClass
+                    categories: categories
                 };
+
                 this.render();
+
+                if( user.get('points') > 100 ) { width = '100'; }
+                else if( user.get('points') < 1 ) { width = '0'; }
+                else { width = user.get('points'); }
+
+                this.templateData.pointBar.width( width + '%' );
+
+                $(this.templateData.categoryHeader[0]).click();
+
+                require( [ 'models/post' ], function( post ) {
+                    self.post = post;
+                    self.posts = new Backbone.Collection();
+                } );
+                   
+            },
+
+            categoryClicked: function( e ) {
+
+                var clickedEl = $(e.currentTarget);
+
+                this.templateData.categoryHeader.removeClass('selected');
+                clickedEl.addClass('selected');
+
+                this.templateData.challengeList.find('[data-category]').addClass('hide');
+
+                this.templateData.challengeList.find(
+                    'div[data-category="' +
+                    clickedEl.text() +
+                    '"]').removeClass('hide');
             },
 
             waitForEnrollData: function() {
@@ -103,7 +144,129 @@ define(
 
             selectClicked: function(e) {
                 enroll.set('challengeId', $(e.currentTarget).data('id') ).save();
+            },
+
+            challengeClicked: function(e) {
+
+                var self = this,
+                    challengeId = $(e.currentTarget).data('js'),
+                    submissionContainer = this.templateData[ challengeId ].find('[data-js="submissionContainer"]');
+
+                if( submissionContainer.hasClass('hide') ) {
+                    this.templateData[ challengeId ].addClass('active');
+                    submissionContainer.fadeIn().removeClass('hide');
+                    this.templateData[ challengeId ].find('[data-js="resize"]').fadeIn().removeClass('hide');
+
+                    console.log(this.templateData[challengeId].data('init'));
+                    if( ! this.templateData[challengeId].data('init') ) {
+
+                        if( this.challenges.get(challengeId).get('type') === 'Text' ) {
+                        } else if( this.challenges.get(challengeId).get('type') === 'Image' ) {
+                            this.initializeUploader(challengeId);
+                            this.templateData[challengeId].find('[data-js="image"]').addClass('enabled');
+                        } else if( this.challenges.get(challengeId).get('type') === 'Video' ) {
+                            this.templateData[challengeId].find('[data-js="video"]').addClass('enabled');
+                            this.templateData.mediaReference
+                                .prop( 'contenteditable', true )
+                                .text( 'Paste your youtube link here' );
+                        }
+
+                        if( this.posts.where( { challengeId: challengeId } ).length === 0 ) {
+                            console.log('asdasd');
+                            this.posts.add( new this.post( { challengeId: challengeId } ) );
+                            this.listenToOnce( this.posts, 'add', function() { self.displayPostInformation(challengeId); } );
+                        }
+
+                        this.templateData[challengeId].data('init',true);
+                    }
+                }
+            },
+
+            initializeUploader: function(challengeId) {
+                var self = this; 
+                this.templateData[challengeId].find('[data-js="imageUpload"]').fileupload( {
+                    dataType: 'json',
+                    done: function (e, data) {
+                        self.posts.where( { challengeId: challengeId } )
+                            .set( "url", data.result.files[0]['url'] );
+                        self.templateData[challengeId].find('[data-js="mediaReference"]')
+                            .text( data.result.files[0]['name'] );
+                        self.initializeUploader(challengeId);
+                    }
+                } );
+            },
+
+            resizeClicked: function(e) {
+                $(e.currentTarget)
+                    .addClass('hide')
+                    .closest('div[data-category]')
+                        .removeClass('active')
+                        .find('[data-js="submissionContainer"]').fadeOut().addClass('hide');
+
+                e.stopImmediatePropagation();
+            },
+
+            displayPostInformation: function(challengeId) {
+
+                var submissionContainer =
+                    this.templateData[ challengeId ].find('[data-js="submissionContainer"]');
+
+                if( this.posts.get(challengeId) &&
+                    this.posts.get(challengeId).has('body') ) {
+                    submissionContainer.find('[data-js="submittedBody"]').text( this.posts.get(challengeId).get('body') );
+                }
+
+                if( this.challenges.get(challengeId).get('type') === 'Image' ||
+                    this.challenges.get(challengeId).get('type') === 'Video' ) {
+                    if( this.posts.get(challengeId) &&
+                        this.posts.get(challengeId).has('url') ) {
+                        submissionContainer.find('[data-js="mediaReference"]').text(
+                            this.posts.get('challengeId').has('url')
+                        );
+                    }
+                }
+            },
+
+            submitClicked: function(e) {
+
+                var clickedBtn = $(e.currentTarget);
+                    challengeId = clickedBtn
+                        .closest('div[data-category]').data('js'),
+                    textEl = clickedBtn
+                        .closest('div[data-js="submissionContainer"]').find('[data-js="text"]'),
+                    mediaReference = clickedBtn
+                        .closest('div[data-js="submissionContainer"]').find('[data-js="mediaReference"]'),
+                    challenge = this.challenges.get(challengeId),
+                    post = this.posts.findWhere( { challengeId: challengeId } ),
+                    self = this;
+
+                if( challenge.get('type') === 'Text' &&
+                    $.trim( textEl.val() )  !== '' ) {
+
+                    post.set( 'body', textEl.val() ).save(
+                        post.attributes,
+                        { success: function() { self.displayPostInformation(challengeId); } } ); 
+
+                } else if( challenge.get('type') === 'Image' &&
+                           mediaReference.text() !== '' ) {
+               
+                    post.set( 'body', textEl.val() ).save(
+                        post.attributes,
+                        { success: function() { self.displayPostInformation(challengeId); } } ); 
+                     
+                } else if( challenge.get('type') === 'Video' &&
+                    $.trim( mediaReference.text().indexOf( 'youtube' > -1 ) ) ) {
+                    
+                    post.set( {
+                        'body': textEl.val(),
+                        'url': this.templateData.mediaReference.text() } ).save(
+                            this.post.attributes,
+                            { success: function() { self.displayPostInformation(challengeId); } } ); 
+                }
+
+                e.stopImmediatePropagation();
             }
+
 
         } ) )();
     } );

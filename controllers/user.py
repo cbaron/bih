@@ -10,7 +10,7 @@ def GET( sf, session ):
 
     '''
     geh = records = sf.query(\
-            ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c ",
+            ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c ",
                        "FROM BIH_USER__C " ] ) )['records']
     import json
     print json.dumps(geh,indent=4)
@@ -18,10 +18,10 @@ def GET( sf, session ):
 
     if request.vars.e and request.vars.p:
         records = sf.query(\
-            ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c, ",
+            ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C ",
-                       "WHERE Email__c = '", request.vars.e, "' ",
+                       "WHERE BIH_Username__c = '", request.vars.e, "' ",
                        "AND BIH_Password__c ='" , request.vars.p, "'" ] ) )['records']
 
         if len( records ):
@@ -37,7 +37,7 @@ def GET( sf, session ):
 
     return getCleanUser(
         sf.query(\
-            ''.join( [ "Select ID, First_Name__c, Last_Name__c, Email__c, BIH_Password__c, X100_Point_Challenge_Total__c, ",
+            ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, X100_Point_Challenge_Total__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C WHERE ID = '", session.userId, "'" ] ) )['records'][0] )
 
@@ -51,7 +51,7 @@ def getCleanUser( record ):
     rv = dict( id = record['Id'],
       firstName = record['First_Name__c'],
       lastName = record['Last_Name__c'],
-      emailAddress = record['Email__c'],
+      emailAddress = record['BIH_Username__c'],
       points = record['X100_Point_Challenge_Total__c'],
       profileThumbnailUrl = profileThumbnailUrl,
       isLoggedIn = True )
