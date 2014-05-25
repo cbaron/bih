@@ -8,13 +8,13 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <div data-js=\""
+  buffer += "\n    <div data-type=\"busMate\" data-js=\""
     + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"bus-mate-row\">\n        <div class=\"image\">\n            <img data-js=\"image\"/>\n        </div>\n        <div class=\"bus-mate-detail\">\n            <span class=\"glyphicon glyphicon-comment\"></span>\n            <span class=\"name\">"
+    + "\" class=\"bus-mate-row\">\n        <div class=\"image\">\n            <img data-js=\"image\"/>\n        </div>\n        <div class=\"bus-mate-detail\">\n            <span class=\"glyphicon glyphicon-comment hide\" data-js=\"messageBtn\"></span>\n            <span data-js=\"name\" class=\"name\">"
     + escapeExpression(((stack1 = (depth0 && depth0.lastName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + ", "
     + escapeExpression(((stack1 = (depth0 && depth0.firstName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</span>\n            <span class=\"badge-container\" data-js=\"badgeContainer\"></span>\n        </div>\n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n";
+    + "</span>\n            <span class=\"vote-off hide glyphicon glyphicon-thumbs-down\" data-js=\"voteOffBtn\"></span>\n            <span class=\"badge-container\" data-js=\"badgeContainer\"></span>\n        </div>\n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n";
   return buffer;
   }
 

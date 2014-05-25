@@ -1,11 +1,12 @@
 {{#each busMates}}
-    <div data-js="{{this.id}}" class="bus-mate-row">
+    <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row">
         <div class="image">
             <img data-js="image"/>
         </div>
         <div class="bus-mate-detail">
-            <span class="glyphicon glyphicon-comment"></span>
-            <span class="name">{{this.lastName}}, {{this.firstName}}</span>
+            <span class="glyphicon glyphicon-comment hide" data-js="messageBtn"></span>
+            <span data-js="name" class="name">{{this.lastName}}, {{this.firstName}}</span>
+            <span class="vote-off hide glyphicon glyphicon-thumbs-down" data-js="voteOffBtn"></span>
             <span class="badge-container" data-js="badgeContainer"></span>
         </div>
         <div class="clearfix hide">

@@ -1,0 +1,146 @@
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-footer:before,
+.modal-footer:after {
+  content: " ";
+  display: table;
+}
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after {
+  clear: both;
+}
+.message-container .header-row {
+  background-color: #ec7400;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  padding: 10px;
+}
+.message-container .header-row:before,
+.message-container .header-row:after {
+  content: " ";
+  display: table;
+}
+.message-container .header-row:after {
+  clear: both;
+}
+.message-container .header-row:before,
+.message-container .header-row:after {
+  content: " ";
+  display: table;
+}
+.message-container .header-row:after {
+  clear: both;
+}
+.message-container .header {
+  width: 90%;
+  float: left;
+}
+.message-container .glyphicon {
+  width: 10%;
+  float: left;
+}
+.message-container .glyphicon:hover {
+  cursor: pointer;
+}
+.message-container .name {
+  margin-top: 20px;
+  font-weight: bold;
+}
+.message-container .submission {
+  padding: 20px;
+}
+.message-container .submission .text {
+  background-color: white;
+  border: 1px solid lightgray;
+}
+.message-container .submission .text textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin: 0px;
+  border: none;
+}
+.message-container .submission .bottom {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  background-color: white;
+}
+.message-container .submission .bottom .nothingness {
+  width: 70%;
+  height: 40px;
+  color: lightgray;
+  display: inline-block;
+  float: left;
+}
+.message-container .submission .bottom .submit {
+  width: 30%;
+  background-color: gray;
+  text-align: center;
+  border: none;
+  padding: 0px;
+  height: 40px;
+}
+.message-container .submission .bottom .submit:hover {
+  text-decoration: underline;
+}

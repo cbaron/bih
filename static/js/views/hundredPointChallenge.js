@@ -150,20 +150,22 @@ define(
 
                 var self = this,
                     challengeId = $(e.currentTarget).data('js'),
-                    submissionContainer = this.templateData[ challengeId ].find('[data-js="submissionContainer"]');
+                    submissionContainer = this.templateData[ challengeId ].find('[data-js="submissionContainer"]'),
+                    post;
 
                 if( submissionContainer.hasClass('hide') ) {
                     this.templateData[ challengeId ].addClass('active');
                     submissionContainer.fadeIn().removeClass('hide');
                     this.templateData[ challengeId ].find('[data-js="resize"]').fadeIn().removeClass('hide');
 
-                    console.log(this.templateData[challengeId].data('init'));
                     if( ! this.templateData[challengeId].data('init') ) {
 
                         if( this.challenges.get(challengeId).get('type') === 'Text' ) {
                         } else if( this.challenges.get(challengeId).get('type') === 'Image' ) {
                             this.initializeUploader(challengeId);
-                            this.templateData[challengeId].find('[data-js="image"]').addClass('enabled');
+                            this.templateData[challengeId].find('[data-js="image"]')
+                                .addClass('enabled')
+                                .on( 'click', function() { self.templateData[challengeId].find('[data-js="imageUpload"]').click(); } );
                         } else if( this.challenges.get(challengeId).get('type') === 'Video' ) {
                             this.templateData[challengeId].find('[data-js="video"]').addClass('enabled');
                             this.templateData.mediaReference
@@ -172,9 +174,8 @@ define(
                         }
 
                         if( this.posts.where( { challengeId: challengeId } ).length === 0 ) {
-                            console.log('asdasd');
-                            this.posts.add( new this.post( { challengeId: challengeId } ) );
-                            this.listenToOnce( this.posts, 'add', function() { self.displayPostInformation(challengeId); } );
+                            post = this.posts.add ( new this.post( { challengeId: challengeId } ) );
+                            this.listenToOnce( post, 'sync', function() { self.displayPostInformation(challengeId); } );
                         }
 
                         this.templateData[challengeId].data('init',true);
@@ -187,7 +188,7 @@ define(
                 this.templateData[challengeId].find('[data-js="imageUpload"]').fileupload( {
                     dataType: 'json',
                     done: function (e, data) {
-                        self.posts.where( { challengeId: challengeId } )
+                        self.posts.findWhere( { challengeId: challengeId } )
                             .set( "url", data.result.files[0]['url'] );
                         self.templateData[challengeId].find('[data-js="mediaReference"]')
                             .text( data.result.files[0]['name'] );
@@ -209,19 +210,19 @@ define(
             displayPostInformation: function(challengeId) {
 
                 var submissionContainer =
-                    this.templateData[ challengeId ].find('[data-js="submissionContainer"]');
-
-                if( this.posts.get(challengeId) &&
-                    this.posts.get(challengeId).has('body') ) {
-                    submissionContainer.find('[data-js="submittedBody"]').text( this.posts.get(challengeId).get('body') );
+                    this.templateData[ challengeId ].find('[data-js="submissionContainer"]'),
+                    post = this.posts.findWhere( { challengeId: challengeId }),
+                    challenge = this.challenges.get(challengeId);
+                
+                if( post && post.has('body') ) {
+                    submissionContainer.find('[data-js="submittedBody"]').text( post.get('body') );
                 }
 
-                if( this.challenges.get(challengeId).get('type') === 'Image' ||
-                    this.challenges.get(challengeId).get('type') === 'Video' ) {
-                    if( this.posts.get(challengeId) &&
-                        this.posts.get(challengeId).has('url') ) {
+                if( challenge.get('type') === 'Image' ||
+                    challenge.get('type') === 'Video' ) {
+                    if( post && post.has('url') ) {
                         submissionContainer.find('[data-js="mediaReference"]').text(
-                            this.posts.get('challengeId').has('url')
+                            post.get('url')
                         );
                     }
                 }
@@ -259,8 +260,8 @@ define(
                     
                     post.set( {
                         'body': textEl.val(),
-                        'url': this.templateData.mediaReference.text() } ).save(
-                            this.post.attributes,
+                        'url': mediaReference.text() } ).save(
+                            post.attributes,
                             { success: function() { self.displayPostInformation(challengeId); } } ); 
                 }
 

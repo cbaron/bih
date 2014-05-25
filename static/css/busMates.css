@@ -76,13 +76,13 @@
   margin-right: -15px;
   background-color: #edb680;
   border-bottom: 1px solid white;
-  height: 40px;
+  height: 60px;
 }
 .bus-mate-row .image {
   background-color: #4f4f4f;
   float: left;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-bottom: 1px solid white;
 }
 .bus-mate-row .image img {
@@ -93,7 +93,7 @@
   cursor: pointer;
 }
 .bus-mate-row .bus-mate-detail {
-  height: 40px;
+  height: 60px;
   font-size: large;
 }
 .bus-mate-row .bus-mate-detail:hover {
@@ -104,10 +104,49 @@
   padding: 4px;
   border-radius: 8px;
   background-color: #ec7400;
-  margin: 7px 30px;
+  margin: 14px 30px;
+  float: left !important;
 }
-.bus-mate-row .bus-mate-detail name {
+.bus-mate-row .bus-mate-detail .glyphicon-comment:hover {
+  cursor: pointer;
+  background-color: #edb680;
+  color: #ec7400;
+}
+.bus-mate-row .bus-mate-detail .name {
   font-weight: bold;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 60px;
+  margin: 0px 60px;
+}
+@media (min-width: 992px) {
+  .bus-mate-row .bus-mate-detail .name {
+    float: left;
+    width: 25%;
+  }
+}
+.bus-mate-row .bus-mate-detail .vote-off {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: red;
+  font-size: large;
+  float: right !important;
+  line-height: 60px;
+  margin: 0px 60px;
+}
+@media (min-width: 992px) {
+  .bus-mate-row .bus-mate-detail .vote-off {
+    float: left;
+    width: 8.33333333%;
+  }
+}
+.bus-mate-row .bus-mate-detail .vote-off:hover {
+  cursor: pointer;
+  color: black;
 }
 .bus-mate-row .badge-container {
   display: inline-block;
@@ -116,14 +155,14 @@
 .bus-mate-row .bih-badge {
   background-color: #4f4f4f;
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   margin: 5px;
   color: #edb680;
-  font-size: large;
+  font-size: x-large;
   text-align: center;
   font-weight: bold;
-  line-height: 30px;
+  line-height: 50px;
 }
 .bus-mate-row .detail-container {
   position: relative;

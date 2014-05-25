@@ -1,0 +1,78 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.message-container {
+
+    .header-row {
+        .clearfix();
+        background-color: @orange;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+        padding: 10px;
+    }
+
+    .header {
+        width: 90%;
+        float: left;
+    }
+    
+    .glyphicon {
+        width: 10%;
+        float: left;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .name {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .submission {
+        padding: 20px;
+
+        .text {
+            background-color: white;
+            border: 1px solid lightgray;
+
+            textarea {
+                display: block;
+                width: 100%;
+                padding: 5px;
+                margin: 0px;
+                border: none;
+            }
+        }
+
+        .bottom {
+            border-bottom: 1px solid lightgray;
+            border-right: 1px solid lightgray;
+            border-left: 1px solid lightgray;
+            background-color: white;
+
+            .nothingness {
+                width: 70%;
+                height: 40px;
+                color: lightgray;
+                display: inline-block;
+                float: left;
+            }
+                    
+            .submit {
+                width: 30%;
+                background-color: gray;
+                text-align: center;
+                border: none;
+                padding: 0px;
+                height: 40px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+     }
+}

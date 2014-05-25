@@ -6,16 +6,20 @@ define(
       'collections/busMates',
       'collections/challenges',
       'collections/busBadges',
+      'views/modal',
+      'views/message',
       'templates/busMates',
       'templates/badge',
       'css!styles/busMates'
     ],
     
-    function( $, _, Backbone, busMates, challenges, busBadges, template, badgeHtml ) {
+    function( $, _, Backbone, busMates, challenges, busBadges, modal, messageView, template, badgeHtml ) {
 
         return Backbone.View.extend( {
 
             events: {
+                'click span[data-js="voteOffBtn"]': 'voteOffClicked',
+                'click span[data-js="messageBtn"]': 'messageClicked'
             },
 
             templateData: { },
@@ -42,6 +46,14 @@ define(
                     partsObj: this.templateData,
                     keepDataJs: true
                 } );
+
+                if( this.mode === 'myBus' ) {
+                    this.templateData.voteOffBtn.removeClass('hide');
+                }
+                
+                if( this.mode === 'badges' ) {
+                    this.templateData.messageBtn.removeClass('hide');
+                }
 
                 if( busBadges.length ) {
                     this.renderBadges();
@@ -114,7 +126,21 @@ define(
 
             waitForData: function() {
                 this.listenToOnce( busMates, 'sync', this.render );
-            }
+            },
 
+            messageClicked: function(e) {
+
+                var row = $(e.currentTarget).closest('[data-type="busMate"');
+
+                this.messageView = new messageView( {
+                    id: row.data('js'),
+                    name: row.find('[data-js="name"]').text() } );
+
+                modal.listenToOnce( this.messageView, 'close', modal.closeDialogue );
+                modal.addContent( {
+                    width: $(window).outerWidth(true) / 4,
+                    content: this.messageView.$el
+                } );
+            }
         } );
 } );
