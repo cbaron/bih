@@ -6,6 +6,7 @@ define(
       'collections/busMates',
       'collections/challenges',
       'collections/busBadges',
+      'models/user',
       'views/modal',
       'views/message',
       'templates/busMates',
@@ -13,7 +14,7 @@ define(
       'css!styles/busMates'
     ],
     
-    function( $, _, Backbone, busMates, challenges, busBadges, modal, messageView, template, badgeHtml ) {
+    function( $, _, Backbone, busMates, challenges, busBadges, user, modal, messageView, template, badgeHtml ) {
 
         return Backbone.View.extend( {
 
@@ -134,6 +135,7 @@ define(
 
                 this.messageView = new messageView( {
                     id: row.data('js'),
+                    from: user.get('firstName') + ' ' + user.get('lastName'),
                     name: row.find('[data-js="name"]').text() } );
 
                 modal.listenToOnce( this.messageView, 'close', modal.closeDialogue );

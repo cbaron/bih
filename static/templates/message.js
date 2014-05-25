@@ -10,11 +10,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</div>\n<div class=\"submission\">\n    <div class=\"text\">\n        <textarea data-js=\"text\" rows=\"5\" placeholder=\"Enter your message here...\"></textarea>\n    </div>\n    <div class=\"bottom\">\n        <div>\n            <span class=\"nothingness\"></span>\n            <button data-id=\"";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" data-js=\"submitBtn\" class=\"submit\">Submit</button>\n        </div>\n    </div>\n</div>\n";
+    + "</div>\n<div class=\"submission\">\n    <input data-js=\"subject\" class=\"subject\" placeholder=\"Subject\" type=\"text\" />\n    <div class=\"text\">\n        <textarea data-js=\"text\" rows=\"5\" placeholder=\"Enter your message here...\"></textarea>\n    </div>\n    <div class=\"bottom\">\n        <div>\n            <span class=\"nothingness\"></span>\n            <button data-js=\"submitBtn\" class=\"submit\">Submit</button>\n        </div>\n    </div>\n</div>\n";
   return buffer;
   })
 

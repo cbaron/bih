@@ -91,6 +91,10 @@
   vertical-align: text-top;
   padding-right: 5px;
 }
+#header .header-row .header-item .glyphicon-envelope:hover {
+  cursor: pointer;
+  color: white;
+}
 #header .header-row .header-item .glyphicon-chevron-down {
   color: #009693;
   vertical-align: text-top;

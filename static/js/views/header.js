@@ -20,7 +20,9 @@ define(
            'click  [data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick',
            'click  [data-js="hundredPointChallengeBtn"]': 'handlePointChallengeBtnClick',
            'click  [data-js="getInvolvedBtn"]': 'getInvolvedClicked',
-           'click  [data-js="myBusBtn"]': 'myBusClicked'
+           'click  [data-js="myBusBtn"]': 'myBusClicked',
+           'click  [data-js="inbox"]': 'inboxClicked',
+           'click  [data-js="logout"]': 'logoutClicked'
                 
         },
 
@@ -89,7 +91,13 @@ define(
         
         myBusClicked: function() {
             this.router.navigate('mybus', { trigger: true} );
-        }
+        },
+        
+        inboxClicked: function() {
+            this.router.navigate('inbox', { trigger: true} );
+        },
+
+        logoutClicked: function() { window.location = '/logout'; },
 
     } );
 

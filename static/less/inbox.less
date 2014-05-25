@@ -1,0 +1,77 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.inbox-container {
+    .container();
+
+    .header {
+        .make-row();
+        text-align: center;
+        color: @blue;
+        font-size: xx-large;
+        padding-top: 50px;
+        margin: 5px;
+    }
+
+    .inbox-container {
+        .make-row();
+
+        .sub-header {
+            .make-row();
+            background-color: @orange;
+            color: white;
+            padding: 10px;
+            font-size: large;
+        }
+    }
+
+    .item-container {
+        .make-row();
+        background-color: white;
+    }
+
+    .message-item {
+        .make-row();
+        border-bottom: 1px solid black;
+
+        &:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
+    }
+
+    .icon {
+        .make-md-column(1);
+        text-align: center;
+        font-size: large;
+        line-height: 70px;
+    }
+    
+    .detail {
+        .make-md-column(9);
+        height: 70px;
+        padding: 10px 0px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .date {
+        .make-md-column(2);
+        line-height: 70px;
+    }
+
+    .subject {
+        font-weight: bold;
+        .make-md-column(6);
+    }
+
+    .detail-header {
+        .make-row();
+        margin-bottom: 10px;
+    }
+
+    .name {
+        .make-md-column(6);
+    }
+
+}

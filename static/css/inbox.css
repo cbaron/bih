@@ -1,0 +1,233 @@
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-footer:before,
+.modal-footer:after,
+.inbox-container:before,
+.inbox-container:after,
+.inbox-container .header:before,
+.inbox-container .header:after,
+.inbox-container .inbox-container:before,
+.inbox-container .inbox-container:after,
+.inbox-container .inbox-container .sub-header:before,
+.inbox-container .inbox-container .sub-header:after,
+.inbox-container .item-container:before,
+.inbox-container .item-container:after,
+.inbox-container .message-item:before,
+.inbox-container .message-item:after,
+.inbox-container .detail-header:before,
+.inbox-container .detail-header:after {
+  content: " ";
+  display: table;
+}
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after,
+.inbox-container:after,
+.inbox-container .header:after,
+.inbox-container .inbox-container:after,
+.inbox-container .inbox-container .sub-header:after,
+.inbox-container .item-container:after,
+.inbox-container .message-item:after,
+.inbox-container .detail-header:after {
+  clear: both;
+}
+.inbox-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .inbox-container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .inbox-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .inbox-container {
+    width: 1170px;
+  }
+}
+.inbox-container > .navbar-header,
+.inbox-container > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .inbox-container > .navbar-header,
+  .inbox-container > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.inbox-container .header {
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: center;
+  color: #2c50d8;
+  font-size: xx-large;
+  padding-top: 50px;
+  margin: 5px;
+}
+.inbox-container .inbox-container {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.inbox-container .inbox-container .sub-header {
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: #ec7400;
+  color: white;
+  padding: 10px;
+  font-size: large;
+}
+.inbox-container .item-container {
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: white;
+}
+.inbox-container .message-item {
+  margin-left: -15px;
+  margin-right: -15px;
+  border-bottom: 1px solid black;
+}
+.inbox-container .message-item:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+.inbox-container .icon {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  font-size: large;
+  line-height: 70px;
+}
+@media (min-width: 992px) {
+  .inbox-container .icon {
+    float: left;
+    width: 8.33333333%;
+  }
+}
+.inbox-container .detail {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 70px;
+  padding: 10px 0px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+@media (min-width: 992px) {
+  .inbox-container .detail {
+    float: left;
+    width: 75%;
+  }
+}
+.inbox-container .date {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 70px;
+}
+@media (min-width: 992px) {
+  .inbox-container .date {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+.inbox-container .subject {
+  font-weight: bold;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .inbox-container .subject {
+    float: left;
+    width: 50%;
+  }
+}
+.inbox-container .detail-header {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 10px;
+}
+.inbox-container .name {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .inbox-container .name {
+    float: left;
+    width: 50%;
+  }
+}

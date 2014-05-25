@@ -4,8 +4,10 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
 
         defaults: {
             "id": undefined,
-            "from": undefined,
-            "message": undefined
+            "fromName": undefined,
+            "subject": undefined,
+            "body": undefined,
+            "sent": undefined
         }
 
     } );

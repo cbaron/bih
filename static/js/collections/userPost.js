@@ -3,11 +3,11 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-      'models/post',
+      'models/userPost',
       'models/user'
     ],
     
-    function( $, _, Backbone, post, user ) {
+    function( $, _, Backbone, userPost, user ) {
 
         return new( Backbone.Collection.extend( {
 
@@ -18,7 +18,7 @@ define(
 
             url: '/post',
 
-            model: post
+            model: userPost
 
         } ) )();
     }

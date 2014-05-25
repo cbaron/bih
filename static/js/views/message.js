@@ -18,7 +18,7 @@ define(
         events: {
 
             'click span[data-js="closeBtn"]': 'closeClicked',
-            'click div[data-js="submitClicked"]': 'submitClicked'
+            'click button[data-js="submitBtn"]': 'submitClicked'
         },
 
         initialize: function( options ) {
@@ -45,7 +45,21 @@ define(
         },
         
         submitClicked: function() {
-        }
+            var self = this;
 
+            if( $.trim( this.templateData.text.val() ) !== '' &&
+                $.trim( this.templateData.subject.val() ) !== '' ) {
+                $.ajax( {
+                    url: 'message',
+                    type: 'POST',
+                    data: {
+                        toId: this.options.id,
+                        toName: this.options.name,
+                        fromName: this.options.from,
+                        subject: this.templateData.subject.val(),
+                        body: this.templateData.text.val() },
+                    success: function() { self.trigger('close').remove() } } );
+            }
+        }
     } );
 } );

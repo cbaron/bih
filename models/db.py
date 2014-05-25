@@ -92,6 +92,15 @@ submission = db.define_table( 'submission',
     Field('sizeFile', 'float'),
     Field('userId', 'string') )
 
+db.define_table( 'messages',
+    Field('toId', 'string'),
+    Field('toName', 'string'),
+    Field('fromId', 'string'),
+    Field('fromName', 'string'),
+    Field('subject', 'string'),
+    Field('body', 'text'),
+    Field('sent', 'datetime') )
+
 from smartthumb import SMARTHUMB
 box = ( 200, 200 )
 profileImage.thumb.compute = lambda row: SMARTHUMB(row.doc, box)

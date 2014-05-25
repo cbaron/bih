@@ -1,0 +1,25 @@
+<div class="header">Messages</div>
+<div class="inbox-container">
+    <div class="col-md-12">
+        <div class="sub-header">Inbox</div>
+        <div class="item-container">
+            <div class="col-md-12">
+                {{#each message}}
+                    <div data-js="message" class="message-item">
+                        <div class="icon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </div>
+                        <div data-js="detail" class="detail">
+                            <div class="detail-header">
+                                <div class="name">{{fromName}}</div>
+                                <div class="subject">{{subject}}</div>
+                            </div>
+                            <div class="body">{{body}}</div>
+                        </div>
+                        <div class="date">{{sent}}</div>
+                    </div>
+                {{/each}} 
+            </div>
+        </div>
+    </div>
+</div>

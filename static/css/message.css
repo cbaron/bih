@@ -109,6 +109,13 @@
 .message-container .submission {
   padding: 20px;
 }
+.message-container .submission .subject {
+  width: 100%;
+  border: 1px solid lightgray;
+  display: block;
+  padding: 5px;
+  margin: 0px;
+}
 .message-container .submission .text {
   background-color: white;
   border: 1px solid lightgray;

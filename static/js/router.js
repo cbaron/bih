@@ -20,6 +20,7 @@ define(
                 'hundredpointchallenge':    'hundredPointChallenge',
                 'getinvolved':              'getInvolved',
                 'mybus':                    'myBus',
+                'inbox':                    'inbox',
                 'register':                 'register',
                 'dashboard':                'dashboard',
                 'index':                    'dashboard',
@@ -131,6 +132,16 @@ define(
                     require( [ 'views/header' ] );
                     require( [ 'views/myBus' ], function( myBus ) {
                         if( myBus.$el.is(':hidden') ) { myBus.$el.fadeIn(); } } );
+                }
+                if( this.isLoggedIn() ) { this.toDo(); }
+            },
+
+            inbox: function() {
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/inbox' ], function( inbox ) {
+                        if( inbox.$el.is(':hidden') ) { inbox.$el.fadeIn(); } } );
                 }
                 if( this.isLoggedIn() ) { this.toDo(); }
             },
