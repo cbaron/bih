@@ -4,13 +4,13 @@
 .leaderboard-item-container {
 
     .bus-row {
-        .make-md-column(12);
-        margin: 5px 0px;
+        .make-row();
         font-size: medium;
 
         .bus-row-left {
             .pull-left();
             width: 3%;
+            height: 100%;
             .bus-rank {
                 font-weight: bold;
                 vertical-align: sub;
@@ -21,7 +21,8 @@
             .pull-left();
             background-color: @sky-blue;
             width: 97%;
-            padding: 5px;
+            height: 100%;
+            padding: 0% 1%;
 
             &.user-bus {
                 background-color: @orange;
@@ -35,7 +36,7 @@
         .bus-name {
             color: white;
             font-weight: 300;
-            margin-left: 10px;
+            vertical-align: sub;
         }
 
         .point-container {
@@ -46,11 +47,13 @@
                 color: white;
                 font-size: small;
                 font-weight: bold;
+                vertical-align: sub;
             }
 
             .points {
                 color: @dashboard-text-color;
                 font-weight: 300;
+                vertical-align: sub;
             }
         }
     }
@@ -59,8 +62,6 @@
 
         .bus-row:first-child {
             border-bottom: 1px solid grey;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
         }
 
     }

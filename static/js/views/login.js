@@ -3,58 +3,95 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'spin',
       'models/user',
       'templates/login',
       'css!styles/login'
     ],
     
-    function( $, _, Backbone, user, template ) {
+    function( $, _, Backbone, Spinner, user, template ) {
 
     return new ( Backbone.View.extend( {
 
-            templateData: {},
+        className: [
+            "login-container",
+            "col-md-4 col-md-offset-4",
+            "col-sm-8 col-sm-offset-2",
+            "col-xs-8 col-xs-offset-2" ].join(" "),
 
-            events: {
+        templateData: {},
 
-                'click div[data-js="loginButton"]': 'loginClicked'
-            },
+        events: {
 
-            initialize: function() {
+            'click div[data-js="loginButton"]': 'loginClicked',
+            'click div[data-js="guestLoginButton"]': 'guestLoginClicked'
 
-                return this.render();
-            },
+        },
 
-            render: function() {
+        initialize: function() {
 
-                this.slurpTemplate( {
-                    template: template(),
-                    insertion: { $el: this.$el, method: 'append' },
-                    partsObj: this.templateData,
-                    keepDataJs: true
-                } );
+            return this.render();
+        },
 
-                return this;
-            },
+        render: function() {
 
-            loginClicked: function() {
-                user.fetch( {
-                    data: {
-                        e: this.templateData.email.val(),
-                        p: this.templateData.pass.val()
-                    }
-                } );
+            this.slurpTemplate( {
+                template: template(),
+                insertion: { $el: this.$el, method: 'append' },
+                partsObj: this.templateData,
+                keepDataJs: true
+            } );
 
-                this.listenToOnce( user, 'sync', this.handleResponse );
-            },
+            return this;
+        },
 
-            handleResponse: function() {
-                if( user.get('isLoggedIn') ) {
-                    this.router.toDo();
-                    this.trigger('success').$el.fadeOut();
-                } else {
-                    console.log('error logging in');
+        guestLoginClicked: function(e) {
+            this.email = "guest@aishny.com";
+            this.pass = "guest123";
+            this.login(e);
+        },
+
+        loginClicked: function(e) {
+            this.email = this.templateData.email.val();
+            this.pass = this.templateData.pass.val();;
+            this.login(e);
+        },
+
+        login: function(e) {
+
+            this.undelegateEvents();
+            this.templateData.error.addClass('hide');
+            this.clickedButton = $(e.currentTarget).addClass('clicked');
+
+            this.spinner = new Spinner( {
+                color: '#fff',
+                radius: 5,
+                length: 5,
+            } ).spin( this.clickedButton.get(0) );
+
+            user.fetch( {
+                data: {
+                    e: this.email,
+                    p: this.pass
                 }
-            }
+            } );
 
-        } ) )();
+            this.listenToOnce( user, 'sync', this.handleResponse );
+        },
+
+        handleResponse: function() {
+            
+            this.spinner.stop();
+            this.clickedButton.removeClass('clicked');
+            this.delegateEvents();
+
+            if( user.get('isLoggedIn') ) {
+                this.router.toDo();
+                this.trigger('success').$el.fadeOut();
+            } else {
+                this.templateData.error.removeClass('hide');
+            }
+        }
+
+    } ) )();
 } );

@@ -68,8 +68,13 @@
 .modal-footer:after {
   clear: both;
 }
+html,
+#content {
+  height: 100%;
+}
 body {
   background-color: black !important;
+  height: 100%;
 }
 body #content {
   background-image: url("../images/background.jpg");

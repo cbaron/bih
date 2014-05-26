@@ -46,7 +46,8 @@ define(
                 require( [ 'views/modal', 'views/login' ], function( modal, login ) {
                     modal.listenToOnce( login, 'success', modal.closeDialogue );
                     modal.addContent( {
-                        width: $(window).outerWidth(true) / 4,
+                        //width: $(window).outerWidth(true) / 4,
+                        //height: $(window).outerWidth(true) / 2,
                         content: login.$el
                     } );
                 } );

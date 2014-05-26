@@ -2,7 +2,7 @@
 
     <div class="col-md-4 dashboard-id">
         <div class="row">
-            <div class="col-md-6">
+            <div class="left-column col-md-6">
                  <div data-js="profileImageWrapper" class="profile-image-wrapper">
                     <div data-js="profileImage" class="profile-image"></div>
                 </div>               
@@ -12,16 +12,18 @@
                 </div>
                 <input data-js="profileImageUpload" class="file-upload" id="profileImageUpload" type="file" name="files[]" data-url="/profileImage/post">
             </div>
-            <div class="col-md-6">
+            <div class="right-column col-md-6">
                 <div class="name">Hello, {{user.firstName}}!</div>
                 <div class="bus-name">Bus #{{user.busName}}</div>
             </div>
         </div>
     </div>
     
-    <div class="dashboard-leaderboard">
+    <div class="col-md-7 dashboard-leaderboard">
         <div class="leaderboard-header">4-Week Challenge Leaderboard</div>
-        <div class="leaderboard-item-container" data-js="leaderboardItems"></div>
+        <div class="row">
+            <div class="leaderboard-item-container col-md-12" data-js="leaderboardItems"></div>
+        </div>
     </div>
 
 </div>

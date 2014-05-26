@@ -84,22 +84,18 @@ define(
                 parts.container.hide();
 
                 if( this.options.height ) {
-
-                    parts.content.height( this.options.height );
+                    parts.form.height( this.options.height );
                     contentHeight = this.options.height;
                     parts.form.height( contentHeight - parts.title.outerHeight( true ) );
                 }
 
                 if( this.options.width ) {
 
-                    parts.content.width( this.options.width );
+                    parts.form.width( this.options.width );
                     contentWidth = this.options.width;
                 }
 
                 parts.form.css( this.options.containerStyle || { } );
-
-                parts.content.css( { top: ( ( windowHeight - ( contentHeight ) ) / 2 ),
-                                     left: ( ( windowWidth - ( contentWidth ) ) / 2 ) } );
 
                 parts.container.show();
                 this.afterShow();

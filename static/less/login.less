@@ -2,34 +2,59 @@
 @import (reference) "bih.less";
 
 .login-container {
+    background-color: rgb( 229, 229, 229 );
+    box-shadow: 0 0 .5em rgba(0, 0, 0, 1 );
+    padding: 1em 2em;
+    height: 80%;
 
     .header {
         color: @orange;
         font-weight: bold;
-        font-size: large;
-        margin-bottom: 10px;
+        font-size: x-large;
+        text-align: center;
+        height: 15%;
     }
 
     .input-container {
-        padding: 10px 0px;
-        margin-bottom: 5px;
+        height: 43%;
+        padding: 1em 0px;
+        margin-bottom: 1em;
         background-color: @blue;
 
         input {
             display: block;
-            margin: 10px auto;
+            margin: 0em auto;
             width: 80%;
             border: none;
             padding: 4px 6px;
             color: rgb( 187, 187, 187 );
             outline: none;
+            font-size: large;
+            height: 40%;
+
+            &:nth-child(1) {
+                margin-bottom: 5%;
+            }
         }
+    }
+
+    .button-container {
+        height: 42%;
     }
 
     .button {
         color: white;
-        padding: 10px;
         text-align: center;
+        font-size: large;
+        height: 30%;
+        display: table;
+        width: 100%;
+        position: relative;
+
+        span {
+            vertical-align: middle;
+            display: table-cell;
+        }
 
         &:hover {
             cursor: pointer;
@@ -39,16 +64,26 @@
 
     .login-button {
         background-color: rgb( 19, 133, 206 );
+
+        &.clicked {
+            span { color: rgb( 19, 133, 206 ); }
+            text-decoration: none;
+        }
     }
 
     .guest-login-button {
         background-color: @orange;
+        
+        &.clicked {
+            span { color: @orange; }
+            text-decoration: none;
+        }
     }
 
     .or {
         text-align: center;
-        padding: 10px;
         color: #a7a7a7;
+        height: 20%;
 
         hr {
             display: inline-block;
@@ -56,14 +91,22 @@
             height: 1px;
             width: 20px;
             margin: 10px;
+            height: 100%
         }
 
         div {
-            height: 20px;
             display: inline-block;
             vertical-align: top;
+            height: 100%
         }
     }
-    
+
+    .glyphicon-exclamation-sign {
+        color: red;
+
+        &:before {
+            vertical-align: middle;
+        }
+    }
 
 }

@@ -71,72 +71,86 @@
 .dashboard-container .dashboard-local-events .local-event-item:after {
   clear: both;
 }
+.dashboard-container {
+  height: 100%;
+}
 .dashboard-container > .row {
-  padding-top: 50px;
+  margin-top: 5%;
+  height: 40%;
 }
 .dashboard-container > .row:last-child {
   padding-bottom: 50px;
 }
 .dashboard-container .dashboard-id {
+  height: 100%;
   background-color: rgba(237, 170, 85, 0.5);
-  padding: 10px 10px 30px 10px;
+}
+.dashboard-container .dashboard-id > .row {
+  height: 70%;
+  margin-top: 5%;
+}
+.dashboard-container .dashboard-id .left-column,
+.dashboard-container .dashboard-id .right-column {
+  height: 100%;
 }
 .dashboard-container .dashboard-id .profile-image-wrapper {
   display: block;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  width: 173px;
-  height: 160px;
+  width: 100%;
+  height: 80%;
 }
 .dashboard-container .dashboard-id .profile-image-wrapper .profile-image {
   background-image: url("../images/uploadPhotoButton.png");
-  background-repeat: no-repeat;
-  background-position: 5px 5px;
-  width: 153px;
-  height: 140px;
-  display: table;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
   text-align: center;
   background-color: lightgray;
-  padding: 5px;
-  position: relative;
-  top: 10px;
-  left: 10px;
 }
 .dashboard-container .dashboard-id .upload-photo-btn {
   font-size: medium;
-  margin-top: 5px;
+  margin-top: 5%;
+  height: 30%;
 }
 .dashboard-container .dashboard-id .upload-photo-btn:hover {
   cursor: pointer;
 }
 .dashboard-container .dashboard-id .name {
   font-weight: bold;
-  font-size: medium;
-  margin-bottom: 10px;
+  font-size: large;
+  margin-bottom: 5%;
 }
 .dashboard-container .dashboard-id .bus-name {
   text-transform: uppercase;
-  font-size: medium;
+  font-size: large;
 }
 .dashboard-container .dashboard-leaderboard {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  height: 100%;
   float: right !important;
   background-color: rgba(225, 225, 225, 0.5);
-  padding: 20px;
-}
-@media (min-width: 992px) {
-  .dashboard-container .dashboard-leaderboard {
-    float: left;
-    width: 58.33333333%;
-  }
 }
 .dashboard-container .dashboard-leaderboard .leaderboard-header {
-  font-size: x-large;
-  margin-bottom: 10px;
+  height: 10%;
+  font-size: large;
+  margin: 2%;
+}
+.dashboard-container .dashboard-leaderboard > .row {
+  height: 86%;
+}
+.dashboard-container .dashboard-leaderboard .leaderboard-item-container {
+  height: 100%;
+}
+.dashboard-container .dashboard-leaderboard .bus-row {
+  height: 15%;
+  margin: 1% 0%;
+  padding: 0%;
+}
+.dashboard-container .dashboard-leaderboard .bus-row:first-child {
+  padding-bottom: 2%;
+  margin: 0%;
+  height: 25%;
 }
 .dashboard-container .dashboard-100-point {
   background-color: rgba(225, 225, 225, 0.5);

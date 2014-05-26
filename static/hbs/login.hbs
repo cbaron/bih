@@ -1,14 +1,18 @@
-<div class="login-container">
-    <div class="header">Log in</div>
-    <div class="input-container">
-        <input data-js="email" type="text" placeholder="User email" />
-        <input data-js="pass" type="text" placeholder="password" />
+<div class="header">Log in <span data-js="error" class="glyphicon glyphicon-exclamation-sign hide"></span></div>
+<div class="input-container">
+    <input data-js="email" type="text" placeholder="User email" />
+    <input data-js="pass" type="password" placeholder="password" />
+</div>
+<div class="button-container">
+    <div data-js="loginButton" class="login-button button">
+        <span>Log in</span>
     </div>
-    <div data-js="loginButton" class="login-button button">Log in</div>
     <div class="or">
         <hr></hr>
         <div>or</div>
         <hr></hr>
     </div>
-    <div data-js="guestLoginButton" class="guest-login-button button">Log in as guest</div>
+    <div data-js="guestLoginButton" class="guest-login-button button">
+        <span>Log in as guest</span>
+    </div>
 </div>
