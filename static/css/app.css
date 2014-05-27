@@ -72,6 +72,10 @@ html,
 #content {
   height: 100%;
 }
+#header {
+  height: 10%;
+  border-bottom: 1px solid #a7bafc;
+}
 body {
   background-color: black !important;
   height: 100%;

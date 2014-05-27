@@ -80,6 +80,7 @@ define(
                                     badgeHtml( { number: challenge.get('number') } ) );
                             }
                         }
+                        self.trigger('rendered');
                     }, this ) },
                     detail = function() { busBadges.each( function( model ) {
                         if( model.get('challengeId') === this.challengeId ) {
@@ -114,7 +115,7 @@ define(
                                 }
                             }
                             
-                        } }, this ) },
+                        } }, this ); self.trigger('rendered'); },
                     toCall = undefined;
     
                 if( this.mode === 'badges' ) { toCall = function() { fun.call(self); } }

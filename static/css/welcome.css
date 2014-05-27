@@ -164,3 +164,7 @@
 .welcome-container .left-label {
   padding-left: 40px;
 }
+.welcome-container .error {
+  border-color: #a94442;
+  border-width: 3px;
+}

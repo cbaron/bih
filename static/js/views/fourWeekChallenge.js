@@ -6,12 +6,13 @@ define(
       'views/leaderboard',
       'views/challengeList',
       'views/busMates',
+      'views/modalSpinner',
       'models/user',
       'templates/fourWeekChallenge',
       'css!styles/fourWeekChallenge'
     ],
     
-    function( $, _, Backbone, leaderboard, challengeList, busMates, user, template ) {
+    function( $, _, Backbone, leaderboard, challengeList, busMates, loading, user, template ) {
 
         var dashboard = Backbone.View.extend( {
 
@@ -64,6 +65,14 @@ define(
             },
 
             render: function() {
+                var self = this;
+
+                loading.start();
+
+                this.rendered = {
+                    challenges: false,
+                    leaderboard: false,
+                    busMates: false };
 
                 this.slurpTemplate( {
                     template: template( { user: user.attributes } ),
@@ -87,11 +96,31 @@ define(
                     mode: 'badges'
                 } );
 
-                this.listenToOnce( this.challenges, 'rendered', this.updateBusMateHeader );
+                this.listenToOnce( this.challenges, 'rendered', function() {
+                    self.rendered.challenges = true;
+                    self.updateBusMateHeader();
+                    self.checkSpinner(); } );
+
+                this.listenToOnce( this.leaderboard, 'rendered', function() {
+                    self.rendered.leaderboard = true;
+                    self.checkSpinner(); } );
+
+                this.listenToOnce( this.busMates, 'rendered', function() {
+                    self.rendered.busMates = true;
+                    self.checkSpinner(); } );
 
                 this.delegateEvents();
 
                 return this;
+            },
+
+            checkSpinner: function() {
+                if( this.rendered.challenges &&
+                    this.rendered.leaderboard &&
+                    this.rendered.busMates ) {
+
+                    loading.stop();
+                }
             },
 
             updateBusMateHeader: function() {

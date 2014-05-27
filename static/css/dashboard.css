@@ -76,13 +76,11 @@
 }
 .dashboard-container > .row {
   margin-top: 5%;
-  height: 40%;
-}
-.dashboard-container > .row:last-child {
-  padding-bottom: 50px;
+  height: 100%;
 }
 .dashboard-container .dashboard-id {
-  height: 100%;
+  height: 40%;
+  margin-bottom: 2%;
   background-color: rgba(237, 170, 85, 0.5);
 }
 .dashboard-container .dashboard-id > .row {
@@ -94,16 +92,16 @@
   height: 100%;
 }
 .dashboard-container .dashboard-id .profile-image-wrapper {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  background-size: cover;
   background-color: white;
   width: 100%;
   height: 80%;
 }
 .dashboard-container .dashboard-id .profile-image-wrapper .profile-image {
   background-image: url("../images/uploadPhotoButton.png");
-  background-size: contain;
+  background-size: initial;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -127,8 +125,8 @@
   font-size: large;
 }
 .dashboard-container .dashboard-leaderboard {
-  height: 100%;
-  float: right !important;
+  height: 40%;
+  margin-bottom: 2%;
   background-color: rgba(225, 225, 225, 0.5);
 }
 .dashboard-container .dashboard-leaderboard .leaderboard-header {
@@ -153,8 +151,9 @@
   height: 25%;
 }
 .dashboard-container .dashboard-100-point {
+  margin-bottom: 2%;
   background-color: rgba(225, 225, 225, 0.5);
-  padding: 20px;
+  padding: 2%;
 }
 .dashboard-container .dashboard-100-point .header {
   font-size: x-large;
@@ -215,19 +214,9 @@
   text-decoration: underline;
 }
 .dashboard-container .dashboard-local-events {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding: 20px;
-  float: right !important;
+  margin-bottom: 2%;
+  padding: 2%;
   background-color: rgba(225, 225, 225, 0.5);
-}
-@media (min-width: 992px) {
-  .dashboard-container .dashboard-local-events {
-    float: left;
-    width: 58.33333333%;
-  }
 }
 .dashboard-container .dashboard-local-events .local-event-header {
   font-size: x-large;

@@ -43,17 +43,15 @@ define(
             },
 
             showLoginDialogue: function() {
+                $('#header').height(0);
                 require( [ 'views/modal', 'views/login' ], function( modal, login ) {
                     modal.listenToOnce( login, 'success', modal.closeDialogue );
-                    modal.addContent( {
-                        //width: $(window).outerWidth(true) / 4,
-                        //height: $(window).outerWidth(true) / 2,
-                        content: login.$el
-                    } );
+                    modal.addContent( { content: login.$el } )
                 } );
             },
 
             hideContent: function() {
+                $('#header').height('10%');
                 this.content.children().hide();
                 return this;
             },

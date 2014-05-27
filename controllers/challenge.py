@@ -27,12 +27,11 @@ def GET( sf ):
                        "BIH_Challenge__r.End_Date__c, BIH_Challenge__r.Points_per_entry__c, BIH_Challenge__r.Post_Type__c, ",
                        "BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c FROM Available_Challenge__c ",
                        "WHERE BIH_Challenge__r.Active__c = TRUE AND BIH_Bus__r.Name = '",
-                       request.vars.busName, "'" ] ) )['records']
+                       request.vars.busName, "' ORDER BY BIH_Challenge__r.Start_Date__c DESC" ] ) )['records']
 
     rv = [ ]
-    for idx, row in enumerate( challengeRecords ):
+    for row in challengeRecords:
         rv.append( dict( id = row['BIH_Challenge__r']['Id'],
-                         number = idx + 1,
                          name = row['BIH_Challenge__r']['Name'],
                          rules = row['BIH_Challenge__r']['Challenge_Rules__c'],
                          week = row['BIH_Challenge__r']['Challenge_Type__c'],

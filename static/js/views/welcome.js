@@ -80,7 +80,9 @@ define(
                 } );
 
                 this.templateData.uploadPhotoBtnWrapper.css( {
-                    'background-image': 'url(' + this.imageUrl + ')' } );
+                    'background-image': 'url(' + this.imageUrl + ')',
+                    'background-size': 'cover',
+                } );
             },
 
             handleUploadPhotoClick: function() {
@@ -97,10 +99,15 @@ define(
                     data = {};
 
                 _.each( [ 'phone', 'location', 'password' ], function( attr ) {
-                    if( $.trim( this.templateData[ attr ].val() ) === '' ) { toSubmit = false; }
+                    if( $.trim( this.templateData[ attr ].val() ) === '' ) {
+                        toSubmit = false;
+                        this.templateData[ attr ].addClass('error').on('focus', function() { $(this).removeClass('error'); } );
+                    }
                 }, this ); 
 
                 if( this.templateData.password.val() !== this.templateData.repeat.val() ) {
+                    this.templateData.password.addClass('error').on('focus', function() { $(this).removeClass('error'); } );
+                    this.templateData.repeat.addClass('error').on('focus', function() { $(this).removeClass('error'); } );
                     toSubmit = false;
                 }
 
@@ -122,8 +129,9 @@ define(
                     $.ajax( {
                         url: '/register/post',
                         data: data,
-                        //type: 'POST',
                         success: function( response ) {
+                            console.log( response );
+                            if( response.weCool === true ) { window.location = '/'; }
                         }
                     } );
                 }

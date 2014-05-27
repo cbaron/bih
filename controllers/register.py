@@ -20,6 +20,8 @@ def index():
             ''.join( [ "Select ID, Date_of_First_Login__c, First_Name__c, Last_Name__c, Email__c ",
                        "FROM BIH_USER__C WHERE ID = '", request.vars.id, "'" ] ) )['records'][0]
 
+        import json
+        print json.dumps( record, indent=4)
         if record['Date_of_First_Login__c'] is not None:
             redirect( URL(a='bih',c='default',f='index') )
 
@@ -65,7 +67,9 @@ def post():
     #errorMsg = sys.exc_info()[0]
     #print sys.exc_info()[0]
 
+    response.headers['Content-Type']='application/json'
+
     if weCool:
-        redirect( URL(a='bih',c='default',f='index') )
+        return response.json( dict( weCool=True) )
 
     return response.json( dict( error=str(errorMsg) ) )

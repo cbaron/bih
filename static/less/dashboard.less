@@ -7,15 +7,12 @@
 
     >.row {
         margin-top: 5%;
-        height: 40%;
-
-        &:last-child {
-            padding-bottom: 50px;
-        }
+        height: 100%;
     }
 
     .dashboard-id {
-        height: 100%;
+        height: 40%;
+        margin-bottom: 2%;
 
         background-color: rgba( 237, 170, 85, 0.5 );
 
@@ -29,15 +26,16 @@
         }
 
         .profile-image-wrapper {
-            
-            .center-block();
+            background-size: cover;
             background-color: white;
             width: 100%;
             height: 80%;
 
             .profile-image {
                 background-image: url("../images/uploadPhotoButton.png");
-                background-size: contain;
+                background-size: initial;
+                background-position: center;
+                background-repeat: no-repeat; 
                 width: 100%;
                 height: 100%;
                 text-align: center;
@@ -68,8 +66,8 @@
     }
 
     .dashboard-leaderboard {
-        height: 100%;
-        .pull-right();
+        height: 40%;
+        margin-bottom: 2%;
         background-color: rgba( 225, 225, 225, 0.5 );
 
         .leaderboard-header {
@@ -101,8 +99,9 @@
     }
 
     .dashboard-100-point {
+        margin-bottom: 2%;
         background-color: rgba( 225, 225, 225, 0.5 );
-        padding: 20px;
+        padding: 2%;
 
         .header {
             font-size: x-large;
@@ -158,10 +157,8 @@
     }
 
     .dashboard-local-events {
-
-        .make-md-column(7);
-        padding: 20px;
-        .pull-right();
+        margin-bottom: 2%;
+        padding: 2%;
         background-color: rgba( 225, 225, 225, 0.5 );
 
         .local-event-header {

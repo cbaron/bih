@@ -16,13 +16,17 @@ define(
 
         events: {
             
-           'click  [data-js="dropdownButton"]': 'showDropdown',
+           'click  [data-js="dropdownButton"]': 'menuClicked',
+           'click  [data-js="menu"]': 'menuClicked',
            'click  [data-js="fourWeekChallengeBtn"]': 'handleFourWeekBtnClick',
            'click  [data-js="hundredPointChallengeBtn"]': 'handlePointChallengeBtnClick',
            'click  [data-js="getInvolvedBtn"]': 'getInvolvedClicked',
            'click  [data-js="myBusBtn"]': 'myBusClicked',
            'click  [data-js="inbox"]': 'inboxClicked',
-           'click  [data-js="logout"]': 'logoutClicked'
+           'click  [data-js="logout"]': 'logoutClicked',
+           'click  [data-js="homeBtn"]': 'homeClicked',
+           'click  [data-js="mobileMenuBtn"]': 'mobileMenuClicked',
+           'click  [data-js="mobileMenu"] li': 'mobileMenuClicked'
                 
         },
 
@@ -51,30 +55,14 @@ define(
             this.listenToOnce( user, 'change', this.render );
         },
 
-        showDropdown: function() {
-            var self = this;
-
-            this.undelegateEvents();
-            this.templateData.dropdownButton.addClass('active');
-            this.templateData.menu.fadeIn( 400, function() { self.attachClickHandler() } );
-        },
-
-        attachClickHandler: function() {
-            var self = this;
-
-            this.documentClickHandler = function(e) { self.handleClick(e) };
-            $( document ).on( 'click', this.documentClickHandler );
-        },
-
-        hideDropdown: function() {
-            this.templateData.dropdownButton.removeClass('active');
-            this.templateData.menu.hide();
-            $( document ).off( 'click', this.documentClickHandler );
-            this.delegateEvents();
-        },
-
-        handleClick: function(e) {
-            if( ! this.isMouseOnEl( e, this.templateData.menu ) ) { this.hideDropdown(); }
+        menuClicked: function(e) {
+            var menu = $(e.currentTarget).siblings('[data-js="menu"]');
+           
+            if( menu.hasClass('hide') ) {
+                menu.removeClass('hide');
+            } else {
+                menu.addClass('hide');
+            }
         },
 
         handleFourWeekBtnClick: function() {
@@ -96,8 +84,23 @@ define(
         inboxClicked: function() {
             this.router.navigate('inbox', { trigger: true} );
         },
+        
+        homeClicked: function() {
+            this.router.navigate('', { trigger: true} );
+        },
 
-        logoutClicked: function() { window.location = '/logout'; },
+        logoutClicked: function() {
+            console.log('asd');
+            window.location = '/logout';
+        },
+
+        mobileMenuClicked: function() {
+            if( this.templateData.mobileMenu.hasClass('hide') ) {
+                this.templateData.mobileMenu.removeClass('hide');
+            } else {
+                this.templateData.mobileMenu.addClass('hide');
+            }
+        }
 
     } );
 

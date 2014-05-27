@@ -1,24 +1,46 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="header-row">
-            <div class="header-item">
-                <div class="header-box-overlay">
-                    <div class="overlay-item">BRING</div>
-                    <div class="overlay-item">ISRAEL</div>
-                    <div class="overlay-item">HOME</div>
+        <div class="header-column col-md-12 hidden-sm hidden-xs">
+            <div class="header-row">
+                <div class="header-item">
+                    <div data-js="homeBtn" class="header-box-overlay">
+                        <div class="overlay-item">BRING</div>
+                        <div class="overlay-item">ISRAEL</div>
+                        <div class="overlay-item">HOME</div>
+                    </div>
+                    <span data-js="fourWeekChallengeBtn" class="overlay-sibling">4-Week Challenge</span>
                 </div>
-                <span data-js="fourWeekChallengeBtn" class="overlay-sibling">4-Week Challenge</span>
+                <span data-js="hundredPointChallengeBtn" class="header-item">100-Point Challenge</span>
+                <span data-js="myBusBtn" class="header-item">My Bus</span>
+                <span data-js="getInvolvedBtn" class="header-item">Get Involved</span>
+                <span class="header-item">Help</span>
+                <div class="header-item">
+                    <span data-js="inbox" class="glyphicon glyphicon-envelope"></span>
+                    <span>Hi {{firstName}}!</span>
+                    <span data-js="dropdownButton" class="glyphicon glyphicon-chevron-down"></span>
+                    <div data-js="menu" class="menu hide">
+                        <div data-js="logout">Logout</div>
+                    </div>
+                </div>
             </div>
-            <span data-js="hundredPointChallengeBtn" class="header-item">100-Point Challenge</span>
-            <span data-js="myBusBtn" class="header-item">My Bus</span>
-            <span data-js="getInvolvedBtn" class="header-item">Get Involved</span>
-            <span class="header-item">Help</span>
-            <div class="header-item">
+        </div>
+        <div class="header-column col-sm-12 col-xs-12 hidden-md hidden-lg">
+            <div class="mini-left">
+                <span data-js="mobileMenuBtn" class="glyphicon glyphicon-align-justify"></span>
+                <ul data-js="mobileMenu" class="mobile-menu hide">
+                    <li data-js="homeBtn">Home</li>
+                    <li data-js="fourWeekChallengeBtn">4-Week Challenge</li>
+                    <li data-js="hundredPointChallengeBtn">100-Point Challenge</li>
+                    <li data-js="myBusBtn">My Bus</li>
+                    <li data-js="getInvolvedBtn">Get Involved</li>
+                    <li data-js="helpBtn">Help</li>
+                </ul>
+            </div>
+            <div class="mini-right">
                 <span data-js="inbox" class="glyphicon glyphicon-envelope"></span>
                 <span>Hi {{firstName}}!</span>
                 <span data-js="dropdownButton" class="glyphicon glyphicon-chevron-down"></span>
-                <div data-js="menu" class="menu">
-                    <div>Settings</div>
+                <div data-js="menu" class="menu hide">
                     <div data-js="logout">Logout</div>
                 </div>
             </div>

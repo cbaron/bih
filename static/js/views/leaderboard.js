@@ -49,8 +49,9 @@ define(
                     keepDataJs: false
                 } );
 
-
                 this.update();
+
+                this.trigger('rendered');
 
                 return this;
             },

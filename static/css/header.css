@@ -68,17 +68,111 @@
 .modal-footer:after {
   clear: both;
 }
-#header .header-row {
+#header .container-fluid {
+  height: 100%;
+}
+#header .container-fluid > .row {
+  height: 100%;
   background-color: #2c50d8;
+}
+#header .header-column {
+  height: 100%;
+}
+#header .mini-left {
+  display: table;
+  height: 100%;
+  float: left !important;
+}
+#header .mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 1%;
+  list-style-type: none;
+  padding: 0;
+  background-color: #2c50d8;
+  color: white;
+  z-index: 2;
+}
+#header .mobile-menu li {
+  padding: 5%;
+  border-top: 1px solid white;
+}
+#header .mobile-menu li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#header .mini-right {
+  display: table;
+  height: 100%;
+  float: right !important;
+  position: relative;
+}
+#header .mini-right span {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-size: x-large;
+  padding: 0px 20px;
+}
+#header .mini-right .glyphicon-envelope {
+  color: black;
+  top: 0px;
+}
+#header .mini-right .glyphicon-envelope:hover {
+  color: white;
+  cursor: pointer;
+}
+#header .mini-right .glyphicon-chevron-down {
+  color: #009693;
+  padding-left: 5px;
+}
+#header .mini-right .glyphicon-chevron-down:hover {
+  color: white;
+  cursor: pointer;
+}
+#header .mini-right .glyphicon-chevron-down.active {
+  color: white;
+}
+#header .mini-right .menu {
+  background-color: #2c50d8;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  z-index: 2;
+  padding: 2%;
+  margin: 0;
+  color: white;
+  font-size: medium;
+}
+#header .mini-right .menu div {
+  background-color: #2c50d8;
+}
+#header .mini-right .menu div:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#header .glyphicon-align-justify {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-size: x-large;
+  top: 0px;
+}
+#header .glyphicon-align-justify:hover {
+  cursor: pointer;
+}
+#header .header-row {
   text-align: center;
   color: white;
-  border-bottom: 1px solid #a7bafc;
+  height: 100%;
 }
 #header .header-row .header-item {
+  height: 100%;
   display: inline-block;
   vertical-align: top;
   padding: 15px;
   border-right: 1px solid #a7bafc;
+  position: relative;
 }
 #header .header-row .header-item:hover {
   cursor: pointer;
@@ -108,16 +202,22 @@
   color: white;
 }
 #header .header-row .header-item .menu {
+  background-color: #2c50d8;
   position: absolute;
-  background-color: #2143c1;
-  display: none;
-  margin-top: 15px;
-  margin-left: 25px;
+  top: 100%;
+  right: 0%;
   z-index: 2;
-  padding: 6px 0px;
+  padding: 2%;
+  margin: 0;
+  color: white;
+  font-size: medium;
 }
 #header .header-row .header-item .menu div {
-  padding: 0px 15px;
+  background-color: #2c50d8;
+}
+#header .header-row .header-item .menu div:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 #header .header-row .header-box-overlay {
   position: absolute;

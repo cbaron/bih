@@ -8,13 +8,11 @@ def index():
 
 def GET( sf, session ):
 
-    '''
     geh = records = sf.query(\
             ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c ",
                        "FROM BIH_USER__C " ] ) )['records']
     import json
     print json.dumps(geh,indent=4)
-    '''
 
     if request.vars.e and request.vars.p:
         records = sf.query(\
@@ -27,7 +25,7 @@ def GET( sf, session ):
         if len( records ):
 
             if records[0]['Date_of_First_Login__c'] is None:
-                redirect( URL(a='bih',c='default',f='index') )
+                return response.json( dict() )
 
             session.userId = records[0]['Id']
             return getCleanUser( records[0] )

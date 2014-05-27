@@ -45,6 +45,8 @@ define(
 
             render: function() {
 
+                if( this.challenges.length === 0 ) { return; }
+
                 this.slurpTemplate( {
                     template: template( {
                         week: this.challenges.at(0).attributes.week,

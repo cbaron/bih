@@ -3,17 +3,131 @@
 
 #header {
 
-    .header-row {
+    .container-fluid {
+        height: 100%;
+    }
+
+    .container-fluid > .row {
+        height: 100%;
         background-color: @blue;
+    }
+
+    .header-column {
+        height: 100%;
+    }
+
+    .mini-left {
+        display: table;
+        height: 100%;
+        .pull-left();
+    }
+
+    .mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 1%;
+        list-style-type: none;
+        padding: 0;
+        background-color: @blue;
+        color: white;
+        z-index: 2;
+
+        li {
+            padding: 5%;
+            border-top: 1px solid white;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .mini-right {
+        display: table;
+        height: 100%;
+        .pull-right();
+        position: relative;
+
+        span {
+            display: table-cell;
+            vertical-align: middle;
+            color: white;
+            font-size: x-large;
+            padding: 0px 20px;
+        }
+
+        .glyphicon-envelope {
+            color: black;
+            top: 0px;
+
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        .glyphicon-chevron-down {
+            color: @aqua;
+            padding-left: @glyph-padding;
+
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+
+            &.active {
+                color: white;
+            }
+        }
+
+        .menu {
+            background-color: @blue;
+            position: absolute;
+            top: 100%;
+            right: 0%;
+            z-index: 2;
+            padding: 2%;
+            margin: 0;
+            color: white;
+            font-size: medium;
+
+            div {
+                background-color: @blue;
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .glyphicon-align-justify {
+        display: table-cell;
+        vertical-align: middle;
+        color: white;
+        font-size: x-large;
+        top: 0px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+
+    .header-row {
         text-align: center;
         color: white;
-        border-bottom: 1px solid @light-blue;
+        height: 100%;
 
         .header-item {
+            height: 100%;
             display: inline-block;
             vertical-align: top;
             padding: @header-item-padding;
             border-right: 1px solid @light-blue;
+            position: relative;
 
             &:hover {
                 cursor: pointer;
@@ -50,16 +164,23 @@
             }
 
             .menu {
+                background-color: @blue;
                 position: absolute;
-                background-color: @dark-blue;
-                display: none;
-                margin-top: @header-item-padding;
-                margin-left: @header-item-padding + ( @glyph-padding * 2 );
+                top: 100%;
+                right: 0%;
                 z-index: 2;
-                padding: 6px 0px;
+                padding: 2%;
+                margin: 0;
+                color: white;
+                font-size: medium;
 
                 div {
-                    padding: 0px 15px;
+                    background-color: @blue;
+
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
                 }
             }
         }
