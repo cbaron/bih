@@ -115,6 +115,7 @@ define(
             },
 
             checkSpinner: function() {
+                console.log( this.rendered );
                 if( this.rendered.challenges &&
                     this.rendered.leaderboard &&
                     this.rendered.busMates ) {

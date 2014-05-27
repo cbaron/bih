@@ -51,25 +51,25 @@ def post():
     if request.vars.day:
         birthday[8:9] = request.vars.day[0:1]
 
-    #try:
-    sf.BIH_User__c.update( session.userId, {\
-        'Birthdate__c': birthday,
-        'Phone__c': request.vars.phone,
-        'Location__c': request.vars.location,
-        'School__c': request.vars.university,
-        'Occupation__c': request.vars.occupation,
-        'Date_of_Graduation__c': yearGraduated + '-01-01',
-        'BIH_Password__c': request.vars.password,
-        'Short_Biography__c': request.vars.biography
-    } )
-    #except:
-    #weCool = False
-    #errorMsg = sys.exc_info()[0]
-    #print sys.exc_info()[0]
+    try:
+        sf.BIH_User__c.update( session.userId, {\
+            'Birthdate__c': birthday,
+            'Phone__c': request.vars.phone,
+            'Location__c': request.vars.location,
+            'School__c': request.vars.university,
+            'Occupation__c': request.vars.occupation,
+            'Date_of_Graduation__c': yearGraduated + '-01-01',
+            'BIH_Password__c': request.vars.password,
+            'Short_Biography__c': request.vars.biography
+        } )
+    except:
+        weCool = False
+        errorMsg = sys.exc_info()[0]
+        print erroMsg
 
     response.headers['Content-Type']='application/json'
 
     if weCool:
         return response.json( dict( weCool=True) )
 
-    return response.json( dict( error=str(errorMsg) ) )
+    return response.json( dict( error=True) )

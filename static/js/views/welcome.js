@@ -5,6 +5,7 @@ define(
       'backbone',
        'extendBackbone',
       'templates/welcome',
+      'views/modalSpinner',
       'css!styles/bootstrap',
       'css!styles/bootstrap-theme',
       'css!styles/app',
@@ -14,7 +15,7 @@ define(
       'dropdown'
     ],
     
-    function( $, _, Backbone, ExtendBackbone, welcomeHtml ) {
+    function( $, _, Backbone, ExtendBackbone, welcomeHtml, loading ) {
 
         return Backbone.View.extend( {
 
@@ -113,6 +114,8 @@ define(
 
                 if( toSubmit ) {
 
+                    loading.start();
+
                     data = _.reduce(
                         [ 'month', 'day', 'year', 'phone', 'university', 'location',
                           'password', 'graduated', 'occupation', 'biography' ],
@@ -130,8 +133,9 @@ define(
                         url: '/register/post',
                         data: data,
                         success: function( response ) {
-                            console.log( response );
+                            loading.stop();
                             if( response.weCool === true ) { window.location = '/'; }
+                            else { alert('There was a problem'); }
                         }
                     } );
                 }

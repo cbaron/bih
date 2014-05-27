@@ -161,6 +161,10 @@
 #header .glyphicon-align-justify:hover {
   cursor: pointer;
 }
+#header .myBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 #header .header-row {
   text-align: center;
   color: white;
@@ -173,9 +177,6 @@
   padding: 15px;
   border-right: 1px solid #a7bafc;
   position: relative;
-}
-#header .header-row .header-item:hover {
-  cursor: pointer;
 }
 #header .header-row .header-item:last-child {
   border-right: none;
@@ -226,6 +227,10 @@
   margin-top: -15px;
   text-align: center;
   z-index: 2;
+}
+#header .header-row .header-box-overlay:hover {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
 }
 #header .header-row .header-box-overlay .overlay-item {
   -webkit-transform: rotate(-15deg);

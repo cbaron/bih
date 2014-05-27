@@ -52,7 +52,8 @@ define(
 
             handleKeyPress: function( e ) {
 
-                if( e.keyCode === 27 ) { this.closeDialogue(); }
+                /* Make optional */
+                //if( e.keyCode === 27 ) { this.closeDialogue(); }
 
                 /* TODO: Add 'Enter' button pressing functionality */
                 

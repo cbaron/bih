@@ -56,6 +56,8 @@ define(
                     this.templateData.messageBtn.removeClass('hide');
                 }
 
+                this.trigger('rendered');
+
                 if( busBadges.length ) {
                     this.renderBadges();
                 } else {
@@ -70,6 +72,7 @@ define(
             },
 
             renderBadges: function() {
+                console.log('in render badges');
                 var self = this,
                     fun = function() { busBadges.each( function( model ) {
                         if( this.templateData ) {
@@ -80,8 +83,7 @@ define(
                                     badgeHtml( { number: challenge.get('number') } ) );
                             }
                         }
-                        self.trigger('rendered');
-                    }, this ) },
+                    }, this ); },
                     detail = function() { busBadges.each( function( model ) {
                         if( model.get('challengeId') === this.challengeId ) {
 
@@ -115,7 +117,7 @@ define(
                                 }
                             }
                             
-                        } }, this ); self.trigger('rendered'); },
+                        } }, this ); },
                     toCall = undefined;
     
                 if( this.mode === 'badges' ) { toCall = function() { fun.call(self); } }
@@ -123,6 +125,7 @@ define(
 
                 if( challenges.length ) { toCall(); }
                 else { this.listenToOnce( challenges, 'sync', toCall ); }
+                console.log('leaving render badges');
                 return this;
             },
 

@@ -115,6 +115,10 @@
         }
     }
 
+    .myBtn:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 
     .header-row {
         text-align: center;
@@ -129,9 +133,7 @@
             border-right: 1px solid @light-blue;
             position: relative;
 
-            &:hover {
-                cursor: pointer;
-            }
+            
 
             &:last-child {
                 border-right: none;
@@ -192,6 +194,11 @@
             margin-top: -@header-item-padding;
             text-align: center;
             z-index: 2;
+
+            &:hover {
+                border: 1px solid rgba(256,256,256,0.4);
+                cursor: pointer;
+            }
 
             .overlay-item {
                 .rotate(-15deg);
