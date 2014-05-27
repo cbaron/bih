@@ -17,15 +17,17 @@ def index():
 
     try:
         record = sf.query(\
-            ''.join( [ "Select ID, Date_of_First_Login__c, First_Name__c, Last_Name__c, Email__c ",
+            ''.join( [ "Select ID, Date_of_First_Login__c, First_Name__c, Last_Name__c, Email__c, ",
+                       "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C WHERE ID = '", request.vars.id, "'" ] ) )['records'][0]
 
-        import json
-        print json.dumps( record, indent=4)
         if record['Date_of_First_Login__c'] is not None:
             redirect( URL(a='bih',c='default',f='index') )
 
         session.userId = record['Id']
+
+        if record['Team_Members__r'] is not None:
+          session.busId = record['Team_Members__r']['records'][0]['BIH_Bus__r']['Id']
 
         return dict( user = dict(
             id = record['Id'],

@@ -84,6 +84,7 @@ profileImage = db.define_table( 'profileImage',
     Field('image', 'upload', autodelete=True),
     Field('thumb', 'upload', autodelete=True),
     Field('sizeFile', 'float'),
+    Field('busId', 'string'),
     Field('userId', 'string') )
 
 submission = db.define_table( 'submission',

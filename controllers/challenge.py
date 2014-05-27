@@ -30,8 +30,9 @@ def GET( sf ):
                        request.vars.busName, "' ORDER BY BIH_Challenge__r.Start_Date__c DESC" ] ) )['records']
 
     rv = [ ]
-    for row in challengeRecords:
+    for idx, row in enumerate( challengeRecords ):
         rv.append( dict( id = row['BIH_Challenge__r']['Id'],
+                         number = idx + 1,
                          name = row['BIH_Challenge__r']['Name'],
                          rules = row['BIH_Challenge__r']['Challenge_Rules__c'],
                          week = row['BIH_Challenge__r']['Challenge_Type__c'],

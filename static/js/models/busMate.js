@@ -5,7 +5,8 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
         defaults: {
             "id": undefined,
             "firstName": undefined,
-            "lastName": undefined
+            "lastName": undefined,
+            "profileImage": undefined
         }
 
     } );

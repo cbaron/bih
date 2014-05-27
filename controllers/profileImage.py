@@ -30,6 +30,7 @@ def post():
 
     db.profileImage[id] = dict(
         sizeFile=size,
+        busId = session.busId,
         userId = session.userId )
 
     res = dict(\
@@ -40,7 +41,6 @@ def post():
                   "delete_url": URL(f='delete_file', args=[image['image']]),
                   "delete_type": "DELETE" } ] )
 
-    #return gluon.contrib.simplejson.dumps(response, separators=(',',':'))
     return response.json( res )
 
 def delete_file():

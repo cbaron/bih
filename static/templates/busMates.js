@@ -10,7 +10,9 @@ function program1(depth0,data) {
   var buffer = "", stack1;
   buffer += "\n    <div data-type=\"busMate\" data-js=\""
     + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"bus-mate-row\">\n        <div class=\"image\">\n            <img data-js=\"image\"/>\n        </div>\n        <div class=\"bus-mate-detail\">\n            <span class=\"glyphicon glyphicon-comment hide\" data-js=\"messageBtn\"></span>\n            <span data-js=\"name\" class=\"name\">"
+    + "\" class=\"bus-mate-row\">\n        <div class=\"image\">\n            <img src=\""
+    + escapeExpression(((stack1 = (depth0 && depth0.profileImage)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"/>\n        </div>\n        <div class=\"bus-mate-detail\">\n            <span class=\"glyphicon glyphicon-comment hide\" data-js=\"messageBtn\"></span>\n            <span data-js=\"name\" class=\"name\">"
     + escapeExpression(((stack1 = (depth0 && depth0.lastName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + ", "
     + escapeExpression(((stack1 = (depth0 && depth0.firstName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

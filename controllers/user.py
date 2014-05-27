@@ -29,6 +29,9 @@ def GET( sf, session ):
             if records[0]['Date_of_First_Login__c'] is None:
                 return response.json( dict() )
 
+            if records[0]['Team_Members__r'] is not None:
+              session.busId = records[0]['Team_Members__r']['records'][0]['BIH_Bus__r']['Id']
+
             session.userId = records[0]['Id']
             return getCleanUser( records[0] )
 

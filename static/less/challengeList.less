@@ -6,19 +6,17 @@
 .past-challenge-container,
 .challenge-container {
 
-    margin-top: 20px;
+    margin-top: 2%;
 
     .challenge-header {
 
         font-size: large;
         background-color: @orange;
         color: white;
-        padding: 5px 35px;
+        padding: 1%;
     }
     
     .challenge-item-container {
-
-        .make-md-column(12);
 
         .challenge-row {
 
@@ -43,28 +41,25 @@
             .number {
                 background-color: @dark-gray;
                 color: white;
-                .make-md-column(1);
-                width: 40px !important;
-                padding: 5px;
                 text-align: center;
                 font-weight: bold;
                 font-size: large;
+                padding: 15px 0px;
             }
 
             .challenge-detail-wrap {
-                .make-md-column(11);
                 font-size: large;
+                padding: 15px 0px;
 
                 .challenge-detail {
 
-                    padding: 5px;
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
+                    margin: 0px 15px;
 
                     .name {
                         font-weight: bold;
-                        padding-left: 10px;
                     }
 
                     .points {
@@ -78,51 +73,6 @@
             }
         }
 
-    }
-
-    .bus-row {
-        .make-md-column(12);
-        margin: 5px 0px;
-        padding: 5px 15px;
-        background-color: @row-bg;
-
-        .bus-rank {
-            color: @dashboard-text-color;
-            font-size: medium;
-            font-weight: bold;
-        }
-        
-        .bus-name {
-            color: white;
-            font-size: medium;
-            font-weight: 300;
-            margin-left: 20px;
-        }
-
-        .point-container {
-
-            .pull-right();
-
-            .bus-points {
-                color: white;
-                font-size: medium;
-                font-weight: bold;
-            }
-
-            .points {
-                color: @dashboard-text-color;
-                font-weight: 300;
-            }
-        }
-
-        &.user-bus {
-            
-            background-color: @orange;
-
-            .bus-name {
-                font-weight: bold;
-            }
-        }
     }
 }
 
