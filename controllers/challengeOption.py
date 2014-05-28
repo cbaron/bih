@@ -8,10 +8,18 @@ def index():
 
 def GET( sf ):
 
+    '''
     options = sf.query( ''.join( [ \
         "Select ID, Name, Challenge_Rules__c, Challenge_Type__c, Active__c, Double_points__c, End_Date__c, Points_per_entry__c, ",
         "Image_Link__c, Post_Type__c, Start_Date__c, Type__c, Enrollment_Start_Date__c, Enrollment_End_Date__c, Enrollment_Open__c  ",
         "FROM BIH_Challenge__c WHERE Enrollment_Open__c = TRUE AND Challenge_Type__c = '100 Point Challenge'" ] ) )['records']
+    '''
+
+    options = sf.query( ''.join( [ \
+        "Select ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, BIH_Challenge__r.Image_Link__c ",
+        "FROM X100_Point_Challenges_Enrolled__c " ] ) )['records']
+
+    print options
 
     rv = [ ]
     for option in options:

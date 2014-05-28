@@ -14,7 +14,7 @@ define(
     
     function( $, _, Backbone, leaderboard, challengeList, busMates, loading, user, template ) {
 
-        var dashboard = Backbone.View.extend( {
+        return new ( Backbone.View.extend( {
 
             className: 'container four-week-container',
 
@@ -52,14 +52,11 @@ define(
 
             initialize: function() {
 
-                //should just get the user on every route
-                this[ ( user.has('firstName') )
-                    ? 'render'
-                    : 'waitForUserData' ]();
-
                 this.model = new Backbone.Model( {
                     challengeList: 'viewPast',
                     leaderboard: 'leader' } );
+                
+                this.render();
 
                 return this;
             },
@@ -85,37 +82,39 @@ define(
                     el: this.templateData.leaderboardItems,
                     mode: 'leader',
                     user: user
-                } );
+                } ).on( 'rendered', function() {
+                    self.rendered.leaderboard = true;
+                    self.checkSpinner(); } );
                 
                 this.challenges = new challengeList( {
                     el: this.templateData.challengeContainer
-                } );
+                } ).on( 'rendered', function() {
+                    self.rendered.challenges = true;
+                    self.updateBusMateHeader();
+                    self.checkSpinner(); } );
                 
                 this.busMates = new busMates( {
                     el: this.templateData.busMatesItemContainer,
                     mode: 'badges'
                 } );
 
-                this.listenToOnce( this.challenges, 'rendered', function() {
-                    self.rendered.challenges = true;
-                    self.updateBusMateHeader();
-                    self.checkSpinner(); } );
-
-                this.listenToOnce( this.leaderboard, 'rendered', function() {
-                    self.rendered.leaderboard = true;
-                    self.checkSpinner(); } );
-
-                this.listenToOnce( this.busMates, 'rendered', function() {
-                    self.rendered.busMates = true;
-                    self.checkSpinner(); } );
-
+                if( this.busMates.rendered ) {
+                    this.rendered.busMates = true;
+                    this.checkSpinner();
+                } else {
+                    this.busMates.on( 'rendered', function() {
+                        self.rendered.busMates = true;
+                        self.checkSpinner();
+                    } );
+                }
+                
                 this.delegateEvents();
 
                 return this;
             },
 
             checkSpinner: function() {
-                console.log( this.rendered );
+
                 if( this.rendered.challenges &&
                     this.rendered.leaderboard &&
                     this.rendered.busMates ) {
@@ -129,10 +128,6 @@ define(
                 this.templateData.busMatesHeader.text(   
                     this.challenges.challenges.at(0).attributes.week
                 );
-            },
-
-            waitForUserData: function() {
-                this.listenToOnce( user, 'change', this.render );
             },
 
             viewPastChallengeClick: function() {
@@ -172,7 +167,6 @@ define(
                 this.delegateEvents();
             }
 
-        } );
+        } ) )();
 
-        return new dashboard();
 } );

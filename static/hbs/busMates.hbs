@@ -1,13 +1,33 @@
 {{#each busMates}}
-    <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row">
-        <div class="image">
+    <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row hidden-xs hidden-sm">
+        <div class="image col-md-1">
             <img src="{{this.profileImage}}"/>
         </div>
-        <div class="bus-mate-detail">
+        <div class="bus-mate-detail col-md-11">
             <span class="glyphicon glyphicon-comment hide" data-js="messageBtn"></span>
-            <span data-js="name" class="name">{{this.lastName}}, {{this.firstName}}</span>
+            <span data-js="name" class="col-md-3 name">{{this.lastName}}, {{this.firstName}}</span>
             <span class="vote-off hide glyphicon glyphicon-thumbs-down" data-js="voteOffBtn"></span>
             <span class="badge-container" data-js="badgeContainer"></span>
+        </div>
+        
+        <div class="clearfix hide">
+            <div class="col-md-2"></div>
+            <div class="detail-container" data-js="detailContainer"></div>
+        </div>
+    </div>
+    <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row visible-xs visible-sm">
+        <div class="image col-xs-1 col-sm-1">
+            <img src="{{this.profileImage}}"/>
+        </div>
+        <div class="bus-mate-detail col-xs-11 col-sm-11">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2">    
+                    <span class="glyphicon glyphicon-comment hide" data-js="messageBtn"></span>
+                 </div>
+                <div data-js="name" class="col-xs-5 col-sm-5 name">{{this.lastName}}, {{this.firstName}}</div>
+                <span class="vote-off hide glyphicon glyphicon-thumbs-down" data-js="voteOffBtn"></span>
+                <div class="col-xs-5 col-sm-5 badge-container" data-js="badgeContainer"></div>
+            </div>
         </div>
         <div class="clearfix hide">
             <div class="col-md-2"></div>

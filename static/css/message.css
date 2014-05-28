@@ -68,12 +68,19 @@
 .modal-footer:after {
   clear: both;
 }
+.message-container {
+  background-color: #e5e5e5;
+  box-shadow: 0 0 0.5em #000000;
+  padding: 1em 2em;
+  height: 80%;
+}
 .message-container .header-row {
   background-color: #ec7400;
   color: white;
   font-weight: bold;
   font-size: large;
-  padding: 10px;
+  height: 15%;
+  padding-top: 2%;
 }
 .message-container .header-row:before,
 .message-container .header-row:after {
@@ -94,20 +101,25 @@
 .message-container .header {
   width: 90%;
   float: left;
+  padding-left: 5%;
 }
 .message-container .glyphicon {
   width: 10%;
   float: left;
 }
+.message-container .glyphicon:before {
+  vertical-align: sub;
+}
 .message-container .glyphicon:hover {
   cursor: pointer;
 }
 .message-container .name {
-  margin-top: 20px;
   font-weight: bold;
+  height: 10%;
+  padding-top: 2%;
 }
 .message-container .submission {
-  padding: 20px;
+  height: 80%;
 }
 .message-container .submission .subject {
   width: 100%;
@@ -141,12 +153,17 @@
   float: left;
 }
 .message-container .submission .bottom .submit {
+  position: relative;
   width: 30%;
   background-color: gray;
   text-align: center;
   border: none;
   padding: 0px;
   height: 40px;
+}
+.message-container .submission .bottom .submit.clicked {
+  color: gray;
+  text-decoration: none;
 }
 .message-container .submission .bottom .submit:hover {
   text-decoration: underline;

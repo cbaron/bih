@@ -2,6 +2,10 @@
 @import (reference) "bih.less";
 
 .message-container {
+    background-color: rgb( 229, 229, 229 );
+    box-shadow: 0 0 .5em rgba(0, 0, 0, 1 );
+    padding: 1em 2em;
+    height: 80%;
 
     .header-row {
         .clearfix();
@@ -9,17 +13,23 @@
         color: white;
         font-weight: bold;
         font-size: large;
-        padding: 10px;
+        height: 15%;
+        padding-top: 2%;
     }
 
     .header {
         width: 90%;
         float: left;
+        padding-left: 5%;
     }
     
     .glyphicon {
         width: 10%;
         float: left;
+
+        &:before {
+            vertical-align: sub;
+        }
 
         &:hover {
             cursor: pointer;
@@ -27,12 +37,13 @@
     }
 
     .name {
-        margin-top: 20px;
         font-weight: bold;
+        height: 10%;
+        padding-top: 2%;
     }
 
     .submission {
-        padding: 20px;
+        height: 80%;
 
         .subject {
             width:100%;
@@ -70,12 +81,18 @@
             }
                     
             .submit {
+                position: relative;
                 width: 30%;
                 background-color: gray;
                 text-align: center;
                 border: none;
                 padding: 0px;
                 height: 40px;
+
+                &.clicked {
+                    color: gray;
+                    text-decoration: none;
+                }
 
                 &:hover {
                     text-decoration: underline;

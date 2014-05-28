@@ -254,6 +254,8 @@
   height: 40px;
   line-height: 30px;
   color: lightgray;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media (min-width: 992px) {
   .challenge-page .challenge-container .body .submission .bottom .filename {

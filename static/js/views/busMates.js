@@ -56,6 +56,7 @@ define(
                     this.templateData.messageBtn.removeClass('hide');
                 }
 
+                this.rendered = true;
                 this.trigger('rendered');
 
                 if( busBadges.length ) {
@@ -72,14 +73,13 @@ define(
             },
 
             renderBadges: function() {
-                console.log('in render badges');
                 var self = this,
                     fun = function() { busBadges.each( function( model ) {
                         if( this.templateData ) {
                             var challenge = challenges.find( function( challenge ) {
                                     return ( challenge.id == model.get('challengeId') ) }, this );
                             if( challenge && challenge.has('number') ) {
-                                this.templateData[ model.get('userId') ].find( 'span[data-js="badgeContainer"]').append(
+                                this.templateData[ model.get('userId') ].find( '[data-js="badgeContainer"]').append(
                                     badgeHtml( { number: challenge.get('number') } ) );
                             }
                         }
@@ -125,7 +125,6 @@ define(
 
                 if( challenges.length ) { toCall(); }
                 else { this.listenToOnce( challenges, 'sync', toCall ); }
-                console.log('leaving render badges');
                 return this;
             },
 
@@ -143,10 +142,7 @@ define(
                     name: row.find('[data-js="name"]').text() } );
 
                 modal.listenToOnce( this.messageView, 'close', modal.closeDialogue );
-                modal.addContent( {
-                    width: $(window).outerWidth(true) / 4,
-                    content: this.messageView.$el
-                } );
+                modal.addContent( { content: this.messageView.$el } );
             }
         } );
 } );

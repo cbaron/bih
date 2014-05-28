@@ -25,9 +25,10 @@
             border-bottom: 1px solid @gray;
 
             &.completed {
-                background-color: rgba( 224, 224, 224, 0.5 );
+                color: darkgray;
+
             }
-                                
+
             &:hover {
                 cursor: pointer;
 
@@ -62,6 +63,7 @@
                         font-weight: bold;
                     }
 
+
                     .points {
                         color: blue;
                         font-weight: bold;
@@ -72,7 +74,10 @@
                 }
             }
         }
+    }
 
+    .completed .points {
+        color: darkgray !important;
     }
 }
 
@@ -81,3 +86,4 @@
         background-color: @brown;
     }
 }
+                    

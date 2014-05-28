@@ -5,6 +5,10 @@
 
 .bus-mate-row {
 
+    &.visible-xs {
+        height: 30px;
+    }
+
     .make-row();
     background-color: @light-orange;
     border-bottom: 1px solid white;
@@ -12,10 +16,14 @@
 
     .image {
         background-color: @dark-gray;
-        float: left;
-        width: 60px;
-        height: 60px;
         border-bottom: 1px solid white;
+        height: 60px;
+        padding: 0px;
+
+        &.col-sm-2,
+        &.col-xs-1 {
+            height: 30px;
+        }
 
         img {
             width: 100%;
@@ -33,8 +41,18 @@
         height: 60px;
         font-size: large;
 
+        &.col-xs-11 {
+            height: 30px;
+        }
+
         &:hover {
             background-color: 'beige';
+        }
+
+        .col-sm-2 .glyphicon-comment,
+        .col-xs-2 .glyphicon-comment {
+            margin:  0px;
+            padding: 2px;
         }
 
         .glyphicon-comment {
@@ -54,9 +72,17 @@
 
         .name {
             font-weight: bold;
-            .make-md-column(3);
             line-height: 60px;
             margin: 0px 60px;
+            white-space: nowrap;
+            text-overflow: clip;
+
+            &.col-sm-5,
+            &.col-xs-5 {
+                margin: 0px;
+                font-size: x-small;
+                line-height: 30px;
+            }
         }
 
         .vote-off {
@@ -78,6 +104,19 @@
     .badge-container {
         display: inline-block;
         float: right;
+    }
+
+    .col-sm-5 .bih-badge,
+    .col-xs-5 .bih-badge {
+        width: 26px;
+        height: 26px;
+        margin: 2px;
+        font-size: x-small;
+        text-align: center;
+        font-weight: bold;
+        line-height: 26px;
+        white-space: nowrap;
+        text-overflow: clip;
     }
 
     .bih-badge {

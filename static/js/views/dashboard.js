@@ -3,6 +3,7 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'views/leaderboard',
       'models/user',
       'collections/events',
@@ -12,7 +13,7 @@ define(
       'jquery.ui.widget'
     ],
     
-    function( $, _, Backbone, leaderboard, user, events, dashboardHtml ) {
+    function( $, _, Backbone, loading, leaderboard, user, events, dashboardHtml ) {
 
         return new ( Backbone.View.extend( {
 
@@ -30,6 +31,8 @@ define(
             },
 
             initialize: function() {
+
+                loading.start();
 
                 this[ ( events.length )
                     ? 'render'
@@ -53,7 +56,7 @@ define(
                     el: this.templateData.leaderboardItems,
                     mode: 'short',
                     user: user
-                } );
+                } ).on( 'rendered', function() { loading.stop(); } );
 
                 this.initializeUploader();
 

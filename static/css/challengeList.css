@@ -94,7 +94,7 @@
 }
 .past-challenge-container .challenge-item-container .challenge-row.completed,
 .challenge-container .challenge-item-container .challenge-row.completed {
-  background-color: rgba(224, 224, 224, 0.5);
+  color: darkgray;
 }
 .past-challenge-container .challenge-item-container .challenge-row:hover,
 .challenge-container .challenge-item-container .challenge-row:hover {
@@ -135,6 +135,10 @@
 .challenge-container .challenge-item-container .challenge-row .challenge-detail-wrap .challenge-detail .points {
   color: blue;
   font-weight: bold;
+}
+.past-challenge-container .completed .points,
+.challenge-container .completed .points {
+  color: darkgray !important;
 }
 .past-challenge-container .challenge-header {
   background-color: #a4550a;

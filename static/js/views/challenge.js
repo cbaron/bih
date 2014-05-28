@@ -4,6 +4,7 @@ define(
       'underscore',
       'backbone',
       'views/busMates',
+      'views/modalSpinner',
       'collections/challenges',
       'models/post',
       'templates/challenge',
@@ -11,7 +12,7 @@ define(
       'jquery.fileupload'
     ],
     
-    function( $, _, Backbone, busMates, challenges, post, template ) {
+    function( $, _, Backbone, busMates, loading, challenges, post, template ) {
 
         return new ( Backbone.View.extend( {
 
@@ -21,7 +22,8 @@ define(
 
             events: {
                'click  button[data-js="submitBtn"]': 'submitClicked',
-               'click  [data-js="image"]': 'imageIconClicked'
+               'click  [data-js="image"]': 'imageIconClicked',
+               'click  [data-js="backBtn"]': 'backClicked'
             },
 
             initialize: function( options ) {
@@ -79,7 +81,14 @@ define(
                 }
             },
 
+            resetInputs: function() {
+                this.templateData.text.val('');
+                this.templateData.mediaReference.text('');
+            },
+
             update: function( busId, challengeId ) {
+                this.resetInputs();
+
                 this.challengeId = challengeId;
 
                 this.post = new post( { challengeId: challengeId } );
@@ -121,25 +130,31 @@ define(
                 if( this.challenge.get('type') === 'Text' &&
                     $.trim( this.templateData.text.val() )  !== '' ) {
 
+                    loading.start();
+
                     this.post.set( 'body', this.templateData.text.val() ).save(
                         this.post.attributes,
-                        { success: function() { self.goToFourWeekChallenge() } } ); 
+                        { success: function() { loading.stop(); self.goToFourWeekChallenge() } } ); 
 
                 } else if( this.challenge.get('type') === 'Image' &&
                            this.templateData.mediaReference.text() !== '' ) {
                
+                    loading.start();
+
                     this.post.save(
                         this.post.attributes,
-                        { success: function() { self.goToFourWeekChallenge() } } ); 
+                        { success: function() { loading.stop(); self.goToFourWeekChallenge() } } ); 
                      
                 } else if( this.challenge.get('type') === 'Video' &&
                     $.trim( this.templateData.mediaReference.text().indexOf( 'youtube' > -1 ) ) ) {
                     
+                    loading.start();
+
                     this.post.set( {
                         'body': this.templateData.text.val(),
                         'url': this.templateData.mediaReference.text() } ).save(
                             this.post.attributes,
-                            { success: function() { self.goToFourWeekChallenge() } } ); 
+                            { success: function() { loading.stop(); self.goToFourWeekChallenge() } } ); 
                 }
             },
 
@@ -163,7 +178,9 @@ define(
                 if( this.challenge.get('type') === 'Image' ) {
                     this.templateData.imageUpload.click();
                 }
-            }
+            },
+
+            backClicked: function() { this.goToFourWeekChallenge(); },
 
         } ) )();
     }

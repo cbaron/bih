@@ -3,15 +3,20 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'spin',
       'templates/message',
       'css!styles/message'
     ],
     
-    function( $, _, Backbone, template ) {
+    function( $, _, Backbone, Spinner, template ) {
 
     return Backbone.View.extend( {
 
-        className: 'message-container',
+        className: [
+            "message-container",
+            "col-md-4 col-md-offset-4",
+            "col-sm-8 col-sm-offset-2",
+            "col-xs-8 col-xs-offset-2" ].join(" "),
 
         templateData: {},
 
@@ -47,8 +52,18 @@ define(
         submitClicked: function() {
             var self = this;
 
+
             if( $.trim( this.templateData.text.val() ) !== '' &&
                 $.trim( this.templateData.subject.val() ) !== '' ) {
+
+                this.undelegateEvents();
+                this.templateData.submitBtn.addClass('clicked');
+                this.spinner = new Spinner( {
+                    color: '#fff',
+                    radius: 5,
+                    length: 5,
+                } ).spin( this.templateData.submitBtn.get(0) );
+
                 $.ajax( {
                     url: 'message',
                     type: 'POST',
@@ -58,7 +73,12 @@ define(
                         fromName: this.options.from,
                         subject: this.templateData.subject.val(),
                         body: this.templateData.text.val() },
-                    success: function() { self.trigger('close').remove() } } );
+                    complete: function() {
+                        self.delegateEvents();
+                        self.spinner.stop();
+                        self.templateData.submitBtn.removeClass('clicked');
+                        self.trigger('close').remove();
+                    } } );
             }
         }
     } );
