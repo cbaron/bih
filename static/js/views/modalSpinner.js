@@ -10,7 +10,7 @@ define(
 
     function( $, _, Backbone, modal, Spinner ) {
 
-        return new ( Backbone.View.extend( {
+        return Backbone.View.extend( {
 
             className: [
                 "modal-spinner-container",
@@ -43,7 +43,6 @@ define(
                 this.modal.closeDialogue();
             }
 
-        } ) )();
-
+        } );
     }
 );

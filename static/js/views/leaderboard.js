@@ -15,9 +15,9 @@ define(
             events: {
             },
 
-            templateData: { },
-
             initialize: function( options ) {
+
+                this.templateData = { };
 
                 _.extend( this, {
                     user: options.user,
@@ -51,6 +51,7 @@ define(
 
                 this.update();
 
+                this.rendered = true;
                 this.trigger('rendered');
 
                 return this;
@@ -86,16 +87,14 @@ define(
             },
 
             showAll: function( el ) {
-                $(el).fadeIn();
+                el.fadeIn();
             },
 
             showOnlyLeader: function( el ) {
-                var el = $(el);
                 if( el.data('rank') > 1 ) { el.fadeOut(); }
             },
 
             showTopFour: function( el ) {
-                var el = $(el);
                 if( el.data('rank') > 4 ) { el.hide(); }
             },
 

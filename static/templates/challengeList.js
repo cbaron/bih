@@ -12,7 +12,7 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" class=\"challenge-row\">\n            <div class=\"number col-md-1 col-sm-1 col-xs-1\">"
     + escapeExpression(((stack1 = (depth0 && depth0.number)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</div>\n            <div class=\"challenge-detail-wrap col-md-11 col-sm-11, col-xs-11\">\n                <div class=\"challenge-detail\">\n                    <span class=\"name\">"
+    + "</div>\n            <div class=\"challenge-detail-wrap col-md-11 col-sm-11 col-xs-11\">\n                <div class=\"challenge-detail\">\n                    <span class=\"name\">"
     + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span>\n                    <span class=\"points\">"
     + escapeExpression(((stack1 = (depth0 && depth0.points)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

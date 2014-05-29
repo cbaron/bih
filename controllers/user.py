@@ -40,11 +40,14 @@ def GET( sf, session ):
 
     return getCleanUser(
         sf.query(\
-            ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, X100_Point_Challenge_Total__c, ",
+            ''.join( [ "Select ID, First_Name__c, Last_Name__c, BIH_Username__c, BIH_Password__c, Date_of_First_Login__c, X100_Point_Challenge_Total__c, ",
                        "(Select BIH_BUS__R.ID, BIH_BUS__R.NAME FROM TEAM_Members__r) ",
                        "FROM BIH_USER__C WHERE ID = '", session.userId, "'" ] ) )['records'][0] )
 
 def getCleanUser( record ):
+
+    if record['Date_of_First_Login__c'] is None:
+        return response.json( dict() )
 
     profileImage = db( db.profileImage.userId == record['Id'] ).select()
 

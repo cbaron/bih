@@ -23,6 +23,21 @@ define(
 
             templateData: { },
 
+            monthToNum: {
+                January: '01',
+                February: '02',
+                March: '03',
+                April: '04',
+                May: '05',
+                June: '06',
+                July: '07',
+                August: '08',
+                September: '09',
+                October: '10',
+                November: '11',
+                December: '12'
+            },
+
             events: {
 
                 'click div[data-js="uploadPhotoBtnWrapper"]': 'handleUploadPhotoClick',
@@ -122,8 +137,8 @@ define(
                         
                         function( memo, attr ) {
                             memo[attr] = this.templateData[attr].val();
-                            if( attr === 'biography' ) {
-                                memo[attr] = this.templateData[attr].text();
+                            if( attr === 'month' ) {
+                                memo[attr] = this.monthToNum[ this.templateData[attr].val() ];
                             };
                             return memo; },
 

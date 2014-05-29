@@ -12,33 +12,22 @@ define(
       'css!styles/fourWeekChallenge'
     ],
     
-    function( $, _, Backbone, leaderboard, challengeList, busMates, loading, user, template ) {
+    function( $, _, Backbone, leaderboard, challengeList, busMates, spinner, user, template ) {
 
         return new ( Backbone.View.extend( {
 
             className: 'container four-week-container',
-
-            templateData: { },
 
             events: function() {
                 if( this.model === undefined ) { return { }; }
 
                 return _.extend(
                     { },
-                    this.eventController.leaderboard[ this.model.get('leaderboard' ) ],
+                    { 'click span[data-js="viewFullLeaderboardBtn"]': 'viewFullLeaderboardClicked' },
                     this.eventController.challengeList[ this.model.get('challengeList' ) ] );
             },
 
             eventController: {
-
-                leaderboard: {
-                    leader: {
-                        'click span[data-js="viewFullLeaderboardBtn"]': 'viewFullLeaderboardClicked'
-                    },
-                    full: {
-                        'click span[data-js="viewFullLeaderboardBtn"]': 'hideFullLeaderboardClicked'
-                    }
-                },
 
                 challengeList: {
                     viewPast: {
@@ -52,6 +41,8 @@ define(
 
             initialize: function() {
 
+                this.templateData = { };
+
                 this.model = new Backbone.Model( {
                     challengeList: 'viewPast',
                     leaderboard: 'leader' } );
@@ -64,7 +55,7 @@ define(
             render: function() {
                 var self = this;
 
-                loading.start();
+                this.spinner = new spinner().start();
 
                 this.rendered = {
                     challenges: false,
@@ -82,28 +73,46 @@ define(
                     el: this.templateData.leaderboardItems,
                     mode: 'leader',
                     user: user
-                } ).on( 'rendered', function() {
-                    self.rendered.leaderboard = true;
-                    self.checkSpinner(); } );
+                } );
                 
                 this.challenges = new challengeList( {
                     el: this.templateData.challengeContainer
-                } ).on( 'rendered', function() {
-                    self.rendered.challenges = true;
-                    self.updateBusMateHeader();
-                    self.checkSpinner(); } );
+                } );
                 
                 this.busMates = new busMates( {
                     el: this.templateData.busMatesItemContainer,
                     mode: 'badges'
                 } );
 
+                //oh boy
                 if( this.busMates.rendered ) {
                     this.rendered.busMates = true;
                     this.checkSpinner();
                 } else {
                     this.busMates.on( 'rendered', function() {
                         self.rendered.busMates = true;
+                        self.checkSpinner();
+                    } );
+                }
+
+                if( this.leaderboard.rendered ) {
+                    this.rendered.leaderboard = true;
+                    this.checkSpinner();
+                } else {
+                    this.leaderboard.on( 'rendered', function() {
+                        self.rendered.leaderboard = true;
+                        self.checkSpinner();
+                    } );
+                }
+
+                if( this.challenges.rendered ) {
+                    this.rendered.challenges = true;
+                    this.updateBusMateHeader();
+                    this.checkSpinner();
+                } else {
+                    this.challenges.on( 'rendered', function() {
+                        self.rendered.challenges = true;
+                        self.updateBusMateHeader();
                         self.checkSpinner();
                     } );
                 }
@@ -119,7 +128,7 @@ define(
                     this.rendered.leaderboard &&
                     this.rendered.busMates ) {
 
-                    loading.stop();
+                    this.spinner.stop();
                 }
             },
 
@@ -131,14 +140,59 @@ define(
             },
 
             viewPastChallengeClick: function() {
+                var self = this,
+                    reducer =
+                        function( memo, model ) {
+                            if( memo[ model.week ] ) {
+                                model.number = memo[ model.week ].length + 1;
+                                memo[ model.week ].push(model);
+                            } else {
+                                model.number = 1;
+                                memo[ model.week ] = [model];
+                            }
+                            return memo; },
+                    viewCreator =
+                        function( collection ) {
+                            var view = new challengeList( {
+                                el: self.templateData.pastChallengeContainer,
+                                collection: new self.pastWeekCollection( collection ) } );
+                                self.pastChallenges.push( view );
+                            };
+                        
+
                 if( this.pastChallenges === undefined ) {
-                    this.pastChallenges = new challengeList( {
-                        el: this.templateData.pastChallengeContainer,
-                        type: 'pastChallenges',
+
+                    this.pastChallenges = [ ];
+
+                    require( [ 'collections/pastChallenges', 'models/challenge' ], function( challenges, challengeModel ) {
+
+                        self.pastWeekCollection = Backbone.Collection.extend( { model: challengeModel } );
+
+                        if( challenges.length ) {
+                            var byWeek = _.reduce( challenges.toJSON(), reducer, { } );
+
+                            _.each( byWeek, viewCreator );
+
+                        } else {
+                            self.spinner = new spinner().start();
+
+                            challenges.on('sync', function() {
+                                var byWeek = _.reduce( challenges.toJSON(), reducer, { } );
+
+                                _.each( byWeek, viewCreator );
+
+                                self.spinner.stop();
+                                $('html,body').scrollTop(
+                                    self.templateData.pastChallengeContainer.offset().top - 50 );
+
+                            } );
+                        }
+                    } )
+                } else {
+                    _.each( this.pastChallenges, function( view ) {
+                        view.$el.fadeIn();
                     } );
                 }
-                     
-                this.pastChallenges.$el.fadeIn();
                 
                 this.templateData.viewPastChallengeButton.text('Hide Past Challenges');
                 this.model.set( 'challengeList', 'hidePast' );
@@ -146,25 +200,28 @@ define(
             },
 
             hidePastChallengeClick: function() {
-                this.pastChallenges.$el.fadeOut();
+                _.each( this.pastChallenges, function( view ) {
+                    view.$el.fadeOut();
+                } );
                 
                 this.templateData.viewPastChallengeButton.text('View Past Challenges');
                 this.model.set( 'challengeList', 'viewPast' );
                 this.delegateEvents();
+
+                $('html,body').scrollTop(
+                    this.templateData.pastChallengeContainer.offset().top - 50 );
             },
 
             viewFullLeaderboardClicked: function() {
-                this.model.set( 'leaderboard', 'full' );
-                this.leaderboard.model.set( 'mode', 'full' );
-                this.templateData.viewFullLeaderboardBtn.text('Hide Full Leaderboard');
-                this.delegateEvents();
-            },
-
-            hideFullLeaderboardClicked: function() {
-                this.model.set( 'leaderboard', 'leader' );
-                this.leaderboard.model.set( 'mode', 'leader' );
-                this.templateData.viewFullLeaderboardBtn.text('Show Full Leaderboard');
-                this.delegateEvents();
+                if( this.model.get('leaderboard') === 'leader' ) {
+                    this.model.set( 'leaderboard', 'full' );
+                    this.leaderboard.model.set( 'mode', 'full' );
+                    this.templateData.viewFullLeaderboardBtn.text('Hide Full Leaderboard');
+                } else {
+                    this.model.set( 'leaderboard', 'leader' );
+                    this.leaderboard.model.set( 'mode', 'leader' );
+                    this.templateData.viewFullLeaderboardBtn.text('Show Full Leaderboard');
+                }
             }
 
         } ) )();

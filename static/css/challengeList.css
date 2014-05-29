@@ -142,4 +142,5 @@
 }
 .past-challenge-container .challenge-header {
   background-color: #a4550a;
+  clear: both;
 }

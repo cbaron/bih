@@ -43,31 +43,33 @@ def post():
 
     weCool = True
     errorMsg = ''
+    birthday = ''
 
-    yearGraduated = request.vars.graduated[0:3] if len( request.vars.graduated ) > 3 else '1970'
-    birthday = '1970-01-01'
-    if request.vars.year:
-        birthday[0:3] = request.vars.year[0:3]
-    if request.vars.month:
-        birthday[5:6] = request.vars.month[0:1]
-    if request.vars.day:
-        birthday[8:9] = request.vars.day[0:1]
+    yearGraduated = request.vars.graduated[0:4] if len( request.vars.graduated ) > 3 else '1970'
+    birthday += request.vars.year[0:4] if request.vars.year else '1970'
+    birthday += '-'
+    birthday += request.vars.month[0:2] if request.vars.month else '01'
+    birthday += '-'
+    birthday += request.vars.day[0:2] if request.vars.day else '01'
 
-    try:
-        sf.BIH_User__c.update( session.userId, {\
-            'Birthdate__c': birthday,
-            'Phone__c': request.vars.phone,
-            'Location__c': request.vars.location,
-            'School__c': request.vars.university,
-            'Occupation__c': request.vars.occupation,
-            'Date_of_Graduation__c': yearGraduated + '-01-01',
-            'BIH_Password__c': request.vars.password,
-            'Short_Biography__c': request.vars.biography
-        } )
-    except:
-        weCool = False
-        errorMsg = sys.exc_info()[0]
-        print erroMsg
+    print yearGraduated + '-01-01'
+    print birthday
+
+    #try:
+    sf.BIH_User__c.update( session.userId, {\
+        'Birthdate__c': birthday,
+        'Phone__c': request.vars.phone,
+        'Location__c': request.vars.location,
+        'School__c': request.vars.university,
+        'Occupation__c': request.vars.occupation,
+        'Date_of_Graduation__c': yearGraduated + '-01-01',
+        'BIH_Password__c': request.vars.password,
+        'Short_Biography__c': request.vars.biography
+    } )
+    #except:
+        #weCool = False
+        #errorMsg = sys.exc_info()[0]
+        #print errorMsg
 
     response.headers['Content-Type']='application/json'
 

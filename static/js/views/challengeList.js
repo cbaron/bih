@@ -15,8 +15,6 @@ define(
 
             defaultCollection: 'challenges',
 
-            templateData: { },
-
             delegate: function() {
                 var self = this;
 
@@ -24,21 +22,23 @@ define(
                     'click', '*[data-js]', function(e) { self.handleChallengeClick(e) } );
             },
 
-            initialize: function( options ) {
+            initialize: function() {
                 var self = this;
 
-                require( [ [ 'collections/',
-                    ( options )
-                        ? ( options.type )
-                            ? options.type
-                            : this.defaultCollection
-                        : this.defaultCollection ].join("") ], function( challenges ) {
+                this.templateData = { };
 
-                            self.challenges = challenges;
-                            self[ ( challenges.length )
-                                ? 'render'
-                                : 'waitForData' ]();
-                        } );
+                if( this.collection ) {
+                    this.challenges = this.collection;
+                    this.render();
+                } else {
+                
+                    require( [ 'collections/challenges' ], function( challenges ) {
+                        self.challenges = challenges;
+                        self[ ( challenges.length )
+                            ? 'render'
+                            : 'waitForData' ]();
+                    } );
+                }
 
                 return this;
             },
@@ -63,6 +63,7 @@ define(
                     this.listenToOnce( userPosts, 'sync', this.addUserPostMarkup );
                 }
 
+                this.rendered = true;
                 this.trigger('rendered');
 
                 this.delegate();
