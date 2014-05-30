@@ -25,6 +25,7 @@ define(
            'click  [data-js="inbox"]': 'inboxClicked',
            'click  [data-js="logout"]': 'logoutClicked',
            'click  [data-js="homeBtn"]': 'homeClicked',
+           'click  [data-js="helpBtn"]': 'helpClicked',
            'click  [data-js="mobileMenuBtn"]': 'mobileMenuClicked',
            'click  [data-js="mobileMenu"] li': 'mobileMenuClicked'
                 
@@ -87,6 +88,11 @@ define(
         
         homeClicked: function() {
             this.router.navigate('', { trigger: true} );
+        },
+        
+        helpClicked: function() {
+            console.log('asdad');
+            this.router.navigate('help', { trigger: true} );
         },
 
         logoutClicked: function() {

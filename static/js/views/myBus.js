@@ -16,8 +16,6 @@ define(
 
             className: 'my-bus-container',
 
-            templateData: { },
-
             events: {
             },
 
@@ -29,6 +27,8 @@ define(
 
             render: function() {
                 var self = this;
+
+                this.templateData = {};
 
                 this.spinner = new spinner().start();
 

@@ -151,7 +151,6 @@
   margin-left: -15px;
   margin-right: -15px;
   padding: 0px 10px 20px 10px;
-  border-bottom: 1px solid lightgray;
 }
 .hundred-point-container .option-list {
   margin-left: -15px;
@@ -161,34 +160,11 @@
   margin-left: -15px;
   margin-right: -15px;
   border-bottom: 2px solid lightgray;
+  padding: 1em;
 }
-.hundred-point-container .option-row .image {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .hundred-point-container .option-row .image {
-    float: left;
-    width: 41.66666667%;
-  }
-}
-.hundred-point-container .option-row .image .img {
+.hundred-point-container .option-row .image img {
   height: 100%;
   width: 100%;
-}
-.hundred-point-container .option-row .detail {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .hundred-point-container .option-row .detail {
-    float: left;
-    width: 58.33333333%;
-  }
 }
 .hundred-point-container .option-row .detail .header {
   margin-left: -15px;
@@ -221,7 +197,7 @@
   user-select: none;
   background-color: #ec7400;
   color: white;
-  padding: 5px 10px;
+  padding: 2px 5px;
 }
 .hundred-point-container .option-row .detail button:focus,
 .hundred-point-container .option-row .detail button:active:focus,
@@ -251,4 +227,20 @@ fieldset[disabled] .hundred-point-container .option-row .detail button {
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+@media (max-width: 767px) {
+  .hundred-point-container .detail .name {
+    font-size: small !important;
+  }
+  .hundred-point-container .detail button {
+    font-size: x-small !important;
+  }
+}
+@media (min-width: 768px) {
+  .hundred-point-container .detail .name {
+    font-size: medium !important;
+  }
+  .hundred-point-container .detail button {
+    font-size: small !important;
+  }
 }

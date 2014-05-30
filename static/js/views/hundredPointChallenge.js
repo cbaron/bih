@@ -80,6 +80,15 @@ define(
 
                 this.render();
 
+                if( this.challenges.length === 0 ) {
+                    alert('Waiting on approval');
+                    if( this.spinnerStarted ) {
+                        this.spinner.stop();
+                        this.spinnerStarted = false;
+                    }
+                    return;
+                }
+
                 if( user.get('points') > 100 ) { width = '100'; }
                 else if( user.get('points') < 1 ) { width = '0'; }
                 else { width = user.get('points'); }
@@ -167,9 +176,8 @@ define(
                 enroll.set('challengeId', $(e.currentTarget).data('id') ).save()
                     .done( function() {
                         self.$el.empty();
-                        $('html,body').scrollTop(0);
-                        self.waitForData();
                         self.spinner.stop();
+                        self.router.navigate( 'dashboard', { trigger: true } );
                     } );
             },
 

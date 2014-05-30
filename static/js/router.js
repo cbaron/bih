@@ -22,6 +22,7 @@ define(
                 'mybus':                    'myBus',
                 'inbox':                    'inbox',
                 'register':                 'register',
+                'help':                     'help',
                 'dashboard':                'dashboard',
                 'index':                    'dashboard',
                 '':                         'dashboard'
@@ -131,6 +132,16 @@ define(
                     require( [ 'views/header' ] );
                     require( [ 'views/myBus' ], function( myBus ) {
                         if( myBus.$el.is(':hidden') ) { myBus.$el.fadeIn(); } } );
+                }
+                if( this.isLoggedIn() ) { this.toDo(); }
+            },
+
+            help: function() {
+                this.toDo = function() {
+                    this.hideContent();
+                    require( [ 'views/header' ] );
+                    require( [ 'views/help' ], function( help ) {
+                        if( help.$el.is(':hidden') ) { help.$el.fadeIn(); } } );
                 }
                 if( this.isLoggedIn() ) { this.toDo(); }
             },

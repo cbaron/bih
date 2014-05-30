@@ -3,23 +3,27 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'collections/events',
       'templates/getInvolved',
       'css!styles/getInvolved'
     ],
     
-    function( $, _, Backbone, events, template ) {
+    function( $, _, Backbone, spinner, events, template ) {
 
         return new ( Backbone.View.extend( {
 
             className: 'container get-involved-container',
 
-            templateData: { },
 
             events: {
             },
 
             initialize: function() {
+            
+                this.templateData = {};
+
+                this.spinner = new spinner().start();
 
                 //should just get the user on every route
                 this[ ( events.length )
@@ -32,11 +36,13 @@ define(
             render: function() {
 
                 this.slurpTemplate( {
-                    template: template( { user: user.attributes } ),
+                    template: template( { events: events.toJSON() } ),
                     insertion: { $el: this.$el.appendTo( $('#content') ), method: 'append' },
                     partsObj: this.templateData,
                     keepDataJs: true
                 } );
+
+                this.spinner.stop();
 
                 return this;
             },

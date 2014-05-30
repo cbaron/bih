@@ -1,0 +1,46 @@
+@import (reference) "vendor/bootstrap.less";
+@import (reference) "bih.less";
+
+.help-container {
+    .container();
+
+    .header {
+        .make-row();
+        text-align: center;
+        color: @blue;
+        font-size: xx-large;
+        padding-top: 50px;
+        margin: 5px;
+        font-weight: bold;
+    }
+
+    .form-container {
+        padding-top: 2em;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    button {
+        background-color: @orange;
+        color: white;
+        padding: 2px 5px;
+    }
+
+    @media(max-width:767px){
+        font-size: x-small !important;
+    }
+
+    @media(min-width:768px){
+        font-size: small !important;
+    }
+    
+    @media(min-width:992px){
+        font-size: medium !important;
+    }
+
+    @media(min-width:1200px){
+        font-size: large !important;
+    }
+}

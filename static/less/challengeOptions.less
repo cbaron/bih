@@ -29,7 +29,6 @@
     .rules {
         .make-row();
         padding: 0px 10px 20px 10px;
-        border-bottom: 1px solid lightgray;
     }
 
     .option-list {
@@ -39,18 +38,17 @@
     .option-row {
         .make-row();
         border-bottom: 2px solid lightgray;
+        padding: 1em;
 
         .image {
-            .make-md-column(5);
 
-            .img {
+            img {
                 height: 100%;
                 width: 100%;
             }
         }
 
         .detail {
-            .make-md-column(7);
 
             .header {
                 .make-row();
@@ -68,8 +66,30 @@
                 .btn();
                 background-color: @orange;
                 color: white;
-                padding: 5px 10px;
+                padding: 2px 5px;
             }
         }
     }
+
+    @media(max-width:767px){
+        .detail .name {
+            font-size: small !important;
+        }
+
+        .detail button {
+            font-size: x-small !important;
+        }
+    }
+
+    @media(min-width:768px){
+        .detail .name {
+            font-size: medium !important;
+        }
+        .detail button {
+            font-size: small !important;
+        }
+    }
+
+    @media(min-width:992px){}
+    @media(min-width:1200px){}
 }

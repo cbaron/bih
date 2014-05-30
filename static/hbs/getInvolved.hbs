@@ -1,12 +1,12 @@
 <div class="get-involved-header">Get Involved</div>
-<div class="get-involved-item-container">
-    <div class="md-col-12">
-    {{#each event}}
+<div class="row">
+    <div class="get-involved-item-container col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+    {{#each events}}
         <div class="event-container">
-            <div class="image">
+            <div class="image col-md-4">
                 <img src="{{this.imageUrl}}">
             </div>
-            <div class="detail">
+            <div class="detail col-md-8">
                 <div class="title">{{this.title}}</div>
                 <div class="description">{{this.description}}</div>
             </div>

@@ -52,8 +52,6 @@ def post():
     birthday += '-'
     birthday += request.vars.day[0:2] if request.vars.day else '01'
 
-    print yearGraduated + '-01-01'
-    print birthday
 
     #try:
     sf.BIH_User__c.update( session.userId, {\

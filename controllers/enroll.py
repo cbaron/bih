@@ -12,21 +12,21 @@ def GET( sf, session ):
         return response.json([])
 
     record = sf.query(\
-        ''.join( [ "Select BIH_User__c, BIH_Challenge__c, BIH_Bus__c FROM X100_Point_Challenges_Enrolled__c ",
+        ''.join( [ "Select BIH_User__c, BIH_Challenge_Group__c, BIH_Bus__c FROM X100_Point_Challenges_Enrolled__c ",
                    "WHERE BIH_User__c = '", session.userId, "'" ] ) )['records']
 
     if len( record ) == 0:
         return response.json(dict(challengeId=False))
 
     response.headers['Content-Type']='application/json'
-    return response.json( dict( challengeId = record[0]['BIH_Challenge__c'] ) )
+    return response.json( dict( challengeId = record[0]['BIH_Challenge_Group__c'] ) )
 
 
 def POST( sf, session ):
 
     id = sf.X100_Point_Challenges_Enrolled__c.create( {\
         'BIH_User__c': session.userId,
-        'BIH_Challenge__c': request.args[1],
+        'BIH_Challenge_Group__c': request.args[1],
         'BIH_Bus__c': request.args[0] } )
 
     return response.json(dict(id=id))

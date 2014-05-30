@@ -158,76 +158,61 @@
   cursor: pointer;
 }
 .inbox-container .icon {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   text-align: center;
   font-size: large;
   line-height: 70px;
 }
-@media (min-width: 992px) {
-  .inbox-container .icon {
-    float: left;
-    width: 8.33333333%;
-  }
-}
 .inbox-container .detail {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   height: 70px;
-  padding: 10px 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-@media (min-width: 992px) {
-  .inbox-container .detail {
-    float: left;
-    width: 75%;
-  }
-}
 .inbox-container .date {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   line-height: 70px;
-}
-@media (min-width: 992px) {
-  .inbox-container .date {
-    float: left;
-    width: 16.66666667%;
-  }
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
 }
 .inbox-container .subject {
   font-weight: bold;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .inbox-container .subject {
-    float: left;
-    width: 50%;
-  }
 }
 .inbox-container .detail-header {
   margin-left: -15px;
   margin-right: -15px;
   margin-bottom: 10px;
 }
-.inbox-container .name {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+@media (max-width: 767px) {
+  .inbox-container {
+    font-size: xx-small !important;
+  }
+  .inbox-container .icon {
+    font-size: small !important;
+  }
+}
+@media (min-width: 768px) {
+  .inbox-container {
+    font-size: x-small !important;
+  }
+  .inbox-container .icon {
+    font-size: medium !important;
+  }
 }
 @media (min-width: 992px) {
-  .inbox-container .name {
-    float: left;
-    width: 50%;
+  .inbox-container {
+    font-size: medium !important;
+  }
+  .inbox-container .icon {
+    font-size: large !important;
+  }
+}
+@media (min-width: 1200px) {
+  .inbox-container {
+    font-size: large !important;
+  }
+  .inbox-container .icon {
+    font-size: x-large !important;
   }
 }
