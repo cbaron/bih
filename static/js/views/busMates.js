@@ -157,6 +157,7 @@ define(
                         id: $(e.currentTarget).closest('[data-type="busMate"]').data('js')
                     }
                 } ).done( function() {
+                    $(e.currentTarget).fadeOut(600);
                     self.spinner.stop(); } );
             }
         } );

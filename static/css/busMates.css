@@ -139,6 +139,12 @@
   font-size: x-small;
   line-height: 30px;
 }
+.bus-mate-row .bus-mate-detail .col-sm-5 .vote-off,
+.bus-mate-row .bus-mate-detail .col-xs-5 .vote-off {
+  font-size: x-small;
+  line-height: 30px;
+  margin: 0px;
+}
 .bus-mate-row .bus-mate-detail .vote-off {
   color: red;
   font-size: large;

@@ -3,13 +3,14 @@ define(
       'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'models/user',
       'views/busMates',
       'templates/myBus',
       'css!styles/myBus'
     ],
 
-    function( $, _, Backbone, user, busMates, template ) {
+    function( $, _, Backbone, spinner, user, busMates, template ) {
 
         return new ( Backbone.View.extend( {
 
@@ -27,6 +28,9 @@ define(
             },
 
             render: function() {
+                var self = this;
+
+                this.spinner = new spinner().start();
 
                 this.slurpTemplate( {
                     template: template( { busName: user.get('busName') } ),
@@ -39,6 +43,16 @@ define(
                     el: this.templateData.busMatesItemContainer,
                     mode: 'myBus'
                 } );
+
+
+                if( this.busMates.rendered ) {
+                    this.rendered.busMates = true;
+                    this.spinner.stop();
+                } else {
+                    this.busMates.on( 'rendered', function() {
+                        self.spinner.stop();
+                    } );
+                }
 
                 return this;
             },
