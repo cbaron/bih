@@ -7,12 +7,13 @@ define(
       'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'models/enroll',
       'models/user',
       'jquery.fileupload'
     ],
 
-    function( $, _, Backbone, enroll, user ) {
+    function( $, _, Backbone, spinner, enroll, user ) {
 
         return new ( Backbone.View.extend( {
 
@@ -52,6 +53,10 @@ define(
             optionController: function() {
                 this.templateInput = { data: this.options.toJSON() };
                 this.render();
+                if( this.spinnerStarted ) {
+                    this.spinner.stop();
+                    this.spinnerStarted = false;
+                }
             },
 
             challengeController: function() {
@@ -87,7 +92,11 @@ define(
                     self.post = post;
                     self.posts = new Backbone.Collection();
                 } );
-                   
+
+                if( this.spinnerStarted ) {
+                    this.spinner.stop();
+                    this.spinnerStarted = false;
+                }
             },
 
             categoryClicked: function( e ) {
@@ -122,7 +131,11 @@ define(
                             self.challenges = challenges;
                             self.template = template;
                             if( challenges.length ) { this.challengeController(); }
-                            else { self.listenToOnce( challenges, 'sync', self.challengeController ); }
+                            else {
+                                self.spinner = new spinner().start(); 
+                                self.spinnerStarted = true;
+                                self.listenToOnce( challenges, 'sync', self.challengeController );
+                            }
                         }
                     );
                 } else {
@@ -135,7 +148,11 @@ define(
                             self.options = options;
                             self.template = template;
                             if( options.length ) { this.optionController(); }
-                            else { self.listenToOnce( options, 'sync', self.optionController ); }
+                            else {
+                                self.spinner = new spinner().start(); 
+                                self.spinnerStarted = true;
+                                self.listenToOnce( options, 'sync', self.optionController );
+                            }
                             
                         }
                     );
@@ -143,7 +160,17 @@ define(
             },
 
             selectClicked: function(e) {
-                enroll.set('challengeId', $(e.currentTarget).data('id') ).save();
+                var self = this;
+
+                this.spinner = new spinner().start();
+
+                enroll.set('challengeId', $(e.currentTarget).data('id') ).save()
+                    .done( function() {
+                        self.$el.empty();
+                        $('html,body').scrollTop(0);
+                        self.waitForData();
+                        self.spinner.stop();
+                    } );
             },
 
             challengeClicked: function(e) {

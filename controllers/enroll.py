@@ -26,7 +26,7 @@ def POST( sf, session ):
 
     id = sf.X100_Point_Challenges_Enrolled__c.create( {\
         'BIH_User__c': session.userId,
-        'BIH_Challenge__c': request.args[0],
-        'BIH_Bus__c': request.args[1] } )
+        'BIH_Challenge__c': request.args[1],
+        'BIH_Bus__c': request.args[0] } )
 
     return response.json(dict(id=id))

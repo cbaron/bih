@@ -14,7 +14,7 @@ define( [ 'backbone', 'models/user' ], function( Backbone, user ) {
         sync: function( method, model ) {
             var self = this;
             if( method === 'read' ) {
-                $.ajax( {
+                return $.ajax( {
                     url: '/enroll',
                     type: 'GET',
                     success: function( response ) {
@@ -23,8 +23,8 @@ define( [ 'backbone', 'models/user' ], function( Backbone, user ) {
             }
 
             if( method === 'create' ) {
-                $.ajax( {
-                    url: [ '/enroll/default/',
+                return $.ajax( {
+                    url: [ '/enroll/index',
                            user.get('busId'),
                            this.get('challengeId') ].join('/'),
                     type: 'POST' } );

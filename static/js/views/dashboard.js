@@ -26,7 +26,7 @@ define(
             events: {
 
                 'click div[data-js="uploadPhotoBtn"]': 'handleUploadPhotoClick',
-                'click div[data-js="hundredPointButton"]': 'hundredPointClicked',
+                'click div[data-js="hundredPointBtn"]': 'hundredPointClicked',
                 'click [data-js="eventBtn"]': 'eventClicked'
             },
 
