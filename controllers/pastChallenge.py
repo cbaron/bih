@@ -16,8 +16,6 @@ def GET( sf ):
                    "FROM Available_Challenge__c ",
                    "WHERE BIH_Challenge__r.Active__c = FALSE AND BIH_Bus__r.Name = '", request.vars.busName, "'" ] ) )['records']
 
-    print pastChallengeRecords
-
     rv = [ ]
     for idx, row in enumerate( pastChallengeRecords ):
         rv.append( dict( id = row['BIH_Challenge__r']['Id'],

@@ -16,24 +16,26 @@ def GET( sf, session ):
                    "Post_Type__c, Start_Date__c, Category__c, Enrollment_Start_Date__c, Enrollment_End_Date__c, Enrollment_Open__c  ",
                    "FROM BIH_Challenge__c ",
                    "WHERE Challenge_Type__c = '100 Point Challenge'" ] ) )['records']
+
     '''
 
+    records = sf.query(\
+        ''.join( [ "Select BIH_Bus__r.Name, BIH_Challenge__r.ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, ",
+                   "BIH_Challenge__r.Challenge_Type__c, BIH_Challenge__r.Active__c, BIH_Challenge__r.Double_points__c, ",
+                   "BIH_Challenge__r.End_Date__c, BIH_Challenge__r.Points_per_entry__c, BIH_Challenge__r.Post_Type__c, ",
+                   "BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c, BIH_Challenge__r.Enrollment_Start_Date__c, BIH_Challenge__r.Category__c, ",
+                   "BIH_Challenge__r.Enrollment_End_Date__c,BIH_Challenge__r.Enrollment_Open__c, BIH_Challenge__r.forum_desc__c  ",
+                   "FROM X100_Point_Challenges_Enrolled__c ",
+                   "WHERE BIH_Challenge__r.Active__c = TRUE AND Active__c = TRUE AND BIH_User__r.ID = '",
+                   session.userId, "'" ] ) )['records']
+
     for row in records:
-        rv.append( dict( id = row['Id'],
-                         name = row['Name'],
-                         rules = row['forum_desc__c'] if row['forum_desc__c'] else '',
-                         type = row['Post_Type__c'],
-                         category = row['Category__c'],
-                         points = row['Points_per_entry__c'] ) )
+        rv.append( dict( id = row['BIH_Challenge__r']['Id'],
+                         name = row['BIH_Challenge__r']['Name'],
+                         rules = row['BIH_Challenge__r']['forum_desc__c'] if row['BIH_Challenge__r']['forum_desc__c'] else '',
+                         type = row['BIH_Challenge__r']['Post_Type__c'],
+                         category = row['BIH_Challenge__r']['Category__c'],
+                         points = row['BIH_Challenge__r']['Points_per_entry__c'] ) )
 
     response.headers['Content-Type']='application/json'
     return response.json(rv)
-
-
-"Select ID, X100_Point_Challenge_Total__c FROM BIH_User__c WHERE ID = 'APP STORED USER ID FROM LOGIN'
-
-//Include a variable to set the available Bus_Number__c value
-
-Select BIH_Bus__r.Name, BIH_Challenge__r.ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, BIH_Challenge__r.Challenge_Type__c, BIH_Challenge__r.Active__c, BIH_Challenge__r.Double_points__c, BIH_Challenge__r.End_Date__c, BIH_Challenge__r.Points_per_entry__c, BIH_Challenge__r.Post_Type__c, BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c, BIH_Challenge__r.Enrollment_Start_Date__c, BIH_Challenge__r.Enrollment_End_Date__c,BIH_Challenge__r.Enrollment_Open__c  FROM Point_Challenges_Enrolled__c WHERE BIH_Challenge__r.Active__c = TRUE AND Active__c = TRUE AND BIH_User__r.ID = 'APP STORED USER ID FROM LOGIN'
-
-//Include a variable to set the available BIH_Challenge__r.ID value once the user clicks on a challenge"

@@ -3,7 +3,7 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
-       'extendBackbone',
+      'extendBackbone',
       'templates/welcome',
       'views/modalSpinner',
       'css!styles/bootstrap',
@@ -112,6 +112,7 @@ define(
 
             submitClicked: function() {
                 var toSubmit = true,
+                    self = this,
                     data = {};
 
                 _.each( [ 'phone', 'location', 'password' ], function( attr ) {
@@ -129,7 +130,7 @@ define(
 
                 if( toSubmit ) {
 
-                    loading.start();
+                    this.spinner = new loading().start();
 
                     data = _.reduce(
                         [ 'month', 'day', 'year', 'phone', 'university', 'location',
@@ -148,7 +149,7 @@ define(
                         url: '/register/post',
                         data: data,
                         success: function( response ) {
-                            loading.stop();
+                            self.spinner.stop();
                             if( response.weCool === true ) { window.location = '/'; }
                             else { alert('There was a problem'); }
                         }

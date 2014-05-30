@@ -140,21 +140,11 @@
   line-height: 30px;
 }
 .bus-mate-row .bus-mate-detail .vote-off {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   color: red;
   font-size: large;
   float: right !important;
   line-height: 60px;
   margin: 0px 60px;
-}
-@media (min-width: 992px) {
-  .bus-mate-row .bus-mate-detail .vote-off {
-    float: left;
-    width: 8.33333333%;
-  }
 }
 .bus-mate-row .bus-mate-detail .vote-off:hover {
   cursor: pointer;

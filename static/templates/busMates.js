@@ -16,7 +16,7 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = (depth0 && depth0.lastName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + ", "
     + escapeExpression(((stack1 = (depth0 && depth0.firstName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</span>\n            <span class=\"vote-off hide glyphicon glyphicon-thumbs-down\" data-js=\"voteOffBtn\"></span>\n            <span class=\"badge-container\" data-js=\"badgeContainer\"></span>\n        </div>\n        \n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n    <div data-type=\"busMate\" data-js=\""
+    + "</span>\n            <span class=\"vote-off hide\" data-js=\"voteOffBtn\">Inactive User?</span>\n            <span class=\"badge-container\" data-js=\"badgeContainer\"></span>\n        </div>\n        \n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n    <div data-type=\"busMate\" data-js=\""
     + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" class=\"bus-mate-row visible-xs visible-sm\">\n        <div class=\"image col-xs-1 col-sm-1\">\n            <img data-js=\"image\" src=\""
     + escapeExpression(((stack1 = (depth0 && depth0.profileImage)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -24,7 +24,7 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = (depth0 && depth0.lastName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + ", "
     + escapeExpression(((stack1 = (depth0 && depth0.firstName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</div>\n                <span class=\"vote-off hide glyphicon glyphicon-thumbs-down\" data-js=\"voteOffBtn\"></span>\n                <div class=\"col-xs-5 col-sm-5 badge-container\" data-js=\"badgeContainer\"></div>\n            </div>\n        </div>\n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n";
+    + "</div>\n                <span class=\"vote-off hide\" data-js=\"voteOffBtn\">Inactive User?</span>\n                <div class=\"col-xs-5 col-sm-5 badge-container\" data-js=\"badgeContainer\"></div>\n            </div>\n        </div>\n        <div class=\"clearfix hide\">\n            <div class=\"col-md-2\"></div>\n            <div class=\"detail-container\" data-js=\"detailContainer\"></div>\n        </div>\n    </div>\n";
   return buffer;
   }
 

@@ -3,6 +3,7 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'collections/busMates',
       'collections/challenges',
       'collections/busBadges',
@@ -14,7 +15,7 @@ define(
       'css!styles/busMates'
     ],
     
-    function( $, _, Backbone, busMates, challenges, busBadges, user, modal, messageView, template, badgeHtml ) {
+    function( $, _, Backbone, spinner, busMates, challenges, busBadges, user, modal, messageView, template, badgeHtml ) {
 
         return Backbone.View.extend( {
 
@@ -143,6 +144,20 @@ define(
 
                 modal.listenToOnce( this.messageView, 'close', modal.closeDialogue );
                 modal.addContent( { content: this.messageView.$el } );
+            },
+
+            voteOffClicked: function(e) {
+
+                self.spinner = new spinner().start();
+
+                $.ajax( {
+                    url: 'voteOff',
+                    type: 'POST',
+                    data: {
+                        id: $(e.currentTarget).closest('[data-type="busMate"]').data('js')
+                    }
+                } ).done( function() {
+                    self.spinner.stop(); } );
             }
         } );
 } );
