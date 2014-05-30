@@ -1,7 +1,7 @@
 {{#each busMates}}
     <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row hidden-xs hidden-sm">
         <div class="image col-md-1">
-            <img src="{{this.profileImage}}"/>
+            <img data-js="image" src="{{this.profileImage}}"/>
         </div>
         <div class="bus-mate-detail col-md-11">
             <span class="glyphicon glyphicon-comment hide" data-js="messageBtn"></span>
@@ -17,7 +17,7 @@
     </div>
     <div data-type="busMate" data-js="{{this.id}}" class="bus-mate-row visible-xs visible-sm">
         <div class="image col-xs-1 col-sm-1">
-            <img src="{{this.profileImage}}"/>
+            <img data-js="image" src="{{this.profileImage}}"/>
         </div>
         <div class="bus-mate-detail col-xs-11 col-sm-11">
             <div class="row">

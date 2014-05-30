@@ -155,8 +155,8 @@ define(
                         function( collection ) {
                             var view = new challengeList( {
                                 el: self.templateData.pastChallengeContainer,
-                                collection: new self.pastWeekCollection( collection ) } );
-                                self.pastChallenges.push( view );
+                                collection: collection } );
+                            self.pastChallenges.push( view );
                             };
                         
 
@@ -164,8 +164,19 @@ define(
 
                     this.pastChallenges = [ ];
 
-                    require( [ 'collections/pastChallenges', 'models/challenge' ], function( challenges, challengeModel ) {
+                    require( [ 'collections/pastChallenges' ], function( challenges ) {
+                        
+                        self.spinner = new spinner().start();
 
+                        challenges.on( 'syncd', function() {
+                            _.each( challenges.weekData, viewCreator );
+
+                            self.spinner.stop();
+                            $('html,body').scrollTop(
+                                self.templateData.pastChallengeContainer.offset().top - 50 );
+                        } );
+        
+                        return;
                         self.pastWeekCollection = Backbone.Collection.extend( { model: challengeModel } );
 
                         if( challenges.length ) {

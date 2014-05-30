@@ -15,6 +15,13 @@ define(
 
             defaultCollection: 'challenges',
 
+            sillyness: {
+                "Week 1": "Connection to Israel",
+                "Week 2": "Connection to Judaism",
+                "Week 3": "Connection to Jewish Heritage",
+                "Week 4": "Connection to Community"
+            },
+
             delegate: function() {
                 var self = this;
 
@@ -44,12 +51,13 @@ define(
             },
 
             render: function() {
+                var week = this.challenges.at(0).attributes.week;
 
                 if( this.challenges.length === 0 ) { return; }
 
                 this.slurpTemplate( {
                     template: template( {
-                        week: this.challenges.at(0).attributes.week,
+                        week: week + " -- " + this.sillyness[ week ],
                         challenges: this.challenges.toJSON()
                     } ),
                     insertion: { $el: this.$el, method: 'append' },

@@ -224,20 +224,11 @@
   padding: 5px 15px;
 }
 .challenge-page .challenge-container .body .submission .bottom .glyphicon {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   color: lightgray;
   font-size: 30px;
-  border-right: 1px solid lightgray;
   text-align: center;
-}
-@media (min-width: 992px) {
-  .challenge-page .challenge-container .body .submission .bottom .glyphicon {
-    float: left;
-    width: 8.33333333%;
-  }
+  display: inline-block;
+  width: 100%;
 }
 .challenge-page .challenge-container .body .submission .bottom .glyphicon.enabled {
   color: black;
@@ -247,38 +238,20 @@
   text-decoration: underline;
 }
 .challenge-page .challenge-container .body .submission .bottom .filename {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   height: 40px;
   line-height: 30px;
   color: lightgray;
   white-space: nowrap;
   overflow: hidden;
 }
-@media (min-width: 992px) {
-  .challenge-page .challenge-container .body .submission .bottom .filename {
-    float: left;
-    width: 58.33333333%;
-  }
-}
 .challenge-page .challenge-container .body .submission .bottom .submit {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
   background-color: #ec7400;
   color: white;
   text-align: center;
   border: none;
   height: 40px;
-}
-@media (min-width: 992px) {
-  .challenge-page .challenge-container .body .submission .bottom .submit {
-    float: left;
-    width: 25%;
-  }
+  display: inline-block;
+  width: 100%;
 }
 .challenge-page .challenge-container .body .submission .bottom .submit:hover {
   text-decoration: underline;
@@ -293,26 +266,19 @@
   padding: 10px 20px;
 }
 .challenge-page .bus-mates-container {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding: 0px 40px;
   margin-bottom: 40px;
   background-color: white;
 }
-@media (min-width: 992px) {
-  .challenge-page .bus-mates-container {
-    float: left;
-    width: 100%;
-  }
-}
 .challenge-page .bus-mates-container .bus-mate-row {
   background-color: white;
-  height: 50px;
-  padding: 5px 0px;
   border-bottom: 1px solid lightgray;
 }
 .challenge-page .bus-mates-container .glyphicon-comment {
   color: white;
+}
+.challenge-page .noPad {
+  padding: 0px;
+}
+.challenge-page .rightBorder {
+  border-right: 1px solid lightgray;
 }

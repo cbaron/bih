@@ -23,8 +23,6 @@ define(
                 'click span[data-js="messageBtn"]': 'messageClicked'
             },
 
-            templateData: { },
-
             initialize: function( options ) {
 
                 this.mode = options.mode;
@@ -38,6 +36,8 @@ define(
             },
 
             render: function() {
+            
+                this.templateData = { };
 
                 this.slurpTemplate( {
                     template: template( {

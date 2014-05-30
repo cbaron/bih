@@ -100,11 +100,11 @@
                     }
 
                     .glyphicon {
-                        .make-md-column(1);
                         color: lightgray;
                         font-size: 30px;
-                        border-right: 1px solid lightgray;
                         text-align: center;
+                        display: inline-block;
+                        width: 100%;
 
                         &.enabled {
                             color: black;
@@ -117,7 +117,6 @@
                     }
 
                     .filename {
-                        .make-md-column(7);
                         height: 40px;
                         line-height: 30px;
                         color: lightgray;
@@ -126,12 +125,13 @@
                     }
                     
                     .submit {
-                        .make-md-column(3);
                         background-color: @orange;
                         color: white;
                         text-align: center;
                         border: none;
                         height: 40px;
+                        display: inline-block;
+                        width: 100%;
 
                         &:hover {
                             text-decoration: underline;
@@ -152,15 +152,11 @@
     }
 
     .bus-mates-container {
-        .make-md-column(12);
-        padding: 0px 40px;
         margin-bottom: 40px;
         background-color: white;
 
         .bus-mate-row {
             background-color: white;
-            height: 50px;
-            padding: 5px 0px;
             border-bottom: 1px solid lightgray;
         }
 
@@ -170,5 +166,13 @@
         .glyphicon-comment {
             color: white;
         }
+    }
+
+    .noPad {
+        padding: 0px;
+    }
+
+    .rightBorder {
+        border-right: 1px solid lightgray;
     }
 }
