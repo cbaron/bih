@@ -8,10 +8,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n        <div class=\"event-container\">\n            <div class=\"image col-md-4\">\n                <img src=\""
+  buffer += "\n        <div data-id=\""
+    + escapeExpression(((stack1 = (depth0 && depth0.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" data-js=\"eventContainer\" class=\"event-container\">\n            <div class=\"image col-md-4 col-sm-4 col-xs-4\">\n                <img src=\""
     + escapeExpression(((stack1 = (depth0 && depth0.imageUrl)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n            </div>\n            <div class=\"detail col-md-8\">\n                <div class=\"title\">"
-    + escapeExpression(((stack1 = (depth0 && depth0.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n            </div>\n            <div class=\"detail col-md-8 col-sm-8 col-xs-8\">\n                <div class=\"title\">"
+    + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</div>\n                <div class=\"description\">"
     + escapeExpression(((stack1 = (depth0 && depth0.description)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</div>\n            </div>\n        </div>\n    ";

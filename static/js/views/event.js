@@ -3,12 +3,13 @@ define(
     [ 'jquery',
       'underscore',
       'backbone',
+      'views/modalSpinner',
       'collections/events',
       'templates/event',
       'css!styles/event'
     ],
     
-    function( $, _, Backbone, events, template ) {
+    function( $, _, Backbone, spinner, events, template ) {
 
         return new ( Backbone.View.extend( {
 
@@ -17,9 +18,8 @@ define(
             templateData: { },
 
             events: {
-               'click  button[data-js="thumbsUp"]': 'thumbsUpClicked',
-               'click  button[data-js="nextTime"]': 'nextTimeClicked',
-               'click  button[data-js="notForMe"]': 'notForMeClicked',
+               'click  [data-js="backBtn"]':        'backClicked',
+               'click  [data-js="interestBtn"]': 'interestClicked'
             },
 
             initialize: function( options ) {
@@ -48,7 +48,24 @@ define(
                 this.templateData.datetime.text( this.event.get('datetime') );
                 this.templateData.description.text( this.event.get('description') );
 
+                this.updateInterest();
+
             },
+
+            updateInterest: function() {
+
+                this.templateData.interestBtn.removeClass('active');
+
+                _.each( [ 'interested', 'maybeInterested', 'notInterested' ], function( value ) {
+                    if( this.event.get(value) === true ) {
+                        this.templateData.interestBtn.each( function(i, el) {
+                            if( $(el).is('[data-value="' + value + '"]') ) {
+                                $(el).addClass('active');
+                            }
+                        } );
+                    }
+                }, this );
+            }, 
 
             update: function( id ) {
                 
@@ -65,8 +82,32 @@ define(
 
             waitForData: function() {
                 this.listenToOnce( events, 'sync', this.renderData );
-            }
+            },
 
+            backClicked: function() {
+                window.history.back();
+            },
+
+            interestClicked: function(e) {
+                var interest = { }
+                    self = this;
+
+                this.spinner = new spinner().start();
+                
+                this.event.set( {
+                    interested: false,
+                    maybeInterested: false,
+                    notInterested: false } );
+
+                interest[ $(e.currentTarget).data('value') ] = true;
+
+                this.event.set( interest ).save().done( function() {
+                    self.updateInterest();
+                    self.spinner.stop();
+                } );
+
+            }
+            
         } ) )();
     }
 );

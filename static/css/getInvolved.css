@@ -97,16 +97,39 @@
   margin-left: -15px;
   margin-right: -15px;
   padding: 1em 0em;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  display: table;
+}
+.get-involved-container .event-container:first-child {
+  border-top: 1px solid black;
+}
+.get-involved-container .event-container:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+.get-involved-container .image {
+  display: table-cell;
+  float: none;
+  vertical-align: middle;
 }
 .get-involved-container .image img {
   width: 100%;
 }
+.get-involved-container .detail {
+  display: table-cell;
+  float: none;
+}
 .get-involved-container .title {
   margin-left: -15px;
   margin-right: -15px;
+  font-weight: bold;
+  font-size: large;
+  padding: 1em;
 }
 .get-involved-container .description {
   margin-left: -15px;
   margin-right: -15px;
+  padding: 1em;
 }

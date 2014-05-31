@@ -20,10 +20,25 @@
     .event-container {
         .make-row();
         padding: 1em 0em;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        display: table;
+
+        &:first-child {
+            border-top: 1px solid black;
+        }
+
+        &:hover {
+            background-color: gray;
+            cursor: pointer;
+        }
     }
 
     .image {
+        display: table-cell;
+        float: none;
+        vertical-align: middle;
 
         img {
             width: 100%;
@@ -31,14 +46,20 @@
     }
     
     .detail {
+        display: table-cell;
+        float: none;
     }
 
     .title {
         .make-row();
+        font-weight: bold;
+        font-size: large;
+        padding: 1em;
     }
     
     .description {
         .make-row();
+        padding: 1em;
     }
 }
 

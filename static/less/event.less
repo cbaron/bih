@@ -16,6 +16,7 @@
         .make-row();
         background-color: rgba( 225, 225, 225, 0.5 );
         margin-top: 10px;
+        margin-bottom: 4em;
     }
 
     .nav-row {
@@ -38,10 +39,10 @@
 
     .name {
         .make-row();
-        font-size: large;
+        font-size: x-large;
         font-weight: bold;
         text-align: center;
-        padding: 10px;
+        padding: 1em;
     }
 
     .content,
@@ -50,7 +51,7 @@
     }
 
     .content {
-        background-color: lightgray;
+        margin-bottom: 2em;
     }
     
     .image-content {
@@ -72,6 +73,7 @@
         color: @orange;
         font-size: large;
         text-align: center;
+        font-weight: bold;
     }
 
     .description {
@@ -87,14 +89,28 @@
     }
 
     .action {
-        .make-md-column(4);
+
+        text-align: center;
 
         span {
             background-color: @orange;
+
+            &.active {
+                background-color: @brown;
+            }
         }
 
         .glyphicon {
             color: lightgray;
+            font-size: xx-large;
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+
+            &:hover {
+                cursor: pointer;
+                border: 1px solid black;
+            }
         }
     }
 

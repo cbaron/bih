@@ -7,7 +7,10 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "name": undefined,
             "description": undefined,
             "datetime": undefined,
-            "imageUrl": undefined
+            "imageUrl": undefined,
+            "interested": false,
+            "notInterested": false,
+            "maybeInterested": false
         }
 
     } );

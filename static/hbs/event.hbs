@@ -2,50 +2,46 @@
 <div class="event-container">
     <div class="col-md-12">
         <div class="nav-row">
-            <span data-js="backButton" class="back">
+            <span data-js="backBtn" class="back">
                 <span class="glyphicon glyphicon-hand-left"></span>
                 <span>Back</span>
             </span>
         </div>        
         <div data-js="name" class="name"></div>
         <div class="image-content">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                 <div class="image-container">
                     <img data-js="imageUrl" src="" />
                 </div>
             </div>
-            <div class="col-md-1"></div>
         </div>
         <div class="content">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                 <div data-js="datetime" class="datetime"></div>
                 <div data-js="venue" class="venue"></div>
                 <div data-js="address" class="address"></div>
                 <div data-js="description" class="description"></div>
                 <div class="action-row">
-                    <div class="action">
+                    <div class="action col-md-4 col-sm-4 col-xs-4">
                         <div>
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <span data-js="interestBtn" data-value="interested" class="glyphicon glyphicon-thumbs-up"></span>
                         </div>
                         <div>Count me in!</div>
                     </div>
-                    <div class="action">
+                    <div class="action col-md-4 col-sm-4 col-xs-4">
                         <div>
-                            <span class="glyphicon glyphicon-road"></span>
+                            <span data-js="interestBtn" data-value="maybeInterested" class="glyphicon glyphicon-road"></span>
                         </div>
                         <div>Maybe next time</div>
                     </div>
-                    <div class="action">
+                    <div class="action col-md-4 col-sm-4 col-xs-4">
                         <div>
-                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                            <span data-js="interestBtn" data-value="notInterested" class="glyphicon glyphicon-thumbs-down"></span>
                         </div>
                         <div>Not for me</div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
         </div>
     </div>
 </div>

@@ -13,7 +13,7 @@ def GET( sf ):
 
     events = sf.query(\
         ''.join( [ "Select ID, BIH_Opportunity_Name__c, Clicked__c, Date__c, Image_Location__c, ",
-                   "Description__c, Interested__c, Link__c, Not_Interested__c, ",
+                   "Description__c, Interested__c, Link__c, Not_Interested__c, Maybe_Next_Time__c, ",
                    "Score__c, Time__c, Type__c FROM BIH_Notification__c Where BIH_User__r.ID='",
                    session.userId, "' ORDER BY Score__c DESC" ] ) )['records']
 
@@ -21,6 +21,9 @@ def GET( sf ):
     for event in events:
         rv.append(\
             dict( id = event['Id'],
+                  interested = event['Interested__c'],
+                  notInterested = event['Not_Interested__c'],
+                  maybeInterested = event['Maybe_Next_Time__c'],
                   imageUrl = event['Image_Location__c'],
                   name = event['BIH_Opportunity_Name__c'],
                   description = event['Description__c'],
@@ -29,6 +32,15 @@ def GET( sf ):
 
     return response.json( rv )
 
+
+def PUT( sf ):
+
+    sf.BIH_Notification__c.update( request.args[0], {\
+        'Interested__c': request.vars.interested,
+        'Not_Interested__c': request.vars.notInterested,
+        'Maybe_Next_Time__c': request.vars.maybeInterested } )
+
+    return response.json( dict() )
 
 def detail():
     response.view = 'default/index.html'

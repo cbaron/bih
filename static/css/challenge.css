@@ -237,12 +237,16 @@
   cursor: pointer;
   text-decoration: underline;
 }
-.challenge-page .challenge-container .body .submission .bottom .filename {
+.challenge-page .challenge-container .body .submission .bottom .filename-container {
   height: 40px;
+}
+.challenge-page .challenge-container .body .submission .bottom .filename {
   line-height: 30px;
   color: lightgray;
   white-space: nowrap;
   overflow: hidden;
+  display: inline-block;
+  width: 100%;
 }
 .challenge-page .challenge-container .body .submission .bottom .submit {
   background-color: #ec7400;

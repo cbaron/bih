@@ -17,7 +17,7 @@ define(
                 datetime: undefined
             },
 
-            url: '/event',
+            url: '/event/index',
 
             model: event,
 

@@ -15,8 +15,8 @@ define(
 
             className: 'container get-involved-container',
 
-
             events: {
+                'click [data-js="eventContainer"]': 'eventClicked'
             },
 
             initialize: function() {
@@ -49,6 +49,13 @@ define(
 
             waitForData: function() {
                 this.listenToOnce( events, 'sync', this.render );
+            },
+
+            eventClicked: function(e) {
+
+                this.router.navigate(
+                    [ 'event', 'detail', $(e.currentTarget).data('id') ].join('/'),
+                    { trigger: true } );
             }
 
         } ) )();

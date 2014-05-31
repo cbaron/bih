@@ -147,6 +147,7 @@
   margin-right: -15px;
   background-color: rgba(225, 225, 225, 0.5);
   margin-top: 10px;
+  margin-bottom: 4em;
 }
 .event-page .nav-row {
   margin-left: -15px;
@@ -166,10 +167,10 @@
 .event-page .name {
   margin-left: -15px;
   margin-right: -15px;
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
   text-align: center;
-  padding: 10px;
+  padding: 1em;
 }
 .event-page .content,
 .event-page .image-content {
@@ -177,7 +178,7 @@
   margin-right: -15px;
 }
 .event-page .content {
-  background-color: lightgray;
+  margin-bottom: 2em;
 }
 .event-page .image-content {
   padding-bottom: 40px;
@@ -197,6 +198,7 @@
   color: #ec7400;
   font-size: large;
   text-align: center;
+  font-weight: bold;
 }
 .event-page .description {
   margin-left: -15px;
@@ -211,20 +213,22 @@
   font-size: large;
 }
 .event-page .action {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 992px) {
-  .event-page .action {
-    float: left;
-    width: 33.33333333%;
-  }
+  text-align: center;
 }
 .event-page .action span {
   background-color: #ec7400;
 }
+.event-page .action span.active {
+  background-color: #a4550a;
+}
 .event-page .action .glyphicon {
   color: lightgray;
+  font-size: xx-large;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.event-page .action .glyphicon:hover {
+  cursor: pointer;
+  border: 1px solid black;
 }
