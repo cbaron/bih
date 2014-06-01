@@ -15,6 +15,33 @@
         height: 15%;
     }
 
+    .email-input,
+    .pass-container {
+        display: block;
+        margin: 0em auto;
+        width: 80%;        
+    }
+
+    .pass-container {
+        position: relative;
+    }
+
+    .password-input {
+        width: 100%;
+    }
+
+    .glyphicon {
+        position: absolute;
+        left: 102%;
+        font-size: large;
+        line-height: 30px;
+
+        &:hover {
+            color: white;
+            cursor: pointer;
+        }
+    }
+
     .input-container {
         height: 43%;
         padding: 1em 0px;
@@ -22,9 +49,6 @@
         background-color: @blue;
 
         input {
-            display: block;
-            margin: 0em auto;
-            width: 80%;
             border: none;
             padding: 4px 6px;
             color: rgb( 187, 187, 187 );

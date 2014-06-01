@@ -21,7 +21,7 @@ define( [ 'jquery', 'underscore', 'backbone' ], function( $, _, Backbone ) {
             "profileImageUrl": undefined,
             "points": undefined,
             "isLoggedIn": false,
-
+            "hasSyncd": false
         },
 
         urlRoot: '/user'

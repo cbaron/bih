@@ -11,7 +11,7 @@ define(
     
     function( $, _, Backbone, Spinner, user, template ) {
 
-    return new ( Backbone.View.extend( {
+    return Backbone.View.extend( {
 
         className: [
             "login-container",
@@ -24,7 +24,8 @@ define(
         events: {
 
             'click div[data-js="loginButton"]': 'loginClicked',
-            'click div[data-js="guestLoginButton"]': 'guestLoginClicked'
+            'click div[data-js="guestLoginButton"]': 'guestLoginClicked',
+            'click span[data-js="help"]': 'helpClicked'
 
         },
 
@@ -91,7 +92,12 @@ define(
             } else {
                 this.templateData.error.removeClass('hide');
             }
+        },
+
+        helpClicked: function() {
+            this.trigger('success').$el.fadeOut();
+            this.router.navigate( 'help', { trigger: true } );
         }
 
-    } ) )();
+    } );
 } );

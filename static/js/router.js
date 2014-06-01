@@ -28,16 +28,21 @@ define(
                 '':                         'dashboard'
             },
 
-            isLoggedIn: function() {
+            isLoggedIn: function( opts ) {
                 var self = this;
 
                 if( user.get('isLoggedIn') ) { return true; }
                 else {
 
+                    if( opts && opts.rvOnly ) { return false; }
+
                     this.listenToOnce( user, 'sync', function() {
+                        user.set('hasSyncd',true);
                         if( user.get('isLoggedIn') ) { self.toDo(); }
                         else { this.showLoginDialogue(); }
                     } );
+
+                    if( user.get('hasSyncd') ) { this.showLoginDialogue(); }
 
                     return false;
                 }
@@ -46,8 +51,9 @@ define(
             showLoginDialogue: function() {
                 $('#header').height(0);
                 require( [ 'views/modal', 'views/login' ], function( modal, login ) {
-                    modal.listenToOnce( login, 'success', modal.closeDialogue );
-                    modal.addContent( { content: login.$el } )
+                    var loginView = new login();
+                    modal.listenToOnce( loginView, 'success', modal.closeDialogue );
+                    modal.addContent( { content: loginView.$el } )
                 } );
             },
 
@@ -69,7 +75,8 @@ define(
             dashboard: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/dashboard' ], function( dashboard ) {
                         if( dashboard.$el.is(':hidden') ) { dashboard.$el.fadeIn(); } } );
                 }
@@ -80,7 +87,8 @@ define(
             fourWeekChallenge: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/fourWeekChallenge' ], function( fourWeekChallenge ) {
                         if( fourWeekChallenge.$el.is(':hidden') ) { fourWeekChallenge.$el.fadeIn(); } } );
                 }
@@ -91,7 +99,8 @@ define(
             event: function(id) {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/event' ], function( event ) { event.update(id); } );
                 }
                 if( this.isLoggedIn() ) { this.toDo(); }
@@ -100,7 +109,8 @@ define(
             challenge: function(bus,id) {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/challenge' ], function( challenge ) { challenge.update(bus,id); } );
                 }
                 if( this.isLoggedIn() ) { this.toDo(); }
@@ -109,7 +119,8 @@ define(
             hundredPointChallenge: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/hundredPointChallenge' ], function( hundredPointChallenge ) {
                         if( hundredPointChallenge.$el.is(':hidden') ) { hundredPointChallenge.$el.fadeIn(); } } );
                 }
@@ -119,7 +130,8 @@ define(
             getInvolved: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/getInvolved' ], function( getInvolved ) {
                         if( getInvolved.$el.is(':hidden') ) { getInvolved.$el.fadeIn(); } } );
                 }
@@ -129,7 +141,8 @@ define(
             myBus: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
                     require( [ 'views/myBus' ], function( myBus ) {
                         if( myBus.$el.is(':hidden') ) { myBus.$el.fadeIn(); } } );
                 }
@@ -137,19 +150,25 @@ define(
             },
 
             help: function() {
-                this.toDo = function() {
-                    this.hideContent();
-                    require( [ 'views/header' ] );
-                    require( [ 'views/help' ], function( help ) {
-                        if( help.$el.is(':hidden') ) { help.$el.fadeIn(); } } );
-                }
-                if( this.isLoggedIn() ) { this.toDo(); }
+                var self = this;
+                this.hideContent();
+                require( [ 'views/header' ], function( header ) {
+                    if( self.isLoggedIn( { rvOnly: true } ) ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); }
+                    } else {
+                        header.$el.hide();
+                    }
+                } );
+                require( [ 'views/help' ], function( help ) {
+                    if( help.$el.is(':hidden') ) { help.$el.fadeIn(); } } );
             },
 
             inbox: function() {
                 this.toDo = function() {
                     this.hideContent();
-                    require( [ 'views/header' ] );
+                    require( [ 'views/header' ], function( header ) {
+                        if( header.$el.is(':hidden') ) { header.$el.fadeIn(); } } );
+                    
                     require( [ 'views/inbox' ], function( inbox ) {
                         if( inbox.$el.is(':hidden') ) { inbox.$el.fadeIn(); } } );
                 }

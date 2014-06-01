@@ -4,6 +4,13 @@
 .help-container {
     .container();
 
+    color: black;
+    font-weight: bold;
+
+    a {
+        color: @blue !important;
+    }
+
     .header {
         .make-row();
         text-align: center;
@@ -26,6 +33,18 @@
         background-color: @orange;
         color: white;
         padding: 2px 5px;
+    }
+
+    .info {
+       .make-row();
+       margin-top: 2em; 
+       margin-bottom: 2em; 
+    }
+
+    .help-row {
+       .make-row();
+       margin-top: .5em; 
+       margin-bottom: .5em; 
     }
 
     @media(max-width:767px){
