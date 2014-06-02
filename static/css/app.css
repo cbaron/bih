@@ -77,13 +77,13 @@ html,
   border-bottom: 1px solid #a7bafc;
 }
 body {
-  background-color: black !important;
+  background-color: #292a2a !important;
   height: 100%;
 }
 body #content {
   background-image: url("../images/background.jpg");
   background-size: 100% 100%;
-  min-height: 627px;
+  min-height: 896px;
 }
 body #content .btn {
   color: white;

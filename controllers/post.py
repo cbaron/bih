@@ -12,7 +12,7 @@ def GET( sf, session ):
 
     if request.vars.busId and request.vars.challengeId is None:
         records = sf.query(\
-            ''.join( [ "Select BIH_Challenge__r.ID, BIH_User__r.ID, Image_or_Video_URL__c, Post_Body__c, Post_Title__c ",
+            ''.join( [ "Select BIH_Challenge__r.ID, BIH_User__r.ID, Image_or_Video_URL__c, Post_Body__c, Post_Title__c, ",
                        "FROM BIH_Post__c ",
                        "WHERE Challenge_Completed__c = TRUE AND "
                        "BIH_Bus__r.ID = '", request.vars.busId, "'" ] ) )['records']
@@ -31,7 +31,8 @@ def GET( sf, session ):
     elif request.vars.challengeId:
 
         records = sf.query(\
-            ''.join( [ "Select ID, Image_or_Video_URL__c, Post_Body__c, Post_Title__c ",
+            ''.join( [ "Select ID, Image_or_Video_URL__c, Post_Body__c, Post_Title__c, ",
+                       "Challenge_Completed_Date__c, Challenge_Completed__c ",
                        "FROM BIH_Post__c ",
                        "WHERE BIH_User__r.ID = '", session.userId, "' AND ",
                        "BIH_Challenge__r.ID = '", request.vars.challengeId, "'" ] ) )['records']
@@ -43,6 +44,8 @@ def GET( sf, session ):
             id = records[0]['Id'],
             url = records[0]['Image_or_Video_URL__c'],
             body = records[0]['Post_Body__c'],
+            completedDate = records[0]['Challenge_Completed_Date__c'],
+            completed = records[0]['Challenge_Completed__c'],
             title = records[0]['Post_Title__c'] ) )
 
     else:

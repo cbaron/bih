@@ -3,6 +3,7 @@
 
 .hundred-point-container {
     .container();
+    margin-bottom: 4em;
 
     .header {
         .make-row();
@@ -87,15 +88,16 @@
     .challenge-row {
         .make-row();
         background-color: rgba( 225, 225, 225, 0.5 );
-        padding: 20px 0px;
+        padding: 10px 0px;
         border-bottom: 1px solid black;
         position: relative;
 
         .resize {
             position: absolute;
-            top: 5%;
-            left: 95%;
-            font-size: x-large;
+            top: 1%;
+            left: 98%;
+            font-size: large;
+            z-index: 5;
         
             &:hover {
                 cursor: pointer;
@@ -154,6 +156,7 @@
     }
 
     .submission-container {
+        .make-row();
 
         .text {
             background-color: white;
@@ -175,6 +178,7 @@
             border-right: 1px solid lightgray;
             border-left: 1px solid lightgray;
             background-color: white;
+            margin:0px;
 
             span,
             button {
@@ -182,10 +186,8 @@
             }
 
             .glyphicon {
-                .make-md-column(1);
                 color: lightgray;
                 font-size: 30px;
-                border-right: 1px solid lightgray;
                 text-align: center;
 
                 &.enabled {
@@ -199,24 +201,81 @@
             }
 
             .filename {
-                .make-md-column(7);
                 height: 40px;
                 line-height: 30px;
                 color: lightgray;
             }
-            
+
             .submit {
-                .make-md-column(3);
                 background-color: @orange;
                 color: white;
                 text-align: center;
                 border: none;
                 height: 40px;
+                display: inline-block;
+                width: 100%;
 
                 &:hover {
                     text-decoration: underline;
                 }
             }
         }
+    }
+
+    .body {
+        color: @blue;
+        margin: 0px 20px;
+    }
+
+    .date {
+        margin: 10px 20px 5px 20px;
+    }
+
+    .text-container {
+    }
+
+    @media(max-width:767px){
+        font-size: x-small !important;
+        .resize,
+        .category-header {
+            font-size: x-small !important;
+        }
+    }
+
+    @media(min-width:768px){
+        font-size: small !important;
+        .resize,
+        .category-header {
+            font-size: small !important;
+        }
+    }
+    
+    @media(min-width:992px){
+        font-size: medium !important;
+        .resize,
+        .category-header {
+            font-size: medium !important;
+        }
+    }
+
+    @media(min-width:1200px){
+        font-size: large !important;
+        .resize,
+        .category-header {
+            font-size: large !important;
+        }
+    }
+
+    .noPad {
+        padding: 0px;
+    }
+
+    .rightBorder {
+        border-right: 1px solid lightgray;
+        text-align: center;
+    }
+
+    .filename-container {
+        height: 40px;
     }
 }

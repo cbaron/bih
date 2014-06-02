@@ -67,7 +67,9 @@ define(
 
                 categories = _.uniq( _.pluck( this.challenges.toJSON(), 'category' ) );
                 
-                categoryClass = 'col-md-' + Math.floor( 12 / categories.length );
+                categoryClass = 'col-md-' + Math.floor( 12 / categories.length ) +
+                    ' col-sm-' + Math.floor( 12 / categories.length ) +
+                    ' col-xs-' + Math.floor( 12 / categories.length );
                 
                 categories = _.map( categories, function(category) {
                         if( ! category ) { category = 'null'; } return { name: category, class: categoryClass }; } );
@@ -252,6 +254,10 @@ define(
                 if( post && post.has('body') ) {
                     submissionContainer.find('[data-js="submittedBody"]').text( post.get('body') );
                 }
+               
+                if( post && post.has('completedDate') ) {
+                    submissionContainer.find('[data-js="submittedDate"]').text( 'Completed on : ' + post.get('completedDate') );
+                }
 
                 if( challenge.get('type') === 'Image' ||
                     challenge.get('type') === 'Video' ) {
@@ -260,6 +266,10 @@ define(
                             post.get('url')
                         );
                     }
+                }
+
+                if( post && post.get('completed') ) {
+                    this.templateData[ challengeId ].find('[data-js="completedIcon"]').removeClass('hide');
                 }
             },
 
@@ -279,25 +289,34 @@ define(
                 if( challenge.get('type') === 'Text' &&
                     $.trim( textEl.val() )  !== '' ) {
 
-                    post.set( 'body', textEl.val() ).save(
-                        post.attributes,
-                        { success: function() { self.displayPostInformation(challengeId); } } ); 
+                    this.spinner = new spinner().start();
+
+                    post.set( 'body', textEl.val() ).save().done( function() {
+                            self.displayPostInformation(challengeId);
+                            self.spinner.stop();
+                    } ); 
 
                 } else if( challenge.get('type') === 'Image' &&
                            mediaReference.text() !== '' ) {
+                    
+                    this.spinner = new spinner().start();
                
-                    post.set( 'body', textEl.val() ).save(
-                        post.attributes,
-                        { success: function() { self.displayPostInformation(challengeId); } } ); 
+                    post.set( 'body', textEl.val() ).save().done( function() {
+                        self.displayPostInformation(challengeId);
+                        self.spinner.stop();
+                    } );
                      
                 } else if( challenge.get('type') === 'Video' &&
                     $.trim( mediaReference.text().indexOf( 'youtube' > -1 ) ) ) {
                     
+                    this.spinner = new spinner().start();
+               
                     post.set( {
                         'body': textEl.val(),
-                        'url': mediaReference.text() } ).save(
-                            post.attributes,
-                            { success: function() { self.displayPostInformation(challengeId); } } ); 
+                        'url': mediaReference.text() } ).save().done( function() {
+                            self.displayPostInformation(challengeId);
+                            self.spinner.stop();
+                     } );
                 }
 
                 e.stopImmediatePropagation();

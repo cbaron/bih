@@ -18,7 +18,9 @@ define( [ 'jquery', 'underscore', 'backbone', 'models/user' ], function( $, _, B
             "userId": undefined,
             "url": undefined,
             "body": undefined,
-            "title": undefined
+            "title": undefined,
+            "completed": false,
+            "completedDate": undefined
         },
 
         urlRoot: '/post/index'

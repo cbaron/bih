@@ -20,7 +20,8 @@ def GET( sf, session ):
     for row in records:
         rv.append( dict( id = row['Id'],
                          name = row['Name'],
-                         rules = row['forum_desc__c'] if 'forum_desc__c' in row else '',
+                         rules = row['Challenge_Rules__c'] if 'Challenge_Rules__c' in row else '',
+                         #rules = row['forum_desc__c'] if 'forum_desc__c' in row else '',
                          type = row['Post_Type__c'],
                          category = row['Category__c'],
                          points = row['Points_per_entry__c'] ) )

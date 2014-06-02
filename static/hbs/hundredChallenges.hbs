@@ -32,23 +32,33 @@
                                     </div>
                                     <div class="rules">{{this.rules}}</div>
                                 </div>
-                                <div class="check hide">
+                                <div data-js="completedIcon" class="check hide">
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                             </div>
                             <div data-js="submissionContainer" class="submission-container hide">
-                                <div data-js="submittedDate" class="date"></div>
-                                <div data-js="submittedBody" class="body"></div>
-                                <div class="text">
-                                    <textarea data-js="text" rows="5" placeholder="Type submission here..."></textarea>
-                                </div>
                                 <div class="col-md-12">
+                                    <div data-js="submittedDate" class="date"></div>
+                                    <div data-js="submittedBody" class="body"></div>
+                                    <div class="text-container">
+                                        <div class="text">
+                                            <textarea data-js="text" rows="5" placeholder="Type submission here..."></textarea>
+                                        </div>
+                                    </div>
                                     <div class="bottom">
-                                        <span data-js="image" class="glyphicon glyphicon-picture"></span>
-                                        <span data-js="video" class="glyphicon glyphicon-facetime-video"></span>
-                                        <span class="filename" data-js="mediaReference"></span>
-                                        <button data-js="submitBtn" class="submit">Submit</button>
-                                        <input data-js="imageUpload" class="file-upload" id="imageUpload" type="file" name="files[]" data-url="/submission/post">
+                                        <div class="col-md-2 col-sm-2 col-xs-2 rightBorder noPad">
+                                            <span data-js="image" class="glyphicon glyphicon-picture"></span>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 col-xs-2 rightBorder noPad">
+                                            <span data-js="video" class="glyphicon glyphicon-facetime-video"></span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 noPad filename-container">
+                                            <span class="filename" data-js="mediaReference"></span>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 col-xs-2 noPad">
+                                            <button data-js="submitBtn" class="submit">Submit</button>
+                                            <input data-js="imageUpload" class="file-upload" id="imageUpload" type="file" name="files[]" data-url="/submission/post">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
