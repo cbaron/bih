@@ -34,7 +34,7 @@ define(
 
                 this.spinner = new spinner().start();
 
-                this[ ( events.length )
+                this[ ( events.syncd )
                     ? 'render'
                     : 'waitForData' ]();
 

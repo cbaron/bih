@@ -25,8 +25,7 @@ define(
 
                 this.spinner = new spinner().start();
 
-                //should just get the user on every route
-                this[ ( events.length )
+                this[ ( events.syncd )
                     ? 'render'
                     : 'waitForData' ]();
 
@@ -41,6 +40,10 @@ define(
                     partsObj: this.templateData,
                     keepDataJs: true
                 } );
+
+                if( events.length === 0 ) {
+                    alert( "No events for you at the moment.");
+                }
 
                 this.spinner.stop();
 

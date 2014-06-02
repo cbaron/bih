@@ -21,7 +21,11 @@ define(
 
             model: event,
 
-            initialize: function() { this.fetch(); }
+            initialize: function() {
+                this.syncd = false;
+                this.fetch();
+                this.on( 'sync', function() { this.syncd = true; } );
+            }
         } ) )();
     }
 );

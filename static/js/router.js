@@ -58,7 +58,7 @@ define(
             },
 
             hideContent: function() {
-                $('#header').height('10%');
+                $('#header').height('8%');
                 this.content.children().hide();
                 return this;
             },

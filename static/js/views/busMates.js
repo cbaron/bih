@@ -105,13 +105,13 @@ define(
                                     }
 
                                     this.templateData[ model.get('userId') ]
-                                        .find( 'img[data-js="image"]')
+                                        .find( 'img[data-js="postImage"]')
                                             .attr( 'src', 'http://img.youtube.com/vi/' + video_id + '/1.jpg' )
                                             .addClass('enabled')
                                             .on( 'click', function() { window.open( url ); } );
                                 } else {
                                     this.templateData[ model.get('userId') ]
-                                        .find( 'img[data-js="image"]')
+                                        .find( 'img[data-js="postImage"]')
                                             .attr( 'src', url )
                                             .addClass('enabled')
                                             .on( 'click', function() { window.open( url ); } );

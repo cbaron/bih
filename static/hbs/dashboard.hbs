@@ -51,10 +51,10 @@
             <div data-js="localEventItems" class="local-event-items"">
                 {{#each events}}
                     <div data-id="{{this.id}}" class="local-event-item">
-                        <div data-js="eventBtn" class="local-event-image">
+                        <div data-js="eventBtn" class="local-event-image col-md-2 col-sm-2 col-xs-3">
                             <img src="{{this.imageUrl}}"/>
                         </div>
-                        <div class="local-event-text">
+                        <div class="local-event-text col-md-9 col-sm-9 col-xs-8">
                             <div data-js="eventBtn" class="local-event-title">{{this.name}}</div>
                             <div data-js="eventBtn" class="local-event-location">{{this.datetime}}</div>
                         </div>
