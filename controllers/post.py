@@ -73,7 +73,6 @@ def PUT( sf, session ):
 
     #try:
     sf.BIH_Post__c.update( request.args[0], {\
-        'Challenge_Completed__c': True,
         'Image_or_Video_URL__c': request.vars.url,
         'Post_Body__c': request.vars.body,
         'Post_Title__c': request.vars.title } )
@@ -97,7 +96,6 @@ def POST( sf, session ):
         'BIH_User__c': session.userId,
         'BIH_Challenge__c': request.vars.challengeId,
         'BIH_Bus__c': request.vars.busId,
-        'Challenge_Completed__c': True,
         'Image_or_Video_URL__c': request.vars.url,
         'Post_Body__c': request.vars.body,
         'Post_Title__c': request.vars.title } )
