@@ -4,7 +4,7 @@ from sf import *
 import datetime
 
 def index():
-    sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
+    sf = Salesforce( username=u, password=p, security_token=k )
     #return globals()[ request.env.request_method ]( sf )
     return globals()[ request.env.request_method ]()
 

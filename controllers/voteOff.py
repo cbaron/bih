@@ -3,7 +3,7 @@ from simple_salesforce import Salesforce
 from sf import *
 
 def index():
-    sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
+    sf = Salesforce( username=u, password=p, security_token=k )
     return globals()[ request.env.request_method ]( sf, session )
 
 

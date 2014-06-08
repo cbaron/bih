@@ -4,7 +4,7 @@ from simple_salesforce import Salesforce
 from sf import *
 
 def index():
-    sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
+    sf = Salesforce( username=u, password=p, security_token=k )
 
     if request.vars.id == None:
         redirect( URL(a='bih',c='default',f='index') )
@@ -39,7 +39,7 @@ def index():
 
 
 def post():
-    sf = Salesforce( username=u, password=p, security_token=k, sandbox=True )
+    sf = Salesforce( username=u, password=p, security_token=k )
 
     weCool = True
     errorMsg = ''
