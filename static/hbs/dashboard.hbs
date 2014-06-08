@@ -22,14 +22,14 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-7 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10 dashboard-leaderboard">
-        <div class="leaderboard-header">4-Week Challenge Leaderboard</div>
+        <div data-js="leaderboardBtn" class="leaderboard-header">4-Week Challenge Leaderboard</div>
         <div class="row">
             <div class="leaderboard-item-container col-md-12" data-js="leaderboardItems"></div>
         </div>
     </div>
 
     <div class="col-md-4 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10 dashboard-100-point">
-        <div class="header">100 Point Challenge</div>
+        <div data-js="hundredPtBtn" class="header">100 Point Challenge</div>
         <div class="content">
             <div class="individual-point-display">
                 <div>{{user.points}}</div>
@@ -47,7 +47,7 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-7 col-md-offset-0 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10 dashboard-local-events">
-        <div class="local-event-header">Local Events</div>
+        <div data-js="localEventBtn" class="local-event-header">Local Events</div>
             <div data-js="localEventItems" class="local-event-items"">
                 {{#each events}}
                     <div data-id="{{this.id}}" class="local-event-item">

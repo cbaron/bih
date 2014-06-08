@@ -70,7 +70,16 @@ define(
             },
 
             update: function( challengeId ) {
-                //TODO: do
+                this.challengeId = challengeId;
+
+                this.templateData.postImage
+                        .removeClass('enabled')
+                        .attr('src','');
+
+                this.templateData.detailContainer.text('');
+                
+                this.listenToOnce( busBadges, 'sync', this.renderBadges );
+                busBadges.fetch( { data: { busId: user.get('busId') } } );
             },
 
             renderBadges: function() {
@@ -135,7 +144,7 @@ define(
 
             messageClicked: function(e) {
 
-                var row = $(e.currentTarget).closest('[data-type="busMate"');
+                var row = $(e.currentTarget).closest('[data-type="busMate"]');
 
                 this.messageView = new messageView( {
                     id: row.data('js'),

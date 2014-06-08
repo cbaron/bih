@@ -133,10 +133,13 @@ define(
             },
 
             updateBusMateHeader: function() {
-              
-                this.templateData.busMatesHeader.text(   
-                    this.challenges.challenges.at(0).attributes.week
-                );
+            
+                //I've failed you mom and dad. 
+                if( this.challenges.challenges.length !== 0 ) {
+                    this.templateData.busMatesHeader.text(   
+                        this.challenges.challenges.at(0).attributes.week
+                    );
+                }
             },
 
             viewPastChallengeClick: function() {

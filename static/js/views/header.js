@@ -91,7 +91,6 @@ define(
         },
         
         helpClicked: function() {
-            console.log('asdad');
             this.router.navigate('help', { trigger: true} );
         },
 

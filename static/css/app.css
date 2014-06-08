@@ -80,6 +80,24 @@ body {
   background-color: #292a2a !important;
   height: 100%;
 }
+body input::-webkit-input-placeholder {
+  color: #808080;
+}
+body input:-moz-placeholder {
+  color: #808080;
+}
+body input:-ms-input-placeholder {
+  color: #808080;
+}
+body textarea::-webkit-input-placeholder {
+  color: #808080;
+}
+body textarea:-moz-placeholder {
+  color: #808080;
+}
+body textarea:-ms-input-placeholder {
+  color: #808080;
+}
 body #content {
   background-image: url("../images/background.jpg");
   background-size: 100% 100%;
@@ -91,4 +109,7 @@ body #content .btn {
 }
 .file-upload {
   display: none !important;
+}
+input {
+  color: black;
 }

@@ -27,6 +27,9 @@ define(
 
                 'click div[data-js="uploadPhotoBtn"]': 'handleUploadPhotoClick',
                 'click div[data-js="hundredPointBtn"]': 'hundredPointClicked',
+                'click div[data-js="leaderboardBtn"]': 'leaderboardClicked',
+                'click div[data-js="hundredPtBtn"]': 'hundredPointClicked',
+                'click div[data-js="localEventBtn"]': 'localEventsClicked',
                 'click [data-js="eventBtn"]': 'eventClicked'
             },
 
@@ -112,7 +115,20 @@ define(
                     'event',
                     'detail',
                     $(e.currentTarget).closest('[data-id]').attr('data-id') ].join("/"), { trigger: true } );
+            },
+
+            leaderboardClicked: function() {
+                this.router.navigate( 'fourweekchallenge', { trigger: true } );
+            },
+
+            hundredPointClicked: function() {
+                this.router.navigate( 'hundredpointchallenge', { trigger: true } );
+            },
+            
+            localEventsClicked: function() {
+                this.router.navigate( 'getinvolved', { trigger: true } );
             }
+
 
         } ) )();
 } );

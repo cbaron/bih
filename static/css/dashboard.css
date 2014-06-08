@@ -81,7 +81,7 @@
 .dashboard-container .dashboard-id {
   height: 40%;
   margin-bottom: 2%;
-  background-color: rgba(237, 170, 85, 0.5);
+  background-color: rgba(237, 170, 85, 0.75);
 }
 .dashboard-container .dashboard-id > .row {
   height: 70%;
@@ -127,12 +127,15 @@
 .dashboard-container .dashboard-leaderboard {
   height: 40%;
   margin-bottom: 2%;
-  background-color: rgba(225, 225, 225, 0.5);
+  background-color: rgba(225, 225, 225, 0.75);
 }
 .dashboard-container .dashboard-leaderboard .leaderboard-header {
   height: 10%;
   font-size: large;
   margin: 2%;
+}
+.dashboard-container .dashboard-leaderboard .leaderboard-header:hover {
+  cursor: pointer;
 }
 .dashboard-container .dashboard-leaderboard > .row {
   height: 86%;
@@ -152,11 +155,14 @@
 }
 .dashboard-container .dashboard-100-point {
   margin-bottom: 2%;
-  background-color: rgba(225, 225, 225, 0.5);
   padding: 2%;
+  background-color: rgba(225, 225, 225, 0.75);
 }
 .dashboard-container .dashboard-100-point .header {
   font-size: x-large;
+}
+.dashboard-container .dashboard-100-point .header:hover {
+  cursor: pointer;
 }
 .dashboard-container .dashboard-100-point .content {
   height: 106px;
@@ -216,10 +222,13 @@
 .dashboard-container .dashboard-local-events {
   margin-bottom: 2%;
   padding: 2%;
-  background-color: rgba(225, 225, 225, 0.5);
+  background-color: rgba(225, 225, 225, 0.75);
 }
 .dashboard-container .dashboard-local-events .local-event-header {
   font-size: x-large;
+}
+.dashboard-container .dashboard-local-events .local-event-header:hover {
+  cursor: pointer;
 }
 .dashboard-container .dashboard-local-events .local-event-item {
   margin-left: -15px;

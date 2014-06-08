@@ -14,7 +14,7 @@
         height: 40%;
         margin-bottom: 2%;
 
-        background-color: rgba( 237, 170, 85, 0.5 );
+        .transparent-background(rgba( 237, 170, 85, 0.75 ));
 
         >.row {
             height: 70%;
@@ -68,12 +68,16 @@
     .dashboard-leaderboard {
         height: 40%;
         margin-bottom: 2%;
-        background-color: rgba( 225, 225, 225, 0.5 );
+        .transparent-background();
 
         .leaderboard-header {
             height: 10%;
             font-size: large;
             margin: 2%;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
             
         >.row {
@@ -100,11 +104,15 @@
 
     .dashboard-100-point {
         margin-bottom: 2%;
-        background-color: rgba( 225, 225, 225, 0.5 );
         padding: 2%;
+        .transparent-background();
 
         .header {
             font-size: x-large;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .content {
@@ -159,10 +167,14 @@
     .dashboard-local-events {
         margin-bottom: 2%;
         padding: 2%;
-        background-color: rgba( 225, 225, 225, 0.5 );
+        .transparent-background();
 
         .local-event-header {
             font-size: x-large;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .local-event-item {

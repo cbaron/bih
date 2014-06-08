@@ -51,9 +51,15 @@ define(
             },
 
             render: function() {
-                var week = this.challenges.at(0).attributes.week;
+                var week;
 
-                if( this.challenges.length === 0 ) { return; }
+                if( this.challenges.length === 0 ) {
+                    this.rendered = true;
+                    this.trigger('rendered');
+                    return;
+                }
+                
+                week = this.challenges.at(0).attributes.week;
 
                 this.slurpTemplate( {
                     template: template( {

@@ -221,7 +221,7 @@
 }
 #header .header-row .header-box-overlay {
   position: absolute;
-  width: 85px;
+  width: 105px;
   background-color: #ec7400;
   text-align: center;
   z-index: 2;
@@ -237,7 +237,7 @@
   padding: 5px;
 }
 #header .header-row .overlay-sibling {
-  padding-left: 100px;
+  padding-left: 120px;
 }
 #header .myTable {
   display: table;

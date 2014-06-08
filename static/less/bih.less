@@ -11,7 +11,21 @@
 @brown: rgb( 164, 85, 10 );
 
 @header-item-padding: 15px;
-@header-overlay-width: 85px;
+@header-overlay-width: 105px;
 @glyph-padding: 5px;
 
 @dashboard-text-color: rgb( 21, 84, 124 );
+
+.ph(@color: #ccc) {
+    input::-webkit-input-placeholder { color: @color; }
+    input:-moz-placeholder { color: @color; }
+    input:-ms-input-placeholder { color: @color; }
+    textarea::-webkit-input-placeholder { color: @color; }
+    textarea:-moz-placeholder { color: @color; }
+    textarea:-ms-input-placeholder { color: @color; }
+}
+
+.transparent-background(@color:rgba( 225, 225, 225, 0.75 )) {
+    background-color: @color;
+}
+

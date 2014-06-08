@@ -8,13 +8,20 @@ def index():
 
 def GET( sf ):
 
+    import pytz
+    import datetime
+    now = str(datetime.datetime.now(pytz.UTC))[:10]
+
+    print now
+
     pastChallengeRecords = sf.query(\
         ''.join( [ "Select BIH_Bus__r.Name, BIH_Challenge__r.ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, ",
                    "BIH_Challenge__r.Challenge_Type__c, BIH_Challenge__r.Active__c, BIH_Challenge__r.Double_points__c, ",
                    "BIH_Challenge__r.End_Date__c, BIH_Challenge__r.Points_per_entry__c, BIH_Challenge__r.Post_Type__c, ",
                    "BIH_Challenge__r.Start_Date__c, BIH_Challenge__r.Type__c ",
                    "FROM Available_Challenge__c ",
-                   "WHERE BIH_Challenge__r.Active__c = FALSE AND BIH_Bus__r.Name = '", request.vars.busName, "'" ] ) )['records']
+                   "WHERE BIH_Challenge__r.Active__c = FALSE AND BIH_Challenge__r.End_Date__c < ", now, " AND ",
+                   "BIH_Bus__r.Name = '", request.vars.busName, "'" ] ) )['records']
 
     rv = [ ]
     for idx, row in enumerate( pastChallengeRecords ):

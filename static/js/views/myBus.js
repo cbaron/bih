@@ -46,7 +46,6 @@ define(
 
 
                 if( this.busMates.rendered ) {
-                    this.rendered.busMates = true;
                     this.spinner.stop();
                 } else {
                     this.busMates.on( 'rendered', function() {

@@ -34,15 +34,19 @@ define(
                 if( user.get('isLoggedIn') ) { return true; }
                 else {
 
-                    if( opts && opts.rvOnly ) { return false; }
-
                     this.listenToOnce( user, 'sync', function() {
                         user.set('hasSyncd',true);
                         if( user.get('isLoggedIn') ) { self.toDo(); }
-                        else { this.showLoginDialogue(); }
+                        else {
+                            if( opts && opts.showLogin === false ) { return; }
+                            this.showLoginDialogue();
+                         }
                     } );
 
-                    if( user.get('hasSyncd') ) { this.showLoginDialogue(); }
+                    if( user.get('hasSyncd') ) {
+                        if( opts && opts.showLogin === false ) { return; }
+                        this.showLoginDialogue();
+                    }
 
                     return false;
                 }
@@ -153,10 +157,12 @@ define(
                 var self = this;
                 this.hideContent();
                 require( [ 'views/header' ], function( header ) {
-                    if( self.isLoggedIn( { rvOnly: true } ) ) {
+                    self.toDo = function() { header.$el.fadeIn(); }
+                    if( self.isLoggedIn( { showLogin: false } ) ) {
                         if( header.$el.is(':hidden') ) { header.$el.fadeIn(); }
                     } else {
                         header.$el.hide();
+                        
                     }
                 } );
                 require( [ 'views/help' ], function( help ) {

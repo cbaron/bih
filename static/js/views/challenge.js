@@ -138,7 +138,6 @@ define(
 
                 this.challengeId = challengeId;
 
-                
                 this[ ( challenges.length )
                     ? 'renderData'
                     : 'waitForData' ]();
