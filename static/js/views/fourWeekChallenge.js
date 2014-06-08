@@ -168,40 +168,29 @@ define(
                     this.pastChallenges = [ ];
 
                     require( [ 'collections/pastChallenges' ], function( challenges ) {
-                        
-                        self.spinner = new spinner().start();
-
-                        challenges.on( 'syncd', function() {
-                            _.each( challenges.weekData, viewCreator );
-
-                            self.spinner.stop();
-                            $('html,body').scrollTop(
-                                self.templateData.pastChallengeContainer.offset().top - 50 );
-                        } );
-        
-                        return;
-                        self.pastWeekCollection = Backbone.Collection.extend( { model: challengeModel } );
 
                         if( challenges.length ) {
-                            var byWeek = _.reduce( challenges.toJSON(), reducer, { } );
-
-                            _.each( byWeek, viewCreator );
+                            _.each( challenges.weekData, viewCreator );
+                                
+                            $('html,body').scrollTop(
+                                self.templateData.pastChallengeContainer.offset().top - 50 );
 
                         } else {
+                        
                             self.spinner = new spinner().start();
 
-                            challenges.on('sync', function() {
-                                var byWeek = _.reduce( challenges.toJSON(), reducer, { } );
-
-                                _.each( byWeek, viewCreator );
+                            challenges.on( 'syncd', function() {
+                                _.each( challenges.weekData, viewCreator );
 
                                 self.spinner.stop();
                                 $('html,body').scrollTop(
                                     self.templateData.pastChallengeContainer.offset().top - 50 );
-
                             } );
-                        }
-                    } )
+                         }
+        
+                        return;
+                    } );
+
                 } else {
                     _.each( this.pastChallenges, function( view ) {
                         view.$el.fadeIn();
