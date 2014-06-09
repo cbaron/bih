@@ -8,6 +8,9 @@ def index():
 
 def GET( sf ):
 
+    if request.vars.busName is None:
+	return response.json([])
+
     busMates = sf.query(\
         ''.join( [ "Select Bus_Number__c, First_Name__c, Last_Name__c, BIH_User__r.ID FROM Team_Member__c  ",
                    "WHERE Bus_Number__c = '", request.vars.busName, "' ORDER BY Last_Name__c ASC" ] ) )['records']

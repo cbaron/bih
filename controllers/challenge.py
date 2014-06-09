@@ -8,7 +8,7 @@ def index():
 
 def GET( sf ):
 
-    challengeReords = [ ]
+    challengeRecords = [ ]
 
     if len( request.args ):
         challengeRecords = sf.query(\
@@ -20,7 +20,7 @@ def GET( sf ):
                    request.args[1], "' AND BIH_Bus__r.Name = '",
                    request.args[0], "'" ] ) )['records']
 
-    else:
+    elif request.vars.busName:
         challengeRecords = sf.query(\
             ''.join( [ "Select BIH_Bus__r.Name, BIH_Challenge__r.ID, BIH_Challenge__r.Name, BIH_Challenge__r.Challenge_Rules__c, ",
                        "BIH_Challenge__r.Challenge_Type__c, BIH_Challenge__r.Active__c, BIH_Challenge__r.Double_points__c, ",

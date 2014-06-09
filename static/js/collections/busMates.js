@@ -13,14 +13,12 @@ define(
 
             initialize: function() {
 
-                if( user.has('busName') ) { this.getData(); }
-                else { this.listenToOnce( user, 'change', this.getData ); }
+		this.syncd = false;
+                
+		this.fetch( { data: { busName: user.get('busName') } } );
+		this.on( 'sync', function() { this.syncd = true; } );
             },
 
-            getData: function() {
-                this.fetch( { data: { busName: user.get('busName') } } );
-            },
-           
             url: '/busMate',
 
             model: busMate

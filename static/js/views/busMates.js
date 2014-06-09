@@ -29,7 +29,7 @@ define(
                 this.mode = options.mode;
                 this.challengeId = options.challengeId;
 
-                this[ ( busMates.length )
+                this[ ( busMates.syncd )
                     ? 'render'
                     : 'waitForData' ]();
 
@@ -37,6 +37,12 @@ define(
             },
 
             render: function() {
+
+		if( busMates.length === 0 ) {
+			this.rendered = true;
+			this.trigger('rendered');
+			return;
+		}
             
                 this.templateData = { };
 
